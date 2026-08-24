@@ -2,12 +2,12 @@ extends Area2D
 
 var resourceId = 0
 var hp = 5
-signal shake
+signal damage
 
 const resourse = preload("res://resources/dropped_item.tscn")
 
 func _ready() -> void:
-	connect("shake", shakeObject)
+	connect("damage", shakeObject)
 
 func dropResource():
 	var newResource: CharacterBody2D = resourse.instantiate()

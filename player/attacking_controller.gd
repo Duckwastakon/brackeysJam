@@ -35,4 +35,4 @@ func _process(delta: float) -> void:
 		swing()
 
 func _on_area_area_entered(area: Area2D) -> void:
-	area.shake.emit()
+	area.damage.emit()
