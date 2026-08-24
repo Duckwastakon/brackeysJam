@@ -9,6 +9,7 @@ var canAttack = true
 
 func swing():
 	canAttack = false
+	$hitBoxRotating/Area/CollisionShape2D.disabled = false
 	$hitBoxRotating/Area/ColorRect.visible = true
 	
 	var mousePos = get_global_mouse_position()
@@ -22,6 +23,7 @@ func swing():
 	rotationTween.play()
 	
 	await rotationTween.finished
+	$hitBoxRotating/Area/CollisionShape2D.disabled = true
 	$hitBoxRotating/Area/ColorRect.visible = false
 	rotationTween.kill()
 	dir *= -1

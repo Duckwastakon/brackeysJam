@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 
 Global="*uid://7ichyk2gekxj"
 
+[display]
+
+window/size/mode=2
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray()
