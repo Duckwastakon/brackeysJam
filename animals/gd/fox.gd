@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	#Global.wobble(fox, velocity)
+	Global.wobble(fox, velocity)
 	velocity = movement * SPEED
 	move_and_slide()
 	

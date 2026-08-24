@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://2miklkwwtb6i"]
+
+[ext_resource type="Script" uid="uid://l5vtpm1y7iq4" path="res://animals/scene/map.gd" id="1_2c7f8"]
+[ext_resource type="PackedScene" uid="uid://bu0pmkhglv6yv" path="res://resources/resource.tscn" id="2_d5eay"]
+
+[node name="map" type="Node2D" unique_id=1947726882]
+script = ExtResource("1_2c7f8")
+
+[node name="background" type="ColorRect" parent="." unique_id=1830299228]
+offset_right = 640.0
+offset_bottom = 640.0
+color = Color(0.2357319, 0.23573193, 0.2357319, 1)
+
+[node name="tile" type="ColorRect" parent="." unique_id=495648281]
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="resource" parent="." unique_id=554154062 instance=ExtResource("2_d5eay")]
+position = Vector2(32, 32)
+scale = Vector2(0.5, 0.5)
