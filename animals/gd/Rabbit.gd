@@ -18,7 +18,7 @@ func _ready() -> void:
 	food = randi_range(1, 2)
 
 func _process(delta: float) -> void:
-	#Global.wobble(rabbit, velocity)
+	Global.wobble(rabbit, velocity)
 	velocity = movement * SPEED
 	move_and_slide()
 	

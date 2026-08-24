@@ -19,7 +19,7 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	#Global.wobble(deer, velocity)
+	Global.wobble(deer, velocity)
 	velocity = movement * SPEED
 	move_and_slide()
 	
