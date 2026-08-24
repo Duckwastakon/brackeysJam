@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*uid://7ichyk2gekxj"
+CraftableItems="*uid://c6smdl5rtjks5"
 
 [display]
 

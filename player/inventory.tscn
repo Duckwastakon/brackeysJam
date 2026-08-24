@@ -35,10 +35,111 @@ label_settings = SubResource("LabelSettings_sqil7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="hpBar" type="Control" parent="." unique_id=1526879345]
+[node name="health" type="Control" parent="." unique_id=1526879345]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 64.0
 offset_top = 448.0
 offset_right = 320.0
 offset_bottom = 512.0
+
+[node name="background" type="ColorRect" parent="health" unique_id=2114921211]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 248.0
+offset_bottom = 48.0
+color = Color(0.53224236, 0.53224236, 0.53224236, 1)
+
+[node name="fill" type="ColorRect" parent="health/background" unique_id=1169170729]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 24.0
+color = Color(1, 0.58370584, 0.5135992, 1)
+
+[node name="icon" type="ColorRect" parent="health" unique_id=1884173818]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 48.0
+color = Color(0.99607843, 0.4862745, 0.5372549, 0.5529412)
+
+[node name="warmth" type="Control" parent="." unique_id=695753778]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 832.0
+offset_top = 448.0
+offset_right = 1088.0
+offset_bottom = 512.0
+
+[node name="background3" type="ColorRect" parent="warmth" unique_id=31855484]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 248.0
+offset_bottom = 48.0
+color = Color(0.53224236, 0.53224236, 0.53224236, 1)
+
+[node name="fill" type="ColorRect" parent="warmth/background3" unique_id=239162408]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 24.0
+color = Color(0, 0.85005337, 0.8836335, 1)
+
+[node name="icon3" type="ColorRect" parent="warmth" unique_id=690895390]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 48.0
+color = Color(0.0073031676, 0.8303494, 0.8001004, 0.5529412)
+
+[node name="hunger" type="Control" parent="." unique_id=165997058]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 448.0
+offset_top = 448.0
+offset_right = 704.0
+offset_bottom = 512.0
+
+[node name="background2" type="ColorRect" parent="hunger" unique_id=752846547]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 248.0
+offset_bottom = 48.0
+color = Color(0.53224236, 0.53224236, 0.53224236, 1)
+
+[node name="fill" type="ColorRect" parent="hunger/background2" unique_id=698780531]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 24.0
+color = Color(0.9290363, 0.64221257, 0.4239976, 1)
+
+[node name="icon2" type="ColorRect" parent="hunger" unique_id=1441680399]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 48.0
+color = Color(0.99999994, 0.62121767, 0.3059253, 0.5529412)
+
+[node name="craftableItems" type="Control" parent="." unique_id=1193138500]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 384.0
+
+[node name="craftable" type="Button" parent="." unique_id=837457257]
+visible = false
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
