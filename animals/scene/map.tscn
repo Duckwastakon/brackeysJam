@@ -8,7 +8,7 @@
 size = Vector2(640, 640)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v01jy"]
-radius = 291.10995
+radius = 280.01608
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1h7af"]
 size = Vector2(211.65, 210.65)
@@ -86,7 +86,8 @@ position = Vector2(-418, 691)
 position = Vector2(952, -371)
 shape = SubResource("RectangleShape2D_1h7af")
 
-[node name="tile" type="ColorRect" parent="." unique_id=495648281]
+[node name="tile" type="ColorRect" parent="background" unique_id=495648281]
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 
@@ -99,3 +100,11 @@ position = Vector2(320, 320)
 
 [connection signal="body_entered" from="background/body" to="." method="_on_body_body_entered"]
 [connection signal="body_exited" from="background/load" to="." method="_on_load_body_exited"]
+[connection signal="body_entered" from="background/one" to="." method="_on_one_body_entered"]
+[connection signal="body_entered" from="background/two" to="." method="_on_two_body_entered"]
+[connection signal="body_entered" from="background/three" to="." method="_on_three_body_entered"]
+[connection signal="body_entered" from="background/four" to="." method="_on_four_body_entered"]
+[connection signal="body_entered" from="background/five" to="." method="_on_five_body_entered"]
+[connection signal="body_entered" from="background/six" to="." method="_on_six_body_entered"]
+[connection signal="body_entered" from="background/seven" to="." method="_on_seven_body_entered"]
+[connection signal="body_entered" from="background/eight" to="." method="_on_eight_body_entered"]
