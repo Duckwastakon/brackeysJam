@@ -6,6 +6,7 @@ extends Node2D
 @onready var area = $background/body
 
 var inOne = false; var inTwo = false;var inThree = false; var inFour =false;var inFive = false; var inSix = false;  var inSeven = false; var inEight = false
+var one = 0; var two = 0; var three = 0; var four = 0; var five = 0; var six = 0; var seven = 0; var eight = 0;
 
 var newTile = tile
 var newRec = rec
@@ -16,6 +17,10 @@ var CurrentsqPosition = Vector2(0.0, 0.0)
 
 var tilePosition = Vector2(0.0, 0.0)
 var currentPosition = Vector2(0.0, 0.0)
+
+var left = 0 ;
+var up= 0;
+var counter = 1;
 
 
 var number = []
@@ -32,24 +37,37 @@ func _ready() -> void:
 func generate():
 	
 	if first:
+		sqPosition = Vector2(0.0, 0.0)
 		first = false
 	else:
 		if inOne:
 			pass
 		elif inTwo:
-			pass
+			two = two+1
+			sqPosition = Vector2(CurrentsqPosition.x, CurrentsqPosition.y+640)
+			left = 0
+			up = (640)*two
 		elif inThree:
 			pass
 		elif inFour:
 			pass
 		elif inFive: 
-			pass
+			five = five+1
+			sqPosition = Vector2(CurrentsqPosition.x, CurrentsqPosition.y-640)
+			left = 0
+			up = (-640)*five
 		elif inSix :
 			pass
 		elif inSeven:
+			up = 0;
+			seven = seven + 1
 			sqPosition = Vector2(CurrentsqPosition.x-640, CurrentsqPosition.y)
+			left = (-640)*seven
 		else:
-			pass
+			up = 0
+			eight = eight + 1
+			sqPosition = Vector2(CurrentsqPosition.x+640, CurrentsqPosition.y)
+			left = (640)*eight
 	
 	
 	newBack = square.duplicate() # needs reworking when addingh get s added
@@ -62,9 +80,10 @@ func generate():
 	for o in 10:
 		var n = o*64
 		for i in 10 :
-			var a = i * 64
+			var y = n - up
+			var a = i * 64 + left
 			newTile = tile.duplicate()
-			newTile.position = Vector2(a, n)
+			newTile.position = Vector2(a, y)
 			add_child(newTile)
 			number.append(newTile)
 			
@@ -76,7 +95,10 @@ func generateRec():
 		if f:
 			newRec = rec.duplicate()
 			add_child(newRec)
-			newRec.position = number[i].global_position + Vector2(randi_range(1, 64), randi_range(1, 64))		
+			var which = i*counter
+			print(which)
+			newRec.position = number[which].global_position + Vector2(randi_range(1, 64), randi_range(1, 64))	
+	counter = counter+1	
 
 
 func _process(delta: float) -> void:
