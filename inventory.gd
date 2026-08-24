@@ -29,17 +29,17 @@ func drawInventory():
 func getItem(ind):
 	return([inventory[ind], invAmounts[ind]])
 
-func pickUpItem(itemName):
+func pickUpItem(itemName, amount = 1):
 	var stackable = true
 	if(stackable):
 		if(inventory.has(itemName)):
-			invAmounts[inventory.find(itemName)] += 1
+			invAmounts[inventory.find(itemName)] += amount
 			return true
 		else:
 			for i in inventory.size():
 				if inventory[i] == "":
 					inventory[i] = itemName
-					invAmounts[i] += 1
+					invAmounts[i] += amount
 					return true
 	else:
 		for i in inventory.size():
@@ -69,5 +69,6 @@ func pickableUp(itemName):
 func dropItem(ind):
 	var item = [inventory[ind], invAmounts[ind]]
 	inventory[ind] = ""
+	print("Hello world")
 	invAmounts[ind] = 0
 	return item

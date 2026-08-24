@@ -7,8 +7,11 @@ var movingState = 0
 
 @onready var playerArt = $playerArt
 @onready var inventory = $inventory
+@onready var attackingController = $AttackingController
 
-var equipedSlot = 1
+const itemPrefab = preload("res://resources/dropped_item.tscn")
+
+var equipedSlot = 0
 var equipedItem = ""
 
 func _physics_process(delta: float) -> void:
@@ -48,6 +51,9 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("shift") and movingState == 1:
 		movingState = 0
 	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		attackingController.swingSignal.emit(equipedItem)
+	
 	if Input.is_action_just_pressed("1"):
 		equipedSlot = 0
 		equipedItem = inventory.getItem(equipedSlot)[0]
@@ -69,8 +75,17 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("q"):
 		var droppedItem = inventory.dropItem(equipedSlot)
+		if droppedItem[0] == "": return
+		equipedItem = ""
+		var itemClone = itemPrefab.instantiate()
 		print(droppedItem)
+		itemClone.itemName = droppedItem[0]
+		itemClone.amount = droppedItem[1]
+		itemClone.global_position = global_position
+		itemClone.rotation_degrees = randi_range(0, 360)
+		itemClone.velocity = 500 * randf_range(1, 1.5) * global_position.direction_to(get_global_mouse_position())
+		get_parent().add_child(itemClone)
 
 func _on_item_pickup_area_entered(area: Area2D) -> void:
-	if(inventory.pickUpItem(area.get_parent().itemName)):
+	if(inventory.pickUpItem(area.get_parent().itemName, area.get_parent().amount)):
 		area.get_parent().queue_free()

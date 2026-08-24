@@ -4,10 +4,15 @@ extends Node2D
 
 var dir = 1
 @export var swingWidth = 60
+signal swingSignal
 
 var canAttack = true
 
-func swing():
+func _ready() -> void:
+	connect("swingSignal", swing)
+
+func swing(equipedItem):
+	if(!canAttack): return
 	canAttack = false
 	$hitBoxRotating/Area/CollisionShape2D.disabled = false
 	$hitBoxRotating/Area/ColorRect.visible = true
@@ -28,11 +33,6 @@ func swing():
 	rotationTween.kill()
 	dir *= -1
 	canAttack = true
-
-
-func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and canAttack:
-		swing()
 
 func _on_area_area_entered(area: Area2D) -> void:
 	area.damage.emit()
