@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://36aywxoprrye"]
+
+[ext_resource type="Script" uid="uid://m1bbmuvtx7a1" path="res://animals/gd/deer.gd" id="1_bdqs5"]
+[ext_resource type="Texture2D" uid="uid://2emhwtqfrjrn" path="res://drawn assets/rabbit.png" id="1_uaicw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdqs5"]
+radius = 23.135471
+
+[node name="deer" type="CharacterBody2D" unique_id=1165020948]
+script = ExtResource("1_bdqs5")
+
+[node name="Deer" type="Sprite2D" parent="." unique_id=131469338]
+position = Vector2(40.2, 40.2)
+rotation = 1.5364044
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_uaicw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1609629752]
+position = Vector2(42, 47)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_bdqs5")
+
+[node name="Switch" type="Timer" parent="." unique_id=576560364]
+wait_time = 1.5
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=255113056]
+position_smoothing_enabled = true
+
+[connection signal="timeout" from="Switch" to="." method="_on_switch_timeout"]

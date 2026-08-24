@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d3ob1g7bmwj20"]
+
+[ext_resource type="Texture2D" uid="uid://2emhwtqfrjrn" path="res://drawn assets/rabbit.png" id="1_3e6xf"]
+[ext_resource type="Script" uid="uid://dt5idygw830ef" path="res://animals/gd/fox.gd" id="1_sjour"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjour"]
+radius = 23.135471
+
+[node name="fox" type="CharacterBody2D" unique_id=937449899]
+script = ExtResource("1_sjour")
+
+[node name="Fox" type="Sprite2D" parent="." unique_id=2066275949]
+position = Vector2(40.2, 40.2)
+rotation = 3.1191473
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_3e6xf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1755251759]
+position = Vector2(42, 47)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_sjour")
+
+[node name="Switch" type="Timer" parent="." unique_id=1318547363]
+wait_time = 1.5
+autostart = true

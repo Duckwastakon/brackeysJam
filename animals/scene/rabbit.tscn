@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://u3wfgyfa0qyk"]
+
+[ext_resource type="Script" uid="uid://c5ubosjeo8ni1" path="res://animals/gd/Rabbit.gd" id="1_t6ioe"]
+[ext_resource type="Texture2D" uid="uid://2emhwtqfrjrn" path="res://drawn assets/rabbit.png" id="2_4dgfd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbwfx"]
+radius = 23.135471
+
+[node name="Rabbit" type="CharacterBody2D" unique_id=1403473603]
+script = ExtResource("1_t6ioe")
+
+[node name="Rabbit" type="Sprite2D" parent="." unique_id=1807410776]
+position = Vector2(40.2, 40.2)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_4dgfd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1777891247]
+position = Vector2(42, 47)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_gbwfx")
+
+[node name="Switch" type="Timer" parent="." unique_id=1387571324]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Switch" to="." method="_on_switch_timeout"]

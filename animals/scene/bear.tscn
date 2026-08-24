@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cwmvg7l3ycbpd"]
+
+[ext_resource type="Script" uid="uid://dpvd0lnnajxyk" path="res://animals/gd/bear.gd" id="1_fjjsa"]
+[ext_resource type="Texture2D" uid="uid://2emhwtqfrjrn" path="res://drawn assets/rabbit.png" id="1_l3xvu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjjsa"]
+radius = 23.135471
+
+[node name="bear" type="CharacterBody2D" unique_id=1522132298]
+script = ExtResource("1_fjjsa")
+
+[node name="Deer" type="Sprite2D" parent="." unique_id=1552910044]
+position = Vector2(40.2, 40.2)
+rotation = -1.5693657
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_l3xvu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=817950952]
+position = Vector2(42, 47)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_fjjsa")
+
+[node name="Switch" type="Timer" parent="." unique_id=1882105843]
+wait_time = 1.5
+autostart = true
