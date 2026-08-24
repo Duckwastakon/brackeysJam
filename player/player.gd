@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var movingState = 0
-@export var maxSpeed = [500, 1000, 200]
-@export var accelerations = [150, 250, 50]
+@export var maxSpeed = [500, 1000]
+@export var accelerations = [150, 250]
 @export var deceleration = 100
 
 func _physics_process(delta: float) -> void:
@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, deceleration)
 		velocity.y = move_toward(velocity.y, 0, deceleration)
 	
-	playerWobble()
+	Global.wobble(playerArt, velocity)
 	move_and_slide()
 
 func lockSpeed():
@@ -39,20 +39,8 @@ func lockSpeed():
 var rotatingState = -1
 @onready var playerArt = $playerArt
 
-func playerWobble():
-	if(velocity != Vector2.ZERO):
-		if (velocity.x > 0):
-			playerArt.flip_h=true
-		else:
-			playerArt.flip_h=false
-		
-		var wobbleSpeed = 1000 / (abs(velocity.x) + abs(velocity.y))
-		var maxWobbleDistance = clampf(2000 / (abs(velocity.x) + abs(velocity.y)) * 15, 5, 15)
-		
-		if(playerArt.rotation_degrees == maxWobbleDistance * rotatingState):
-			rotatingState *= -1
-		
-		playerArt.rotation_degrees = move_toward(playerArt.rotation_degrees, 
-		maxWobbleDistance * rotatingState, wobbleSpeed)
-	else:
-		playerArt.rotation_degrees = move_toward(playerArt.rotation_degrees, 0, 5)
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("shift"):
+		movingState = 1
+	if Input.is_action_just_released("shift") and movingState == 1:
+		movingState = 0
