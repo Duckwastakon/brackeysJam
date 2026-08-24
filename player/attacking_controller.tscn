@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://be2n0j4kn3iek"]
+
+[ext_resource type="Script" uid="uid://dfjwqn78bbh6t" path="res://player/attacking_controller.gd" id="1_g2scx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyfqc"]
+size = Vector2(32, 32)
+
+[node name="AttackingController" type="Node2D" unique_id=1000186162]
+script = ExtResource("1_g2scx")
+
+[node name="hitBoxRotating" type="Node2D" parent="." unique_id=36193988]
+
+[node name="Area" type="Area2D" parent="hitBoxRotating" unique_id=201793710]
+position = Vector2(64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBoxRotating/Area" unique_id=1982070730]
+shape = SubResource("RectangleShape2D_jyfqc")
+
+[node name="ColorRect" type="ColorRect" parent="hitBoxRotating/Area" unique_id=1174594073]
+visible = false
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[connection signal="area_entered" from="hitBoxRotating/Area" to="." method="_on_area_area_entered"]
