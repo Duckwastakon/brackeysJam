@@ -14,7 +14,7 @@ func dropResource():
 	newResource.global_position = global_position
 	get_parent().call_deferred("add_child", newResource)
 	
-	newResource.velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * 100 * randf_range(1.1, 1.4)
+	newResource.velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * 500 * randf_range(1.1, 1.4)
 
 var shakeAmount = 0
 
