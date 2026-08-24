@@ -5,6 +5,12 @@ var movingState = 0
 @export var accelerations = [150, 250]
 @export var deceleration = 100
 
+@onready var playerArt = $playerArt
+@onready var inventory = $inventory
+
+var equipedSlot = 1
+var equipedItem = ""
+
 func _physics_process(delta: float) -> void:
 	var movementDirection = Vector2(Input.get_axis("left", "right"), 
 	Input.get_axis("up", "down")).normalized()
@@ -36,11 +42,35 @@ func lockSpeed():
 		else:
 			velocity.y = velocity.y / abs(velocity.y) * maxSpeed[movingState]
 
-var rotatingState = -1
-@onready var playerArt = $playerArt
-
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("shift"):
 		movingState = 1
 	if Input.is_action_just_released("shift") and movingState == 1:
 		movingState = 0
+	
+	if Input.is_action_just_pressed("1"):
+		equipedSlot = 0
+		equipedItem = inventory.getItem(equipedSlot)[0]
+	if Input.is_action_just_pressed("2"):
+		equipedSlot = 1
+		equipedItem = inventory.getItem(equipedSlot)[0]
+	if Input.is_action_just_pressed("3"):
+		equipedSlot = 2
+		equipedItem = inventory.getItem(equipedSlot)[0]
+	if Input.is_action_just_pressed("4"):
+		equipedSlot = 3
+		equipedItem = inventory.getItem(equipedSlot)[0]
+	if Input.is_action_just_pressed("5"):
+		equipedSlot = 4
+		equipedItem = inventory.getItem(equipedSlot)[0]
+	if Input.is_action_just_pressed("6"):
+		equipedSlot = 5
+		equipedItem = inventory.getItem(equipedSlot)[0]
+	
+	if Input.is_action_just_pressed("q"):
+		var droppedItem = inventory.dropItem(equipedSlot)
+		print(droppedItem)
+
+func _on_item_pickup_area_entered(area: Area2D) -> void:
+	if(inventory.pickUpItem(area.get_parent().itemName)):
+		area.get_parent().queue_free()

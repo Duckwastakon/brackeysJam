@@ -10,6 +10,7 @@ var invAmounts = []
 func _ready() -> void:
 	for i in inventorySize:
 		inventory.append("")
+		invAmounts.append(0)
 	
 	drawInventory()
 
@@ -38,7 +39,7 @@ func pickUpItem(itemName):
 			for i in inventory.size():
 				if inventory[i] == "":
 					inventory[i] = itemName
-					invAmounts[i] = 1
+					invAmounts[i] += 1
 					return true
 	else:
 		for i in inventory.size():
@@ -66,7 +67,7 @@ func pickableUp(itemName):
 	return false
 
 func dropItem(ind):
-	var item = inventory[ind]
+	var item = [inventory[ind], invAmounts[ind]]
 	inventory[ind] = ""
 	invAmounts[ind] = 0
 	return item

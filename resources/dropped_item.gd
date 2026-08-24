@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const decel = 1
 var startingScale = 1
+const itemName = "sticks"
 
 func _ready() -> void:
 	startingScale = $ColorRect.scale.x

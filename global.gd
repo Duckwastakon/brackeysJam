@@ -20,7 +20,7 @@ func wobble(objectSprite, velocity):
 		else:
 			objectSprite.flip_h=false
 		
-		var wobbleSpeed = 1000 / (abs(velocity.x) + abs(velocity.y))
+		var wobbleSpeed =  (abs(velocity.x) + abs(velocity.y)) / 500
 		var maxWobbleDistance = clampf(2000 / (abs(velocity.x) + abs(velocity.y)) * 15, 5, 15)
 		
 		if(objectSprite.rotation_degrees == maxWobbleDistance * rotatingState):
