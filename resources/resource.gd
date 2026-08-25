@@ -4,13 +4,17 @@ var resourceId = 0
 var hp = 5
 signal damage
 
-const resourse = preload("res://resources/dropped_item.tscn")
+const resource = preload("res://resources/dropped_item.tscn")
+
+@onready var resourceSprite = $resourceSprite
 
 func _ready() -> void:
 	connect("damage", shakeObject)
+	
+	resourceSprite.scale *= randf_range(0.8, 1.2)
 
 func dropResource():
-	var newResource: CharacterBody2D = resourse.instantiate()
+	var newResource: CharacterBody2D = resource.instantiate()
 	newResource.global_position = global_position
 	get_parent().call_deferred("add_child", newResource)
 	
@@ -33,12 +37,12 @@ func shakeObject():
 		while(shakeAmount > 0):
 			shakeAmount -= 1
 			var newTween = create_tween()
-			newTween.tween_property($ColorRect, "position",
-			Vector2(-48 + randi_range(-4, 4), -48 + randi_range(-4, 4)), 0.04)
+			newTween.tween_property(resourceSprite, "position",
+			Vector2(randi_range(-4, 4), randi_range(-4, 4)), 0.04)
 			
 			newTween.play()
 			await newTween.finished
 			newTween.kill()
-		$ColorRect.position = Vector2(-48, -48)
+		resourceSprite.position = Vector2(0, 0)
 	else:
 		shakeAmount = 8

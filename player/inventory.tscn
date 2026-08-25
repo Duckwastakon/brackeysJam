@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://cjf0m67tueaka"]
 
 [ext_resource type="Script" uid="uid://cco3ewf4jjf1" path="res://inventory.gd" id="1_sqil7"]
+[ext_resource type="Script" uid="uid://wcvuv5qiwxlo" path="res://player/crafting_info.gd" id="2_dpmf6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sqil7"]
 font_color = Color(0, 0, 0, 1)
 outline_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_dpmf6"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="inventory" type="CanvasLayer" unique_id=313071139]
 script = ExtResource("1_sqil7")
@@ -23,6 +28,7 @@ offset_left = 384.0
 offset_top = 512.0
 offset_right = 448.0
 offset_bottom = 576.0
+color = Color(1, 1, 1, 0.09803922)
 
 [node name="Label" type="Label" parent="invSlot" unique_id=1469025909]
 layout_mode = 0
@@ -35,6 +41,12 @@ label_settings = SubResource("LabelSettings_sqil7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="invSlot" unique_id=177710214]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+expand_mode = 1
+
 [node name="health" type="Control" parent="." unique_id=1526879345]
 layout_mode = 3
 anchors_preset = 0
@@ -46,17 +58,15 @@ offset_bottom = 512.0
 [node name="background" type="ColorRect" parent="health" unique_id=2114921211]
 layout_mode = 0
 offset_left = 56.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 248.0
-offset_bottom = 48.0
+offset_bottom = 40.0
 color = Color(0.53224236, 0.53224236, 0.53224236, 1)
 
 [node name="fill" type="ColorRect" parent="health/background" unique_id=1169170729]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 24.0
+offset_right = 192.0
+offset_bottom = 16.0
 color = Color(1, 0.58370584, 0.5135992, 1)
 
 [node name="icon" type="ColorRect" parent="health" unique_id=1884173818]
@@ -78,17 +88,15 @@ offset_bottom = 512.0
 [node name="background3" type="ColorRect" parent="warmth" unique_id=31855484]
 layout_mode = 0
 offset_left = 56.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 248.0
-offset_bottom = 48.0
+offset_bottom = 40.0
 color = Color(0.53224236, 0.53224236, 0.53224236, 1)
 
 [node name="fill" type="ColorRect" parent="warmth/background3" unique_id=239162408]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 24.0
+offset_right = 192.0
+offset_bottom = 16.0
 color = Color(0, 0.85005337, 0.8836335, 1)
 
 [node name="icon3" type="ColorRect" parent="warmth" unique_id=690895390]
@@ -110,17 +118,15 @@ offset_bottom = 512.0
 [node name="background2" type="ColorRect" parent="hunger" unique_id=752846547]
 layout_mode = 0
 offset_left = 56.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 248.0
-offset_bottom = 48.0
+offset_bottom = 40.0
 color = Color(0.53224236, 0.53224236, 0.53224236, 1)
 
 [node name="fill" type="ColorRect" parent="hunger/background2" unique_id=698780531]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 24.0
+offset_right = 192.0
+offset_bottom = 16.0
 color = Color(0.9290363, 0.64221257, 0.4239976, 1)
 
 [node name="icon2" type="ColorRect" parent="hunger" unique_id=1441680399]
@@ -143,3 +149,31 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 56.0
 offset_bottom = 56.0
+
+[node name="imagePNG" type="TextureRect" parent="craftable" unique_id=170979696]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+expand_mode = 1
+
+[node name="craftingInfo" type="Control" parent="." unique_id=2047304642]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 192.0
+mouse_filter = 2
+script = ExtResource("2_dpmf6")
+
+[node name="ColorRect" type="ColorRect" parent="craftingInfo" unique_id=1250208943]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 24.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="craftingInfo" unique_id=22894273]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 24.0
+text = "sword"
+label_settings = SubResource("LabelSettings_dpmf6")

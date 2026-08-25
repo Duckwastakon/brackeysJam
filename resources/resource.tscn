@@ -1,19 +1,18 @@
 [gd_scene format=3 uid="uid://bu0pmkhglv6yv"]
 
 [ext_resource type="Script" uid="uid://ds6ngnraiyuwp" path="res://resources/resource.gd" id="1_dtidl"]
+[ext_resource type="Texture2D" uid="uid://cwydavob4413y" path="res://drawn assets/tree.PNG" id="2_bo38f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d33tg"]
-size = Vector2(96, 96)
+size = Vector2(96, 112)
 
 [node name="resource" type="Area2D" unique_id=554154062]
 script = ExtResource("1_dtidl")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1598015002]
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 48.0
-offset_bottom = 48.0
-color = Color(0.6660954, 0.9972642, 0.51896703, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474364631]
+position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_d33tg")
+
+[node name="resourceSprite" type="Sprite2D" parent="." unique_id=1046662729]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_bo38f")
