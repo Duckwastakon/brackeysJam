@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://l5vtpm1y7iq4" path="res://map/map.gd" id="1_2c7f8"]
 [ext_resource type="PackedScene" uid="uid://bu0pmkhglv6yv" path="res://resources/resource.tscn" id="2_d5eay"]
 [ext_resource type="PackedScene" uid="uid://ug4iwky8f33o" path="res://player/player.tscn" id="3_v01jy"]
+[ext_resource type="PackedScene" uid="uid://cwmvg7l3ycbpd" path="res://animals/scene/bear.tscn" id="4_5jdw0"]
+[ext_resource type="PackedScene" uid="uid://36aywxoprrye" path="res://animals/scene/deer.tscn" id="5_kxmgb"]
+[ext_resource type="PackedScene" uid="uid://d3ob1g7bmwj20" path="res://animals/scene/fox.tscn" id="6_e8e5r"]
+[ext_resource type="PackedScene" uid="uid://u3wfgyfa0qyk" path="res://animals/scene/rabbit.tscn" id="7_112ik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v01jy"]
 size = Vector2(640, 640)
@@ -91,6 +95,9 @@ layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 
+[node name="Marker" type="Marker2D" parent="background" unique_id=1253932736]
+position = Vector2(319, 108)
+
 [node name="resource" parent="." unique_id=554154062 instance=ExtResource("2_d5eay")]
 position = Vector2(32, 32)
 scale = Vector2(0.5, 0.5)
@@ -98,13 +105,15 @@ scale = Vector2(0.5, 0.5)
 [node name="player" parent="." unique_id=1107822596 instance=ExtResource("3_v01jy")]
 position = Vector2(320, 320)
 
+[node name="animals" type="Node2D" parent="." unique_id=1098914366]
+
+[node name="bear" parent="animals" unique_id=1522132298 instance=ExtResource("4_5jdw0")]
+
+[node name="deer" parent="animals" unique_id=1165020948 instance=ExtResource("5_kxmgb")]
+
+[node name="fox" parent="animals" unique_id=937449899 instance=ExtResource("6_e8e5r")]
+
+[node name="Rabbit" parent="animals" unique_id=1403473603 instance=ExtResource("7_112ik")]
+
 [connection signal="body_entered" from="background/body" to="." method="_on_body_body_entered"]
 [connection signal="body_exited" from="background/load" to="." method="_on_load_body_exited"]
-[connection signal="body_entered" from="background/one" to="." method="_on_direction_entered" binds= [Vector2i(-1, -1)]]
-[connection signal="body_entered" from="background/two" to="." method="_on_direction_entered" binds= [Vector2i(0, -1)]]
-[connection signal="body_entered" from="background/three" to="." method="_on_direction_entered" binds= [Vector2i(1, -1)]]
-[connection signal="body_entered" from="background/four" to="." method="_on_direction_entered" binds= [Vector2i(-1, 1)]]
-[connection signal="body_entered" from="background/five" to="." method="_on_direction_entered" binds= [Vector2i(0, 1)]]
-[connection signal="body_entered" from="background/six" to="." method="_on_direction_entered" binds= [Vector2i(1, 1)]]
-[connection signal="body_entered" from="background/seven" to="." method="_on_direction_entered" binds= [Vector2i(-1, 0)]]
-[connection signal="body_entered" from="background/eight" to="." method="_on_direction_entered" binds= [Vector2i(1, 0)]]
