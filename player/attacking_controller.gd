@@ -35,4 +35,4 @@ func swing(equipedItem):
 	canAttack = true
 
 func _on_area_area_entered(area: Area2D) -> void:
-	area.damage.emit()
+	area.damage.emit("fists")

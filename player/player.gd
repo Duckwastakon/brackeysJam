@@ -56,22 +56,22 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("1"):
 		equipedSlot = 0
-		equipedItem = inventory.getItem(equipedSlot)[0]
+		equipedItem = inventory.equipItem(equipedSlot)[0]
 	if Input.is_action_just_pressed("2"):
 		equipedSlot = 1
-		equipedItem = inventory.getItem(equipedSlot)[0]
+		equipedItem = inventory.equipItem(equipedSlot)[0]
 	if Input.is_action_just_pressed("3"):
 		equipedSlot = 2
-		equipedItem = inventory.getItem(equipedSlot)[0]
+		equipedItem = inventory.equipItem(equipedSlot)[0]
 	if Input.is_action_just_pressed("4"):
 		equipedSlot = 3
-		equipedItem = inventory.getItem(equipedSlot)[0]
+		equipedItem = inventory.equipItem(equipedSlot)[0]
 	if Input.is_action_just_pressed("5"):
 		equipedSlot = 4
-		equipedItem = inventory.getItem(equipedSlot)[0]
+		equipedItem = inventory.equipItem(equipedSlot)[0]
 	if Input.is_action_just_pressed("6"):
 		equipedSlot = 5
-		equipedItem = inventory.getItem(equipedSlot)[0]
+		equipedItem = inventory.equipItem(equipedSlot)[0]
 	
 	if Input.is_action_just_pressed("q"):
 		var droppedItem = inventory.dropItem(equipedSlot)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ds0s0uyaguf1e"]
 
 [ext_resource type="Script" uid="uid://dihwj5qpgxnle" path="res://resources/dropped_item.gd" id="1_awcry"]
+[ext_resource type="Texture2D" uid="uid://cv6otejxswtap" path="res://drawn assets/log.PNG" id="2_tnumy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_porw7"]
 
@@ -21,3 +22,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1729551128]
 shape = SubResource("RectangleShape2D_porw7")
 disabled = true
+
+[node name="itemSprite" type="Sprite2D" parent="." unique_id=29881979]
+scale = Vector2(0.0125, 0.0125)
+texture = ExtResource("2_tnumy")

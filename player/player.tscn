@@ -9,7 +9,7 @@
 size = Vector2(48, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw30f"]
-size = Vector2(48, 48)
+size = Vector2(48, 56)
 
 [node name="player" type="CharacterBody2D" unique_id=1107822596]
 z_index = 999
@@ -35,6 +35,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="itemPickup" unique_id=445504645]
+position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_yw30f")
 
 [connection signal="area_entered" from="itemPickup" to="." method="_on_item_pickup_area_entered"]

@@ -31,6 +31,8 @@ func drawInventory():
 		newInvSlot.position = Vector2(slotContainer.size.x/2 - allSlotSize/2 + 64*i,
 		slotContainer.size.y/2)
 		newInvSlot.get_child(0).text = str(i+1)
+	
+	equipItem(0)
 
 func updateSlot(index):
 	var slot = slotContainer.get_child(index)
@@ -50,15 +52,16 @@ func updateSlot(index):
 func equipItem(ind):
 	for i in slotContainer.get_child_count():
 		if i == ind:
-			slotContainer.get_child(i).modulate = Color.from_rgba8(255, 255, 255, 50)
+			slotContainer.get_child(i).color = Color.from_rgba8(255, 255, 255, 50)
 		else:
-			slotContainer.get_child(i).modulate = Color.from_rgba8(255, 255, 255, 25)
+			slotContainer.get_child(i).color = Color.from_rgba8(255, 255, 255, 25)
 	return([inventory[ind], invAmounts[ind]])
 
 func getItem(ind):
 	return([inventory[ind], invAmounts[ind]])
 
 func canPickup(itemName):
+	if crafting: return false
 	var itemData = CraftableItems.items[itemName]
 	
 	if itemData == null: return false
@@ -75,14 +78,15 @@ func pickUpItem(itemName, amount = 1):
 	print(result)
 	if(result):
 		addItem(itemName, amount)
-		setCrafting()
 	
 	return result
 
-func dropItem(ind):
-	var item = [inventory[ind], invAmounts[ind]]
-	inventory[ind] = ""
-	invAmounts[ind] = 0
+func dropItem(index):
+	if crafting: return [""]
+	var item = [inventory[index], invAmounts[index]]
+	inventory[index] = ""
+	invAmounts[index] = 0
+	updateSlot(index)
 	return item
 
 func setCrafting():
@@ -125,8 +129,20 @@ func setCrafting():
 			newButton.connect("mouse_exited", hideData.bind(newButton))
 			newButton.connect("button_up", craft.bind(craftable, CraftableItems.cratables[craftable]["items"], newButton))
 
+func checkHasSpace(itemName, cost):
+	var stackable = CraftableItems.items[itemName]["stackable"]
+	if(stackable):
+		if(inventory.has(itemName)): return true
+	if(inventory.has("")): return true
+	for item in cost:
+		if(invAmounts[inventory.find(item)] - cost[item] <= 0):
+			return true
+	
+	return false
+
 func craft(itemName, costs, btn: Button):
 	if(crafting): return
+	if(!checkHasSpace(itemName, costs)): return
 	
 	startCrafting.emit()
 	crafting = true
@@ -149,7 +165,6 @@ func craft(itemName, costs, btn: Button):
 	addItem(itemName, 1)
 	
 	crafting = false
-	setCrafting()
 	timerTween.kill()
 	if(colorRectInd):
 		colorRectInd.queue_free()
@@ -164,6 +179,7 @@ func addItem(item, amount):
 		inventory[id] = item
 		invAmounts[id] = amount
 	
+	setCrafting()
 	updateSlot(id)
 
 func removeItem(item, amount):
@@ -172,6 +188,7 @@ func removeItem(item, amount):
 	if invAmounts[id] <= 0:
 		inventory[id] = ""
 	
+	setCrafting()
 	updateSlot(id)
 
 var currentDataParent = null

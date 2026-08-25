@@ -11,6 +11,14 @@ func _ready() -> void:
 	await get_tree().create_timer(1.5).timeout
 	$Area2D/CollisionShape2D.disabled = false
 
+func setItem(item, amt):
+	itemName = item
+	amount = amt
+	print(item)
+	print(CraftableItems.items[item])
+	print(CraftableItems.items[item]["png"])
+	$itemSprite.texture = load(CraftableItems.items[item]["png"])
+
 func _physics_process(delta: float) -> void:
 	if(velocity != Vector2.ZERO):
 		velocity.x = move_toward(velocity.x, 0, decel)
