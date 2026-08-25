@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://2miklkwwtb6i"]
 
-[ext_resource type="Script" uid="uid://l5vtpm1y7iq4" path="res://animals/scene/map.gd" id="1_2c7f8"]
+[ext_resource type="Script" uid="uid://l5vtpm1y7iq4" path="res://map/map.gd" id="1_2c7f8"]
 [ext_resource type="PackedScene" uid="uid://bu0pmkhglv6yv" path="res://resources/resource.tscn" id="2_d5eay"]
 [ext_resource type="PackedScene" uid="uid://ug4iwky8f33o" path="res://player/player.tscn" id="3_v01jy"]
 
