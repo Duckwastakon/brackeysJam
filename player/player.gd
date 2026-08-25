@@ -117,7 +117,7 @@ func changeTemperature():
 func die():
 	pass
 
-@onready var placingContainer = $placingController
+@onready var placingController = $placingController
 
 func equipItem(index):
 	equipedSlot = index
@@ -129,11 +129,11 @@ func equipItem(index):
 		stopPlacing()
 
 func startPlacing():
-	placingContainer.visible = true
-	placingContainer.get_child(0).texture = load(CraftableItems.items[equipedItem]["png"])
+	placingController.visible = true
+	placingController.get_child(0).texture = load(CraftableItems.items[equipedItem]["png"])
 
 func stopPlacing():
-	placingContainer.visible = false
+	placingController.visible = false
 
 func mouseClicked():
 	var equipedItemType = CraftableItems.items[equipedItem]["type"]
@@ -144,4 +144,4 @@ func mouseClicked():
 	elif equipedItemType == "tool":
 		attackingController.swingSignal.emit(equipedItem)
 	elif equipedItemType == "placeable":
-		pass
+		placingController.placeBuild(equipedItem)

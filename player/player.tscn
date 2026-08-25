@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dtk6ydc7bdkuv" path="res://drawn assets/player.PNG" id="2_rkbax"]
 [ext_resource type="PackedScene" uid="uid://be2n0j4kn3iek" path="res://player/attacking_controller.tscn" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://cjf0m67tueaka" path="res://player/inventory.tscn" id="4_yw30f"]
+[ext_resource type="Script" uid="uid://di3impjd3xs1x" path="res://player/placingController.gd" id="5_qjkh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(48, 48)
@@ -39,7 +40,9 @@ position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_yw30f")
 
 [node name="placingController" type="Node2D" parent="." unique_id=584823194]
+script = ExtResource("5_qjkh3")
 
 [node name="Sprite2D" type="Sprite2D" parent="placingController" unique_id=1598241808]
+position = Vector2(64, 0)
 
 [connection signal="area_entered" from="itemPickup" to="." method="_on_item_pickup_area_entered"]
