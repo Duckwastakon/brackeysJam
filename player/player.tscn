@@ -38,4 +38,8 @@ collision_mask = 2
 position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_yw30f")
 
+[node name="placingController" type="Node2D" parent="." unique_id=584823194]
+
+[node name="Sprite2D" type="Sprite2D" parent="placingController" unique_id=1598241808]
+
 [connection signal="area_entered" from="itemPickup" to="." method="_on_item_pickup_area_entered"]

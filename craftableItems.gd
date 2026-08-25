@@ -2,38 +2,51 @@ extends Node
 
 var items = {
 	"fists": {
+		"type": "tool",
 		"toolType": "",
 		"dmg": 1,
 		"dmgMultiplier": 1
 	},
 	"logs": {
+		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/log.PNG"
 	},
 	"sticks": {
+		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/stick.PNG",
 	},
 	"rocks": {
+		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/rockOre.PNG",
 	},
 	"leafs": {
+		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/leaf.PNG",
 	},
 	"pickaxe": {
+		"type": "tool",
 		"stackable": false,
 		"png": "res://drawn assets/picaxe.PNG",
 	},
 	"sword": {
+		"type": "tool",
 		"stackable": false,
 		"png": "res://drawn assets/sword.PNG"
 	},
 	"axe": {
+		"type": "tool",
 		"stackable": false,
 		"png": "res://drawn assets/axe.PNG",
 	},
+	"campfire":{
+		"type": "placeable",
+		"stackable": false,
+		"png": "res://drawn assets/axe.PNG",
+	}
 }
 
 var cratables = {

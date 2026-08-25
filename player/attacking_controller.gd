@@ -7,12 +7,14 @@ var dir = 1
 signal swingSignal
 
 var canAttack = true
+var tool = "fists"
 
 func _ready() -> void:
 	connect("swingSignal", swing)
 
 func swing(equipedItem):
 	if(!canAttack): return
+	tool = equipedItem
 	canAttack = false
 	$hitBoxRotating/Area/CollisionShape2D.disabled = false
 	$hitBoxRotating/Area/ColorRect.visible = true
@@ -35,4 +37,4 @@ func swing(equipedItem):
 	canAttack = true
 
 func _on_area_area_entered(area: Area2D) -> void:
-	area.damage.emit("fists")
+	area.damage.emit(tool)

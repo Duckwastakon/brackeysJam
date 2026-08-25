@@ -49,6 +49,7 @@ func shakeObject(tool):
 			for x in 5:
 				generateItem()
 			
+			queue_free()
 			break
 	
 	if shakeAmount <= 0:

@@ -14,6 +14,19 @@ const itemPrefab = preload("res://resources/dropped_item.tscn")
 var equipedSlot = 0
 var equipedItem = ""
 
+var health = 100
+var hunger = 100
+var temperature = 100
+
+var healthChange
+var hungerChange
+var temperatureChange
+
+func _ready() -> void:
+	healthChange = inventory.changeHealth
+	hungerChange = inventory.changeHunger
+	temperatureChange = inventory.changeTemperature
+
 func _physics_process(delta: float) -> void:
 	var movementDirection = Vector2(Input.get_axis("left", "right"), 
 	Input.get_axis("up", "down")).normalized()
@@ -51,27 +64,15 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("shift") and movingState == 1:
 		movingState = 0
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		attackingController.swingSignal.emit(equipedItem)
+	if Input.is_action_just_pressed("click"):
+		mouseClicked()
 	
-	if Input.is_action_just_pressed("1"):
-		equipedSlot = 0
-		equipedItem = inventory.equipItem(equipedSlot)[0]
-	if Input.is_action_just_pressed("2"):
-		equipedSlot = 1
-		equipedItem = inventory.equipItem(equipedSlot)[0]
-	if Input.is_action_just_pressed("3"):
-		equipedSlot = 2
-		equipedItem = inventory.equipItem(equipedSlot)[0]
-	if Input.is_action_just_pressed("4"):
-		equipedSlot = 3
-		equipedItem = inventory.equipItem(equipedSlot)[0]
-	if Input.is_action_just_pressed("5"):
-		equipedSlot = 4
-		equipedItem = inventory.equipItem(equipedSlot)[0]
-	if Input.is_action_just_pressed("6"):
-		equipedSlot = 5
-		equipedItem = inventory.equipItem(equipedSlot)[0]
+	if Input.is_action_just_pressed("1"): equipItem(0)
+	if Input.is_action_just_pressed("2"): equipItem(1)
+	if Input.is_action_just_pressed("3"): equipItem(2)
+	if Input.is_action_just_pressed("4"): equipItem(3)
+	if Input.is_action_just_pressed("5"): equipItem(4)
+	if Input.is_action_just_pressed("6"): equipItem(5)
 	
 	if Input.is_action_just_pressed("q"):
 		var droppedItem = inventory.dropItem(equipedSlot)
@@ -89,3 +90,58 @@ func _input(event: InputEvent) -> void:
 func _on_item_pickup_area_entered(area: Area2D) -> void:
 	if(inventory.pickUpItem(area.get_parent().itemName, area.get_parent().amount)):
 		area.get_parent().queue_free()
+
+func takeDamage(amount):
+	health -= amount
+	healthChange.emit(health)
+	
+	if health <= 0:
+		die()
+
+func looseHunger(amount):
+	hunger -= amount
+	if hunger <= 0:
+		hunger = 0
+		takeDamage(10)
+	hungerChange.emit(hunger)
+
+func eat(foodItem):
+	hunger += 10
+	health += 10
+	healthChange.emit(health)
+	hungerChange.emit(hunger)
+
+func changeTemperature():
+	temperatureChange.emit(temperature)
+
+func die():
+	pass
+
+@onready var placingContainer = $placingController
+
+func equipItem(index):
+	equipedSlot = index
+	equipedItem = inventory.equipItem(index)[0]
+	
+	if CraftableItems.items[equipedItem]["type"] == "placeable":
+		startPlacing()
+	else:
+		stopPlacing()
+
+func startPlacing():
+	placingContainer.visible = true
+	placingContainer.get_child(0).texture = load(CraftableItems.items[equipedItem]["png"])
+
+func stopPlacing():
+	placingContainer.visible = false
+
+func mouseClicked():
+	var equipedItemType = CraftableItems.items[equipedItem]["type"]
+	if equipedItemType == "item":
+		attackingController.swingSignal.emit("fists")
+	elif equipedItemType == "food":
+		eat(equipedItem)
+	elif equipedItemType == "tool":
+		attackingController.swingSignal.emit(equipedItem)
+	elif equipedItemType == "placeable":
+		pass

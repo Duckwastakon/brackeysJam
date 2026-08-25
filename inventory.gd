@@ -13,12 +13,29 @@ var invAmounts = []
 var crafting = false
 signal startCrafting
 
+signal changeHealth
+signal changeHunger
+signal changeTemperature
+
 func _ready() -> void:
 	for i in inventorySize:
 		inventory.append("")
 		invAmounts.append(0)
 	
 	drawInventory()
+	
+	connect("changeHealth", newHealth)
+	connect("changeHunger", newHunger)
+	connect("changeTemperature", newTemperature)
+
+func newHealth(amount):
+	updateBar($health, amount)
+
+func newHunger(amount):
+	updateBar($hunger, amount)
+
+func newTemperature(amount):
+	updateBar($warmth, amount)
 
 func drawInventory():
 	var allSlotSize = 64*inventorySize
@@ -227,3 +244,20 @@ func showData(itemName, btn):
 func hideData(btn):
 	if (currentDataParent == btn):
 		dataShowcase.visible = false
+
+func updateBar(bar: Control, amount):
+	var background: ColorRect = bar.get_child(0)
+	var fill: ColorRect = background.get_child(0)
+	
+	var blinkingIndicator = fill.duplicate()
+	blinkingIndicator.color = Color.from_rgba8(0, 0, 0, 50)
+	background.add_child(blinkingIndicator)
+	
+	var newSize = amount / 100
+	
+	var newTween = create_tween()
+	newTween.tween_property(fill, "scale", Vector2(newSize, 1), 0.3)
+	newTween.play()
+	await newTween.finished
+	newTween.kill()
+	blinkingIndicator.queue_free()
