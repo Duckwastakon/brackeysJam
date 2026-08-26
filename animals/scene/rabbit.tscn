@@ -24,5 +24,6 @@ wait_time = 1.7999999999999998
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1658083060]
+position_smoothing_enabled = true
 
 [connection signal="timeout" from="Switch" to="." method="_on_switch_timeout"]

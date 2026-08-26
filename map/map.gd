@@ -12,13 +12,14 @@ extends Node2D
 const chunkSE := 640
 const tileS := 64
 const TilesRow := 10
-const rchance := 0.25
+const rchance := 0.1
 var current_animal
 
 var chunks := {}
 var current_chunk_coord := Vector2i.ZERO
 
 var animal_weights = {}
+var location
 
 func _ready() -> void:
 	animal_weights = {
@@ -45,36 +46,48 @@ func _update_chunks() -> void:
 			generate_chunk(current_chunk_coord + Vector2i(dx, dy))
 
 func generate_chunk(coord: Vector2i) -> void:
-	
 	if chunks.has(coord):
 		return
+
 	var origin = Vector2(coord.x * chunkSE, coord.y * chunkSE)
 	var new_back = square.duplicate()
 	new_back.position = origin
 	add_child(new_back)
 	chunks[coord] = new_back
 
-	var tiles_in_chunk = []
+	var tile_positions: Array[Vector2] = []
 	for y in TilesRow:
 		for x in TilesRow:
-			var new_tile = tile.duplicate()
-			new_tile.position = origin + Vector2(x * tileS, y * tileS)
-			add_child(new_tile)
-			tiles_in_chunk.append(new_tile)
+			tile_positions.append(origin + Vector2(x * tileS, y * tileS))
 
-	generate_resources(tiles_in_chunk)
+	generate_resources(tile_positions)
 
-func generate_resources(tiles_in_chunk: Array) -> void:
-	for t in tiles_in_chunk:
+
+func generate_resources(tile_positions: Array[Vector2]) -> void:
+	var resource_count = 0
+	var animal_count = 0
+	var resource_time = 0
+	var animal_time = 0
+
+	for pos in tile_positions:
 		if randf() < rchance:
+			var t0 = Time.get_ticks_msec()
 			var new_rec = rec.duplicate()
 			add_child(new_rec)
-			new_rec.position = t.global_position + Vector2(randi_range(1, tileS), randi_range(1, tileS))
+			new_rec.position = pos + Vector2(randi_range(1, tileS), randi_range(1, tileS))
+			resource_time += Time.get_ticks_msec() - t0
+			resource_count += 1
 		if randf() < 1.0/200:
+			var t1 = Time.get_ticks_msec()
 			var newMarker = marker.duplicate()
 			add_child(newMarker)
-			newMarker.position = t.global_position + Vector2(randi_range(1, tileS), randi_range(1, tileS))
+			newMarker.position = pos + Vector2(randi_range(1, tileS), randi_range(1, tileS))
 			generate_animal(newMarker.position)
+			animal_time += Time.get_ticks_msec() - t1
+			animal_count += 1
+
+	print("  resources: ", resource_count, " took ", resource_time, "ms total")
+	print("  animals: ", animal_count, " took ", animal_time, "ms total")
 			
 func generate_animal(spawn_position: Vector2) -> void:
 	var total_weight = 0

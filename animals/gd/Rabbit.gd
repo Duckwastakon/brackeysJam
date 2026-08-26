@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 	if stop == max:
-		maxStop == true
+		maxStop = true
 	else:
 		maxStop = false
 
@@ -32,26 +32,25 @@ func _process(delta: float) -> void:
 
 func _on_switch_timeout() -> void:
 	random()
-	if f :
+	if f:
 		movement = Vector2.ZERO
 		stop = stop + 1
-	else :
+	else:
 		if movement == Vector2.ZERO:
 			start_moving()
 		else:
 			var range = randi_range(1, 180)
-			movement.rotated(deg_to_rad(range))
+			movement = movement.rotated(deg_to_rad(range))
 
 func start_moving():
 	movement = Vector2(randi_range(-20, 20), randi_range(-20, 20))
 
-func random() :
+func random():
 	if maxStop == true:
 		f = false
 		stop = 0
 	else:
 		f = randf() < 0.5
-		print(f)
 
 func death():
 	pass
