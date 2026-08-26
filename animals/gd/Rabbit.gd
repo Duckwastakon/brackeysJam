@@ -16,8 +16,11 @@ var HP = 5
 
 func _ready() -> void:
 	food = randi_range(1, 2)
+	if not switch.timeout.is_connected(_on_switch_timeout):
+		switch.timeout.connect(_on_switch_timeout)
+	switch.start()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	Global.wobble(rabbit, velocity)
 	velocity = movement * SPEED
 	move_and_slide()

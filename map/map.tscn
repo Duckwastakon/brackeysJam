@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://l5vtpm1y7iq4" path="res://map/map.gd" id="1_2c7f8"]
 [ext_resource type="PackedScene" uid="uid://bu0pmkhglv6yv" path="res://resources/resource.tscn" id="2_d5eay"]
+[ext_resource type="Texture2D" uid="uid://ckbwwcjcs8byy" path="res://paper.jpg" id="2_kxmgb"]
 [ext_resource type="PackedScene" uid="uid://ug4iwky8f33o" path="res://player/player.tscn" id="3_v01jy"]
 [ext_resource type="PackedScene" uid="uid://cwmvg7l3ycbpd" path="res://animals/scene/bear.tscn" id="4_5jdw0"]
 [ext_resource type="PackedScene" uid="uid://36aywxoprrye" path="res://animals/scene/deer.tscn" id="5_kxmgb"]
@@ -24,6 +25,11 @@ script = ExtResource("1_2c7f8")
 offset_right = 640.0
 offset_bottom = 640.0
 color = Color(0.2357319, 0.23573193, 0.2357319, 1)
+
+[node name="Paper" type="Sprite2D" parent="background" unique_id=1432470522]
+position = Vector2(320, 320.00003)
+scale = Vector2(1.2190477, 1.8285716)
+texture = ExtResource("2_kxmgb")
 
 [node name="body" type="Area2D" parent="background" unique_id=509012256]
 
@@ -91,6 +97,7 @@ position = Vector2(952, -371)
 shape = SubResource("RectangleShape2D_1h7af")
 
 [node name="tile" type="ColorRect" parent="background" unique_id=495648281]
+visible = false
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
@@ -99,6 +106,7 @@ offset_bottom = 64.0
 position = Vector2(319, 108)
 
 [node name="resource" parent="." unique_id=554154062 instance=ExtResource("2_d5eay")]
+z_index = 1
 position = Vector2(32, 32)
 scale = Vector2(0.5, 0.5)
 
@@ -108,12 +116,16 @@ position = Vector2(320, 320)
 [node name="animals" type="Node2D" parent="." unique_id=1098914366]
 
 [node name="bear" parent="animals" unique_id=1522132298 instance=ExtResource("4_5jdw0")]
+z_index = 2
 
 [node name="deer" parent="animals" unique_id=1165020948 instance=ExtResource("5_kxmgb")]
+z_index = 2
 
 [node name="fox" parent="animals" unique_id=937449899 instance=ExtResource("6_e8e5r")]
+z_index = 2
 
 [node name="Rabbit" parent="animals" unique_id=1403473603 instance=ExtResource("7_112ik")]
+z_index = 2
 
 [connection signal="body_entered" from="background/body" to="." method="_on_body_body_entered"]
 [connection signal="body_exited" from="background/load" to="." method="_on_load_body_exited"]
