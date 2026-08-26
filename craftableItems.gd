@@ -30,22 +30,22 @@ var items = {
 	"pickaxe": {
 		"type": "tool",
 		"stackable": false,
-		"png": "res://drawn assets/picaxe.PNG",
+		"png": "res://drawn assets/Iron_Picaxe.PNG",
 	},
 	"sword": {
 		"type": "tool",
 		"stackable": false,
-		"png": "res://drawn assets/sword.PNG"
+		"png": "res://drawn assets/Iron_sword.PNG",
 	},
 	"axe": {
 		"type": "tool",
 		"stackable": false,
-		"png": "res://drawn assets/axe.PNG",
+		"png": "res://drawn assets/Iron_axe.PNG",
 	},
 	"campfire":{
 		"type": "placeable",
 		"stackable": false,
-		"png": "res://drawn assets/axe.PNG",
+		"png": "res://drawn assets/log.PNG",
 	}
 }
 
@@ -70,6 +70,13 @@ var cratables = {
 		},
 		"amount": 1,
 		"time": 3,
+	},
+	"campfire": {
+		"items": {
+			"sticks": 5
+		},
+		"amount": 1,
+		"time": 5,
 	}
 }
 

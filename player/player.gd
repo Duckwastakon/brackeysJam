@@ -26,6 +26,11 @@ func _ready() -> void:
 	healthChange = inventory.changeHealth
 	hungerChange = inventory.changeHunger
 	temperatureChange = inventory.changeTemperature
+	inventory.connect("updatedSlot", itemChanged)
+
+func itemChanged(index):
+	if index == equipedSlot:
+		equipItem(index)
 
 func _physics_process(delta: float) -> void:
 	var movementDirection = Vector2(Input.get_axis("left", "right"), 
@@ -99,7 +104,10 @@ func takeDamage(amount):
 		die()
 
 func looseHunger(amount):
+	if movingState == 1:
+		amount *= 2
 	hunger -= amount
+	print(hunger)
 	if hunger <= 0:
 		hunger = 0
 		takeDamage(10)
@@ -111,7 +119,8 @@ func eat(foodItem):
 	healthChange.emit(health)
 	hungerChange.emit(hunger)
 
-func changeTemperature():
+func changeTemperature(amount):
+	temperature += amount
 	temperatureChange.emit(temperature)
 
 func die():
@@ -122,6 +131,10 @@ func die():
 func equipItem(index):
 	equipedSlot = index
 	equipedItem = inventory.equipItem(index)[0]
+	
+	if(equipedItem == ""): 
+		stopPlacing()
+		return
 	
 	if CraftableItems.items[equipedItem]["type"] == "placeable":
 		startPlacing()
@@ -136,6 +149,9 @@ func stopPlacing():
 	placingController.visible = false
 
 func mouseClicked():
+	if(equipedItem == ""):
+		attackingController.swingSignal.emit("fists")
+		return
 	var equipedItemType = CraftableItems.items[equipedItem]["type"]
 	if equipedItemType == "item":
 		attackingController.swingSignal.emit("fists")
@@ -145,3 +161,30 @@ func mouseClicked():
 		attackingController.swingSignal.emit(equipedItem)
 	elif equipedItemType == "placeable":
 		placingController.placeBuild(equipedItem)
+
+func _on_hunger_timer_timeout() -> void:
+	looseHunger(randi_range(3, 5))
+	$hungerTimer.wait_time = randf_range(0.8, 1.5)
+	$hungerTimer.start()
+
+func _on_warmth_timer_timeout() -> void:
+	$warmthTimer.wait_time = randf_range(2.7, 5.4)
+	$warmthTimer.start()
+	changeTemperature(calculateWarmthChange())
+
+func calculateWarmthChange():
+	var amount = 0
+	var multiplier = 1
+	if(Global.dayTime):
+		amount -= randi_range(2, 5)
+		multiplier += 0.2
+	else:
+		amount -= randi_range(8, 20)
+		multiplier += 0.25
+	
+	for warmthObject in Global.warmthObjects:
+		if global_position.distance_to(warmthObject.global_position) < 100:
+			amount += randi_range(5, 10)
+			multiplier -= randf_range(0.05, 0.1)
+	
+	return amount * multiplier

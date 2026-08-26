@@ -7,6 +7,6 @@ func placeBuild(buildName):
 	var data = CraftableItems.items[buildName]
 	if data["type"] == "placeable":
 		var newPlaceable = Sprite2D.new()
-		newPlaceable.sprite = load(data["png"])
+		newPlaceable.texture = load(data["png"])
 		newPlaceable.global_position = get_child(0).global_position
 		get_parent().get_parent().add_child(newPlaceable)

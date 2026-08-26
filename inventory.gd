@@ -17,6 +17,8 @@ signal changeHealth
 signal changeHunger
 signal changeTemperature
 
+signal updatedSlot
+
 func _ready() -> void:
 	for i in inventorySize:
 		inventory.append("")
@@ -65,6 +67,7 @@ func updateSlot(index):
 		slot.get_child(0).text = ""
 	
 	slot.get_child(1).texture = load(slotItem["png"])
+	updatedSlot.emit(index)
 
 func equipItem(ind):
 	for i in slotContainer.get_child_count():
@@ -245,7 +248,7 @@ func hideData(btn):
 	if (currentDataParent == btn):
 		dataShowcase.visible = false
 
-func updateBar(bar: Control, amount):
+func updateBar(bar: Control, amount: float):
 	var background: ColorRect = bar.get_child(0)
 	var fill: ColorRect = background.get_child(0)
 	
@@ -253,7 +256,7 @@ func updateBar(bar: Control, amount):
 	blinkingIndicator.color = Color.from_rgba8(0, 0, 0, 50)
 	background.add_child(blinkingIndicator)
 	
-	var newSize = amount / 100
+	var newSize: float = clamp(amount / 100, 0, 1)
 	
 	var newTween = create_tween()
 	newTween.tween_property(fill, "scale", Vector2(newSize, 1), 0.3)

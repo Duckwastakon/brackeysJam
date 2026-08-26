@@ -1,5 +1,8 @@
 extends Node
 
+var dayTime = true
+var warmthObjects = []
+
 var wobblingObjects = []
 var rotationStates = []
 

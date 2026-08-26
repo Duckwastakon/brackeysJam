@@ -16,8 +16,15 @@ func swing(equipedItem):
 	if(!canAttack): return
 	tool = equipedItem
 	canAttack = false
-	$hitBoxRotating/Area/CollisionShape2D.disabled = false
-	$hitBoxRotating/Area/ColorRect.visible = true
+	if dir == 1:
+		$hitBoxRotating/toolImage.flip_h = true
+		$hitBoxRotating/toolImage.rotation_degrees = 45
+	else:
+		$hitBoxRotating/toolImage.flip_h = false
+		$hitBoxRotating/toolImage.rotation_degrees = 135
+	
+	$Area/CollisionShape2D.disabled = false
+	$hitBoxRotating/toolImage.visible = true
 	
 	var mousePos = get_global_mouse_position()
 	hitBoxRotator.look_at(mousePos)
@@ -30,8 +37,8 @@ func swing(equipedItem):
 	rotationTween.play()
 	
 	await rotationTween.finished
-	$hitBoxRotating/Area/CollisionShape2D.disabled = true
-	$hitBoxRotating/Area/ColorRect.visible = false
+	$Area/CollisionShape2D.disabled = true
+	$hitBoxRotating/toolImage.visible = false
 	rotationTween.kill()
 	dir *= -1
 	canAttack = true

@@ -1,27 +1,29 @@
 [gd_scene format=3 uid="uid://be2n0j4kn3iek"]
 
 [ext_resource type="Script" uid="uid://dfjwqn78bbh6t" path="res://player/attacking_controller.gd" id="1_g2scx"]
+[ext_resource type="Texture2D" uid="uid://doi4mdb5efp85" path="res://drawn assets/Iron_axe.PNG" id="2_jyfqc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyfqc"]
-size = Vector2(32, 32)
+size = Vector2(80, 80)
 
 [node name="AttackingController" type="Node2D" unique_id=1000186162]
 script = ExtResource("1_g2scx")
 
 [node name="hitBoxRotating" type="Node2D" parent="." unique_id=36193988]
 
-[node name="Area" type="Area2D" parent="hitBoxRotating" unique_id=201793710]
+[node name="toolImage" type="Sprite2D" parent="hitBoxRotating" unique_id=2017833192]
+visible = false
+position = Vector2(64, 0)
+rotation = 2.3561945
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_jyfqc")
+
+[node name="Area" type="Area2D" parent="." unique_id=201793710]
 position = Vector2(64, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBoxRotating/Area" unique_id=1982070730]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area" unique_id=1982070730]
+position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_jyfqc")
 disabled = true
 
-[node name="ColorRect" type="ColorRect" parent="hitBoxRotating/Area" unique_id=1174594073]
-visible = false
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-
-[connection signal="area_entered" from="hitBoxRotating/Area" to="." method="_on_area_area_entered"]
+[connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]
