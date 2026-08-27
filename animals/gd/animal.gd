@@ -16,6 +16,8 @@ var maxStop = false
 var stop = 0
 var dead = false
 
+var running = false
+
 func setup(type: String) -> void:
 	animal_type = type
 	var data = AnimalData.profiles[type]
@@ -26,7 +28,7 @@ func setup(type: String) -> void:
 	random_wait = data["random_wait"]
 	food = randi_range(data["food_min"], data["food_max"])
 	sprite.texture = data["sprite"]
-	sprite.scale = data.get("scale", Vector2.ONE)
+	scale = data.get("scale", Vector2.ONE)
 
 func _ready() -> void:
 	if not switch.timeout.is_connected(_on_switch_timeout):
@@ -35,13 +37,17 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	Global.wobble(sprite, velocity)
-	velocity = movement * SPEED
+	if(running):
+		print(running)
+		if movement == Vector2.ZERO:
+			start_moving()
+		velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2) * 3
+		print(movement.normalized() * SPEED * randf_range(0.8, 1.2) * 3)
+	else:
+		velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2)
 	move_and_slide()
-
+	
 	maxStop = stop == max_stop
-
-	if HP <= 0:
-		death()
 
 func _on_switch_timeout() -> void:
 	if random_wait:
@@ -72,7 +78,7 @@ func random() -> void:
 
 func death() -> void:
 	for i in food:
-		dropResource("meat", 1)
+		dropResource("raw meat", 1)
 	
 	queue_free()
 
@@ -124,3 +130,13 @@ func dropResource(itemName, amount):
 	get_parent().call_deferred("add_child", newResource)
 	
 	newResource.velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * 500 * randf_range(1.1, 1.4)
+
+var i = 0
+
+func _on_damage_area_damage(_a) -> void:
+	running = true
+	i+=1
+	var startingi = i
+	await get_tree().create_timer(randf_range(2, 4)).timeout
+	if startingi == i:
+		running = false

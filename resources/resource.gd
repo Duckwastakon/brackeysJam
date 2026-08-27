@@ -19,9 +19,7 @@ func _ready() -> void:
 	connect("damage", shakeObject)
 	
 	var randNum = randi_range(1, 100)
-	print(randNum)
 	for obj in resourceChances:
-		print(obj)
 		if resourceChances[obj] < randNum:
 			setupResource(obj)
 			break
@@ -55,8 +53,6 @@ func shakeObject(tool):
 		dmg *= CraftableItems.items[tool]["dmgMultiplier"]
 	if CraftableItems.items[tool]["tier"] < CraftableItems.resourceNodes[resourceName]["damageTier"]:
 		dmg = 0
-	
-	print(dmg)
 	
 	var DPD = CraftableItems.resourceNodes[resourceName]["hp"] / CraftableItems.resourceNodes[resourceName]["dropTimes"]
 	var droppedResources = (dmg - (dmg % DPD)) / DPD

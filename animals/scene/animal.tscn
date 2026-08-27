@@ -13,8 +13,6 @@ radius = 48.0
 y_sort_enabled = true
 script = ExtResource("1_xce6a")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=632605598]
-
 [node name="Switch" type="Timer" parent="." unique_id=582591742]
 wait_time = 1.5
 
@@ -30,4 +28,8 @@ script = ExtResource("2_8hcq5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damageArea" unique_id=206666801]
 shape = SubResource("CircleShape2D_8hcq5")
 
+[node name="Sprite" type="Sprite2D" parent="." unique_id=631873855]
+scale = Vector2(0.05, 0.05)
+
 [connection signal="timeout" from="Switch" to="." method="_on_switch_timeout"]
+[connection signal="damage" from="damageArea" to="." method="_on_damage_area_damage"]

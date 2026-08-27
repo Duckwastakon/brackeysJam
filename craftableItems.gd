@@ -13,35 +13,35 @@ var items = {
 		"points" : 3,
 		"type": "item",
 		"stackable": true,
-		"png": "res://drawn assets/log.PNG",
+		"png": "res://drawn assets/materials/log.PNG",
 		"scale": 0.08,
 	},
 	"sticks": {
 		"points" : 2,
 		"type": "item",
 		"stackable": true,
-		"png": "res://drawn assets/stick.PNG",
+		"png": "res://drawn assets/materials/stick.PNG",
 		"scale": 0.08,
 	},
 	"rocks": {
 		"points" : 2,
 		"type": "item",
 		"stackable": true,
-		"png": "res://drawn assets/rockOre.PNG",
+		"png": "res://drawn assets/materials/rock.PNG",
 		"scale": 0.08,
 	},
 	"leafs": {
 		"points" : 1,
 		"type": "item",
 		"stackable": true,
-		"png": "res://drawn assets/leaf.PNG",
+		"png": "res://drawn assets/materials/leaf.PNG",
 		"scale": 0.08,
 	},
-	"pickaxe": {
+	"wood pickaxe": {
 		"points" : 26,
 		"type": "tool",
 		"stackable": false,
-		"png": "res://drawn assets/Iron_Picaxe.PNG",
+		"png": "res://drawn assets/tools/woodpicaxe.PNG",
 		"scale": 0.05,
 		"toolType": "pickaxe",
 		"tier": 1,
@@ -49,23 +49,23 @@ var items = {
 		"dmgMultiplier": 3,
 		"cooldown": 2,
 	},
-	"sword": {
+	"wood sword": {
 		"points" : 26,
 		"type": "tool",
 		"stackable": false,
-		"png": "res://drawn assets/Iron_sword.PNG",
+		"png": "res://drawn assets/tools/woodsword.PNG",
 		"scale": 0.05,
 		"toolType": "damaging",
 		"tier": 0,
 		"dmg": 1,
-		"dmgMultiplier": 5,
+		"dmgMultiplier": 2,
 		"cooldown": 2.5
 	},
-	"axe": {
+	"wood axe": {
 		"points" : 26,
 		"type": "tool",
 		"stackable": false,
-		"png": "res://drawn assets/Iron_axe.PNG",
+		"png": "res://drawn assets/tools/woodaxe.PNG",
 		"scale": 0.05,
 		"toolType": "axe",
 		"tier": 1,
@@ -80,19 +80,19 @@ var items = {
 		"png": "res://drawn assets/log.PNG",
 		"scale": 0.08,
 	},
-	"meat": {
+	"raw meat": {
 		"points": 50,
 		"type": "food",
-		"scale": 0.08,
-		"png": "res://drawn assets/log.PNG",
+		"scale": 0.05,
+		"png": "res://drawn assets/food/uncooked.PNG",
 		"stackable": true,
-		"foodScore": 30,
+		"foodScore": 15,
 		"heal": -20,
 	}
 }
 
 var cratables = {
-	"sword": {
+	"wood sword": {
 		"items": {
 			"sticks": 4,
 			"rocks": 5
@@ -101,14 +101,14 @@ var cratables = {
 		"amount": 1,
 		"time": 8,
 	},
-	"axe": {
+	"wood axe": {
 		"items": {
 			"sticks": 5
 		},
 		"amount": 1,
 		"time": 3,
 	},
-	"pickaxe": {
+	"wood pickaxe": {
 		"items": {
 			"sticks": 10,
 			"logs": 3,
@@ -138,7 +138,7 @@ var placeables = {
 
 var resourceNodes = {
 	"tree": {
-		"png": "res://drawn assets/tree.PNG",
+		"png": "res://drawn assets/nature&rock/tree.PNG",
 		"scale": 0.08,
 		"multiDrop": true,
 		"drops": {
@@ -164,7 +164,7 @@ var resourceNodes = {
 		"damageTier": 0,
 	},
 	"rock": {
-		"png": "res://drawn assets/rockFormation.PNG",
+		"png": "res://drawn assets/nature&rock/rockFormation.PNG",
 		"scale": 0.08,
 		"multiDrop": false,
 		"drops": {

@@ -7,7 +7,7 @@ var SPEED: float
 var move_range: float
 var max_stop: int
 var random_wait: bool
-var true_sprite = preload("res://drawn assets/monster.PNG")
+var true_sprite = preload("res://drawn assets/animals/monster.PNG")
 
 var is_revealed = false
 

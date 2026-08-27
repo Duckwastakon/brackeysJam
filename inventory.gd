@@ -68,7 +68,6 @@ func updateSlot(index):
 		slot.get_child(0).text = ""
 	
 	slot.get_child(1).texture = load(slotItem["png"])
-	print(slotItem)
 	slot.get_child(1).scale = Vector2(slotItem["scale"], slotItem["scale"])
 	updatedSlot.emit(index)
 
@@ -100,7 +99,6 @@ func canPickup(itemName):
 
 func pickUpItem(itemName, amount = 1):
 	var result = canPickup(itemName)
-	print(result)
 	if(result):
 		addItem(itemName, amount)
 	

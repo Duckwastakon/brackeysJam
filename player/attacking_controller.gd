@@ -28,7 +28,6 @@ func swing(equipedItem):
 	
 	$rotator2/Area/CollisionShape2D.disabled = false
 	
-	print(equipedItem)
 	$hitBoxRotating/toolImage.texture = load(CraftableItems.items[equipedItem]["png"])
 	$hitBoxRotating/toolImage.visible = true
 	
