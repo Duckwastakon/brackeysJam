@@ -8,41 +8,49 @@ var items = {
 		"dmgMultiplier": 1
 	},
 	"logs": {
+		"points" : 3,
 		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/log.PNG"
 	},
 	"sticks": {
+		"points" : 2,
 		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/stick.PNG",
 	},
 	"rocks": {
+		"points" : 2,
 		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/rockOre.PNG",
 	},
 	"leafs": {
+		"points" : 1,
 		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/leaf.PNG",
 	},
 	"pickaxe": {
+		"points" : 26,
 		"type": "tool",
 		"stackable": false,
 		"png": "res://drawn assets/Iron_Picaxe.PNG",
 	},
 	"sword": {
+		"points" : 26,
 		"type": "tool",
 		"stackable": false,
 		"png": "res://drawn assets/Iron_sword.PNG",
 	},
 	"axe": {
+		"points" : 26,
 		"type": "tool",
 		"stackable": false,
 		"png": "res://drawn assets/Iron_axe.PNG",
 	},
 	"campfire":{
+		"points" : 15,
 		"type": "placeable",
 		"stackable": false,
 		"png": "res://drawn assets/log.PNG",

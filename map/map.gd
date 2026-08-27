@@ -6,12 +6,16 @@ extends Node2D
 @onready var marker = $background/Marker
 @export var monster_scene: PackedScene
 @export var animal_scene: PackedScene
+@export var temple_scene: PackedScene
 @onready var timer = $Day
 
 const chunkSE := 640
 const tileS := 64
 const TilesRow := 10
 const rchance := 0.1
+
+var temple_instance: Node2D = null
+var templeSpawned = false
 
 var monster_spawn_chance = 0.05
 var monster_instance: Node2D = null
@@ -29,6 +33,7 @@ var animal_weights = {
 func _ready() -> void:
 	generate_chunk(Vector2i.ZERO)
 	_update_chunks()
+	spawn_temple()
 
 func _process(delta: float) -> void:
 	var player_chunk = Vector2i(
@@ -65,6 +70,7 @@ func generate_resources(tile_positions: Array[Vector2]) -> void:
 			var new_rec = rec.duplicate()
 			add_child(new_rec)
 			new_rec.position = pos + Vector2(randi_range(1, tileS), randi_range(1, tileS))
+			
 
 		if randf() < 1.0/200:
 			var newMarker = marker.duplicate()
@@ -98,6 +104,16 @@ func get_random_animal_type() -> String:
 			return animal_type
 	return animal_weights.keys()[-1]
 
+func spawn_temple() -> void:
+	if templeSpawned:
+		return
+	templeSpawned = true
+	temple_instance = temple_scene.instantiate()
+	add_child(temple_instance)
+	
+	var temple_distance = randf_range(1000, 3000) 
+	var temple_angle = randf_range(0, TAU)
+	temple_instance.global_position = Vector2.RIGHT.rotated(temple_angle) * temple_distance
 
 func _on_day_timeout() -> void:
 	if Global.dayTime:

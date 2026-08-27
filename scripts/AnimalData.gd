@@ -27,14 +27,17 @@ var profiles = {
 	},
 }
 
-var phase = 1;
-var change = 10;
-var norm = 60
+var phase = 1
+var change = 10
+var norm = 50
 var mon_speed
 
+func _ready() -> void:
+	set_monster_speed()
+
 func set_monster_speed():
-	var current = norm
-	if Global.dayTime == true :
+	var current = norm + change * phase
+	if Global.dayTime:
 		mon_speed = current
-	elif Global.dayTime == true:
-		mon_speed = current*2
+	else:
+		mon_speed = current * 2

@@ -33,10 +33,8 @@ func disguise_as(type: String) -> void:
 func reveal() -> void:
 	is_revealed = true
 	sprite.texture = true_sprite
-	SPEED = AnimalData.mon_speed
 
 func _ready() -> void:
-	disguise_as(AnimalData.profiles.keys().pick_random())
 	if not switch.timeout.is_connected(_on_switch_timeout):
 		switch.timeout.connect(_on_switch_timeout)
 	switch.start()
@@ -45,6 +43,7 @@ func _physics_process(delta: float) -> void:
 	Global.wobble(sprite, velocity)
 	if is_revealed:
 		chase_behavior()
+		SPEED = AnimalData.mon_speed
 	velocity = movement * SPEED
 	move_and_slide()
 	maxStop = stop == max_stop
