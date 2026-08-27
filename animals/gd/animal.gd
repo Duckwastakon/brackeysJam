@@ -71,7 +71,56 @@ func random() -> void:
 		f = randf() < 0.5
 
 func death() -> void:
-	pass
+	for i in food:
+		dropResource("meat", 1)
+	
+	queue_free()
 
-func takeDamage() -> void:
-	pass
+var damageTween: Tween
+
+func takeDamage(toolName) -> void:
+	var toolData = CraftableItems.items[toolName]
+	
+	var dmg = toolData["dmg"]
+	if toolData["toolType"] == "damaging":
+		dmg *= toolData["dmgMultiplier"]
+	
+	HP -= dmg
+	if HP <= 0:
+		death()
+	if damageTween == null:
+		damageTween = create_tween()
+	else:
+		damageTween.kill()
+		damageTween = create_tween()
+	
+	damageTween.tween_property(sprite, "modulate", Color.from_rgba8(255, 255, 255, 255), 0.5)
+	
+	sprite.modulate = Color.from_rgba8(255, 0, 0, 125)
+	damageTween.play()
+	if shakeAmount <= 0:
+		shakeAmount = 8
+		while(shakeAmount > 0):
+			shakeAmount -= 1
+			var newTween = create_tween()
+			newTween.tween_property(sprite, "position",
+			Vector2(randi_range(-4, 4), randi_range(-4, 4)), 0.04)
+			
+			newTween.play()
+			await newTween.finished
+			newTween.kill()
+		sprite.position = Vector2(0, 0)
+	else:
+		shakeAmount = 8
+
+var resource = preload("res://resources/dropped_item.tscn")
+var shakeAmount = 0
+
+func dropResource(itemName, amount):
+	var newResource: CharacterBody2D = resource.instantiate()
+	newResource.global_position = global_position
+	
+	newResource.setItem(itemName, amount)
+	get_parent().call_deferred("add_child", newResource)
+	
+	newResource.velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * 500 * randf_range(1.1, 1.4)

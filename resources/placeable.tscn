@@ -15,4 +15,5 @@ shape = SubResource("CircleShape2D_gruer")
 disabled = true
 
 [node name="placeableImage" type="Sprite2D" parent="." unique_id=612950984]
+y_sort_enabled = true
 texture = ExtResource("2_lfayb")

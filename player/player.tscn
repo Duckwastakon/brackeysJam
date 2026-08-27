@@ -13,11 +13,12 @@ size = Vector2(48, 48)
 size = Vector2(48, 56)
 
 [node name="player" type="CharacterBody2D" unique_id=1107822596]
-z_index = 999
+y_sort_enabled = true
 script = ExtResource("1_oul6g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=615382220]
 shape = SubResource("RectangleShape2D_rkbax")
+disabled = true
 
 [node name="playerArt" type="Sprite2D" parent="." unique_id=1764934639]
 scale = Vector2(0.05, 0.05)
@@ -26,7 +27,7 @@ texture = ExtResource("2_rkbax")
 [node name="AttackingController" parent="." unique_id=1000186162 instance=ExtResource("3_g1dw6")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=274782353]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(0.75, 0.75)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 

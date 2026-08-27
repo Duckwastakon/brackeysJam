@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://gnx3tblbeb6x"]
 
 [ext_resource type="Script" uid="uid://dh1ebr2l3mdjh" path="res://animals/gd/animal.gd" id="1_xce6a"]
+[ext_resource type="Script" uid="uid://bqeis0uk2svic" path="res://animals/scene/damage_area.gd" id="2_8hcq5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xce6a"]
 radius = 47.010635
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hcq5"]
+radius = 48.0
+
 [node name="Animal" type="CharacterBody2D" unique_id=297821148]
+y_sort_enabled = true
 script = ExtResource("1_xce6a")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=632605598]
@@ -15,5 +20,14 @@ wait_time = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1972704939]
 shape = SubResource("CircleShape2D_xce6a")
+disabled = true
+
+[node name="damageArea" type="Area2D" parent="." unique_id=669521665]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("2_8hcq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damageArea" unique_id=206666801]
+shape = SubResource("CircleShape2D_8hcq5")
 
 [connection signal="timeout" from="Switch" to="." method="_on_switch_timeout"]

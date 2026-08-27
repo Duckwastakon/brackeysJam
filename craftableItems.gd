@@ -46,7 +46,8 @@ var items = {
 		"toolType": "pickaxe",
 		"tier": 1,
 		"dmg": 2,
-		"dmgMultiplier": 3
+		"dmgMultiplier": 3,
+		"cooldown": 2,
 	},
 	"sword": {
 		"points" : 26,
@@ -54,10 +55,11 @@ var items = {
 		"stackable": false,
 		"png": "res://drawn assets/Iron_sword.PNG",
 		"scale": 0.05,
-		"toolType": "sword",
+		"toolType": "damaging",
 		"tier": 0,
 		"dmg": 1,
-		"dmgMultiplier": 5
+		"dmgMultiplier": 5,
+		"cooldown": 2.5
 	},
 	"axe": {
 		"points" : 26,
@@ -68,7 +70,8 @@ var items = {
 		"toolType": "axe",
 		"tier": 1,
 		"dmg": 1,
-		"dmgMultiplier": 4
+		"dmgMultiplier": 4,
+		"cooldown": 2
 	},
 	"campfire": {
 		"points" : 15,
@@ -76,6 +79,15 @@ var items = {
 		"stackable": false,
 		"png": "res://drawn assets/log.PNG",
 		"scale": 0.08,
+	},
+	"meat": {
+		"points": 50,
+		"type": "food",
+		"scale": 0.08,
+		"png": "res://drawn assets/log.PNG",
+		"stackable": true,
+		"foodScore": 30,
+		"heal": -20,
 	}
 }
 

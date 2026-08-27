@@ -1,12 +1,12 @@
 extends Node2D
 @onready var square = $background
 @onready var tile = $background/tile
-@onready var rec = $resource
-@onready var player = $player
-@onready var marker = $background/Marker
+@onready var player = $ySortedObjects/player
+@onready var ySortingContainer = $ySortedObjects
 @export var monster_scene: PackedScene
 @export var animal_scene: PackedScene
 @export var temple_scene: PackedScene = preload("res://animals/scene/temple.tscn")
+@export var resource_scene: PackedScene = preload("res://resources/resource.tscn")
 @onready var timer = $Day
 
 const chunkSE := 640
@@ -67,28 +67,25 @@ func generate_chunk(coord: Vector2i) -> void:
 func generate_resources(tile_positions: Array[Vector2]) -> void:
 	for pos in tile_positions:
 		if randf() < rchance:
-			var new_rec = rec.duplicate()
-			add_child(new_rec)
+			var new_rec = resource_scene.instantiate()
+			ySortingContainer.add_child(new_rec)
 			new_rec.position = pos + Vector2(randi_range(1, tileS), randi_range(1, tileS))
 			
 
 		if randf() < 1.0/200:
-			var newMarker = marker.duplicate()
-			add_child(newMarker)
-			newMarker.position = pos + Vector2(randi_range(1, tileS), randi_range(1, tileS))
-			generate_animal(newMarker.position)
+			generate_animal(pos + Vector2(randi_range(1, tileS), randi_range(1, tileS)))
 
 func generate_animal(spawn_position: Vector2) -> void:
 	if monster_instance == null and randf() < monster_spawn_chance:
 		monster_instance = monster_scene.instantiate()
-		add_child(monster_instance)
+		ySortingContainer.add_child(monster_instance)
 		monster_instance.global_position = spawn_position
 		monster_instance.disguise_as(get_random_animal_type())
 		return
 
 	var animal_type = get_random_animal_type()
 	var new_animal = animal_scene.instantiate()
-	add_child(new_animal)
+	ySortingContainer.add_child(new_animal)
 	new_animal.global_position = spawn_position
 	new_animal.setup(animal_type)
 
@@ -109,7 +106,7 @@ func spawn_temple() -> void:
 		return
 	templeSpawned = true
 	temple_instance = temple_scene.instantiate()
-	add_child(temple_instance)
+	ySortingContainer.add_child(temple_instance)
 	
 	var temple_distance = randf_range(1000, 3000) 
 	var temple_angle = randf_range(0, TAU)

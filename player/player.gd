@@ -22,6 +22,8 @@ var healthChange
 var hungerChange
 var temperatureChange
 
+var cooldown = false
+
 func _ready() -> void:
 	healthChange = inventory.changeHealth
 	hungerChange = inventory.changeHunger
@@ -112,10 +114,14 @@ func looseHunger(amount):
 	hungerChange.emit(hunger)
 
 func eat(foodItem):
-	hunger += 10
-	health += 10
+	var data = CraftableItems.items[foodItem]
+	hunger += data["foodScore"]
+	health += data["heal"]
 	healthChange.emit(health)
 	hungerChange.emit(hunger)
+	inventory.removeItem(foodItem, 1)
+	await inventory.delay(3)
+	cooldown = false
 
 func changeTemperature(amount):
 	temperature += amount
@@ -149,19 +155,27 @@ func stopPlacing():
 	placingController.visible = false
 
 func mouseClicked():
+	if cooldown: return
+	cooldown = true
 	if(equipedItem == ""):
 		attackingController.swingSignal.emit("fists")
+		await inventory.delay(2.5)
+		cooldown = false
 		return
 	var equipedItemType = CraftableItems.items[equipedItem]["type"]
 	if equipedItemType == "item":
 		attackingController.swingSignal.emit("fists")
+		await inventory.delay(2.5)
 	elif equipedItemType == "food":
 		eat(equipedItem)
+		return
 	elif equipedItemType == "tool":
 		attackingController.swingSignal.emit(equipedItem)
+		await inventory.delay(CraftableItems.items[equipedItem]["cooldown"])
 	elif equipedItemType == "placeable":
 		if(placingController.placeBuild(equipedItem)):
 			inventory.dropItem(equipedSlot)
+	cooldown = false
 
 func _on_hunger_timer_timeout() -> void:
 	looseHunger(randi_range(3, 5))

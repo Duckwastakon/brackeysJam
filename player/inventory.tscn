@@ -188,3 +188,16 @@ offset_right = 128.0
 offset_bottom = 24.0
 text = "sword"
 label_settings = SubResource("LabelSettings_dpmf6")
+
+[node name="delay" type="ColorRect" parent="." unique_id=191220741]
+visible = false
+offset_left = 128.0
+offset_top = 616.0
+offset_right = 1024.0
+offset_bottom = 624.0
+color = Color(0.326184, 0.326184, 0.32618397, 1)
+
+[node name="fill" type="ColorRect" parent="delay" unique_id=1391116311]
+layout_mode = 0
+offset_right = 896.0
+offset_bottom = 8.0

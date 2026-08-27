@@ -73,7 +73,7 @@ func shakeObject(tool):
 			break
 	
 	hp -= dmg-droppedResources*DPD
-	if(hp > 0 and hp%DPD == 0):
+	if(hp > 0 and hp%DPD == 0 and dmg > 0):
 		generateItem()
 	elif(hp <= 0):
 		for x in 5:

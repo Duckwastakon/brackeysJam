@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://2miklkwwtb6i"]
 
 [ext_resource type="Script" uid="uid://l5vtpm1y7iq4" path="res://map/map.gd" id="1_2c7f8"]
-[ext_resource type="PackedScene" uid="uid://bu0pmkhglv6yv" path="res://resources/resource.tscn" id="2_d5eay"]
 [ext_resource type="PackedScene" uid="uid://bos1y8rtmwq8d" path="res://animals/scene/monster.tscn" id="2_e8e5r"]
 [ext_resource type="Texture2D" uid="uid://ckbwwcjcs8byy" path="res://other assets/paper.jpg" id="2_kxmgb"]
 [ext_resource type="PackedScene" uid="uid://ug4iwky8f33o" path="res://player/player.tscn" id="3_v01jy"]
@@ -13,13 +12,17 @@ size = Vector2(640, 640)
 [sub_resource type="CircleShape2D" id="CircleShape2D_v01jy"]
 radius = 280.01608
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1h7af"]
-size = Vector2(211.65, 210.65)
-
 [node name="map" type="Node2D" unique_id=1947726882]
 script = ExtResource("1_2c7f8")
 monster_scene = ExtResource("2_e8e5r")
 animal_scene = ExtResource("6_7lyie")
+
+[node name="ySortedObjects" type="Node2D" parent="." unique_id=1853962959]
+z_index = 1
+y_sort_enabled = true
+
+[node name="player" parent="ySortedObjects" unique_id=1107822596 instance=ExtResource("3_v01jy")]
+position = Vector2(320, 320)
 
 [node name="background" type="ColorRect" parent="." unique_id=1830299228]
 offset_right = 640.0
@@ -43,79 +46,11 @@ shape = SubResource("RectangleShape2D_v01jy")
 position = Vector2(320, 320)
 shape = SubResource("CircleShape2D_v01jy")
 
-[node name="one" type="Area2D" parent="background" unique_id=2131706889]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="background/one" unique_id=792377618]
-position = Vector2(107, 107)
-shape = SubResource("RectangleShape2D_1h7af")
-
-[node name="two" type="Area2D" parent="background" unique_id=713453743]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="background/two" unique_id=1004538713]
-position = Vector2(320.175, 107)
-shape = SubResource("RectangleShape2D_1h7af")
-
-[node name="three" type="Area2D" parent="background" unique_id=366081817]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="background/three" unique_id=439950910]
-position = Vector2(533, 107)
-shape = SubResource("RectangleShape2D_1h7af")
-
-[node name="four" type="Area2D" parent="background" unique_id=2143516856]
-position = Vector2(0, 426)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="background/four" unique_id=1532926309]
-position = Vector2(107, 107)
-shape = SubResource("RectangleShape2D_1h7af")
-
-[node name="five" type="Area2D" parent="background" unique_id=1861306612]
-position = Vector2(0, 426)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="background/five" unique_id=767153026]
-position = Vector2(320.175, 107)
-shape = SubResource("RectangleShape2D_1h7af")
-
-[node name="six" type="Area2D" parent="background" unique_id=814899451]
-position = Vector2(0, 426)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="background/six" unique_id=1241526610]
-position = Vector2(533, 107)
-shape = SubResource("RectangleShape2D_1h7af")
-
-[node name="seven" type="Area2D" parent="background" unique_id=2003921055]
-position = Vector2(-418, 265)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="background/seven" unique_id=1201648129]
-position = Vector2(524, 55)
-shape = SubResource("RectangleShape2D_1h7af")
-
-[node name="eight" type="Area2D" parent="background" unique_id=1067155291]
-position = Vector2(-418, 691)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="background/eight" unique_id=929479793]
-position = Vector2(952, -371)
-shape = SubResource("RectangleShape2D_1h7af")
-
 [node name="tile" type="ColorRect" parent="background" unique_id=495648281]
 visible = false
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
-
-[node name="Marker" type="Marker2D" parent="background" unique_id=1253932736]
-position = Vector2(319, 108)
-
-[node name="resource" parent="." unique_id=554154062 instance=ExtResource("2_d5eay")]
-z_index = 1
-position = Vector2(32, 32)
-scale = Vector2(0.5, 0.5)
-
-[node name="player" parent="." unique_id=1107822596 instance=ExtResource("3_v01jy")]
-position = Vector2(320, 320)
-
-[node name="Animal" parent="." unique_id=297821148 instance=ExtResource("6_7lyie")]
-
-[node name="monster" parent="." unique_id=462490961 instance=ExtResource("2_e8e5r")]
 
 [node name="Day" type="Timer" parent="." unique_id=1343260313]
 wait_time = 10.0

@@ -284,3 +284,13 @@ func addPlaceable(placeableName):
 
 func removePlaceable(placeableName):
 	surroundingPlaceables.erase(placeableName)
+
+func delay(time):
+	$delay/fill.scale = Vector2(1,1)
+	$delay.visible = true
+	
+	var newTween = create_tween()
+	newTween.tween_property($delay/fill, "scale", Vector2(0, 1), time)
+	newTween.play()
+	await newTween.finished
+	$delay.visible = false
