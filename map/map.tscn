@@ -19,6 +19,7 @@ size = Vector2(211.65, 210.65)
 [node name="map" type="Node2D" unique_id=1947726882]
 script = ExtResource("1_2c7f8")
 monster_scene = ExtResource("2_e8e5r")
+animal_scene = ExtResource("6_7lyie")
 
 [node name="background" type="ColorRect" parent="." unique_id=1830299228]
 offset_right = 640.0
@@ -114,5 +115,11 @@ position = Vector2(320, 320)
 
 [node name="Animal" parent="." unique_id=297821148 instance=ExtResource("6_7lyie")]
 
+[node name="monster" parent="." unique_id=462490961 instance=ExtResource("2_e8e5r")]
+
+[node name="Day" type="Timer" parent="." unique_id=1343260313]
+wait_time = 10.0
+
 [connection signal="body_entered" from="background/body" to="." method="_on_body_body_entered"]
 [connection signal="body_exited" from="background/load" to="." method="_on_load_body_exited"]
+[connection signal="timeout" from="Day" to="." method="_on_day_timeout"]

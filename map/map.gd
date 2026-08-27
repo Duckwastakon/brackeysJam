@@ -6,6 +6,7 @@ extends Node2D
 @onready var marker = $background/Marker
 @export var monster_scene: PackedScene
 @export var animal_scene: PackedScene
+@onready var timer = $Day
 
 const chunkSE := 640
 const tileS := 64
@@ -74,16 +75,16 @@ func generate_resources(tile_positions: Array[Vector2]) -> void:
 func generate_animal(spawn_position: Vector2) -> void:
 	if monster_instance == null and randf() < monster_spawn_chance:
 		monster_instance = monster_scene.instantiate()
+		add_child(monster_instance)
 		monster_instance.global_position = spawn_position
 		monster_instance.disguise_as(get_random_animal_type())
-		add_child(monster_instance)
 		return
 
 	var animal_type = get_random_animal_type()
 	var new_animal = animal_scene.instantiate()
+	add_child(new_animal)
 	new_animal.global_position = spawn_position
 	new_animal.setup(animal_type)
-	add_child(new_animal)
 
 func get_random_animal_type() -> String:
 	var total_weight = 0
@@ -96,3 +97,14 @@ func get_random_animal_type() -> String:
 		if roll < cumulative:
 			return animal_type
 	return animal_weights.keys()[-1]
+
+
+func _on_day_timeout() -> void:
+	if Global.dayTime:
+		Global.dayTime = false
+		timer.start()
+	else:
+		Global.dayTime = true
+		timer.start()
+		
+	

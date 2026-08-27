@@ -26,6 +26,7 @@ func setup(type: String) -> void:
 	random_wait = data["random_wait"]
 	food = randi_range(data["food_min"], data["food_max"])
 	sprite.texture = data["sprite"]
+	sprite.scale = data.get("scale", Vector2.ONE)
 
 func _ready() -> void:
 	if not switch.timeout.is_connected(_on_switch_timeout):

@@ -1,6 +1,7 @@
 extends Node
 
 var dayTime = true
+var days = 0;
 var warmthObjects = []
 
 var wobblingObjects = []

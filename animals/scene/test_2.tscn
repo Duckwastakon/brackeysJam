@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://byhuj474v7ba0"]
+
+[ext_resource type="PackedScene" uid="uid://bos1y8rtmwq8d" path="res://animals/scene/monster.tscn" id="1_iymhl"]
+
+[node name="test 2" type="Node2D" unique_id=1385232770]
+
+[node name="monster" parent="." unique_id=462490961 instance=ExtResource("1_iymhl")]
+
+[node name="Camera2D" type="Camera2D" parent="monster" unique_id=1682944789]
+position_smoothing_enabled = true

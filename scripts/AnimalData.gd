@@ -2,23 +2,39 @@ extends Node
 
 var profiles = {
 	"rabbit": {
-		"speed": 100, "hp": 5, "food_min": 1, "food_max": 2,
+		"speed": 25, "hp": 5, "food_min": 1, "food_max": 2,
 		"move_range": 20, "max_stop": 2, "random_wait": false,
-		"sprite": preload("res://drawn assets/rabbit.png")
+		"sprite": preload("res://drawn assets/rabbit.png"),
+		"scale": Vector2(0.05, 0.05)
 	},
 	"fox": {
-		"speed": 100, "hp": 10, "food_min": 1, "food_max": 3,
+		"speed": 45, "hp": 10, "food_min": 1, "food_max": 3,
 		"move_range": 30, "max_stop": 2, "random_wait": false,
-		"sprite": preload("res://drawn assets/fox.png")
+		"sprite": preload("res://drawn assets/fox.png"),
+		"scale": Vector2(0.1, 0.1)
 	},
 	"deer": {
-		"speed": 100, "hp": 15, "food_min": 2, "food_max": 5,
+		"speed": 50, "hp": 15, "food_min": 2, "food_max": 5,
 		"move_range": 50, "max_stop": 1, "random_wait": true,
-		"sprite": preload("res://drawn assets/deer.png")
+		"sprite": preload("res://drawn assets/deer.png"),
+		"scale": Vector2(0.1, 0.1)
 	},
 	"bear": {
-		"speed": 100, "hp": 50, "food_min": 6, "food_max": 12,
+		"speed": 60, "hp": 50, "food_min": 6, "food_max": 12,
 		"move_range": 50, "max_stop": 4, "random_wait": false,
-		"sprite": preload("res://drawn assets/bear.png")
+		"sprite": preload("res://drawn assets/bear.png"),
+		"scale": Vector2(0.15, 0.15)
 	},
 }
+
+var phase = 1;
+var change = 10;
+var norm = 60
+var mon_speed
+
+func set_monster_speed():
+	var current = norm
+	if Global.dayTime == true :
+		mon_speed = current
+	elif Global.dayTime == true:
+		mon_speed = current*2
