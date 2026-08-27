@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckbwwcjcs8byy"
-path="res://.godot/imported/paper.jpg-9469f63d708c97ca8bac06146d0195bd.ctex"
+uid="uid://ce3q6ludsykn8"
+path="res://.godot/imported/temple.PNG-9bb74ea1406442abb7aba97641faeb71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://paper.jpg"
-dest_files=["res://.godot/imported/paper.jpg-9469f63d708c97ca8bac06146d0195bd.ctex"]
+source_file="res://drawn assets/temple.PNG"
+dest_files=["res://.godot/imported/temple.PNG-9bb74ea1406442abb7aba97641faeb71.ctex"]
 
 [params]
 
