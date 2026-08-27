@@ -6,7 +6,7 @@ extends Node2D
 @onready var marker = $background/Marker
 @export var monster_scene: PackedScene
 @export var animal_scene: PackedScene
-@export var temple_scene: PackedScene
+@export var temple_scene: PackedScene = preload("res://animals/scene/temple.tscn")
 @onready var timer = $Day
 
 const chunkSE := 640

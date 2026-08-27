@@ -15,3 +15,30 @@ position = Vector2(224, 216)
 
 [node name="resource3" parent="." unique_id=473476655 instance=ExtResource("2_ne85i")]
 position = Vector2(840, 216)
+
+[node name="resource4" parent="." unique_id=441509902 instance=ExtResource("2_ne85i")]
+position = Vector2(584, -16)
+
+[node name="resource5" parent="." unique_id=1808648391 instance=ExtResource("2_ne85i")]
+position = Vector2(224, -16)
+
+[node name="resource6" parent="." unique_id=915767888 instance=ExtResource("2_ne85i")]
+position = Vector2(840, -16)
+
+[node name="resource7" parent="." unique_id=628074307 instance=ExtResource("2_ne85i")]
+position = Vector2(584, -272)
+
+[node name="resource8" parent="." unique_id=1233694570 instance=ExtResource("2_ne85i")]
+position = Vector2(224, -272)
+
+[node name="resource9" parent="." unique_id=726025860 instance=ExtResource("2_ne85i")]
+position = Vector2(840, -272)
+
+[node name="resource10" parent="." unique_id=228618184 instance=ExtResource("2_ne85i")]
+position = Vector2(584, -504)
+
+[node name="resource11" parent="." unique_id=2016479652 instance=ExtResource("2_ne85i")]
+position = Vector2(224, -504)
+
+[node name="resource12" parent="." unique_id=1868585514 instance=ExtResource("2_ne85i")]
+position = Vector2(840, -504)

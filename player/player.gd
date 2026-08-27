@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var movingState = 0
-@export var maxSpeed = [500, 700]
-@export var accelerations = [150, 200]
+@export var maxSpeed = [500, 1000]
+@export var accelerations = [150, 250]
 @export var deceleration = 100
 
 @onready var playerArt = $playerArt
@@ -54,12 +54,12 @@ func _physics_process(delta: float) -> void:
 func lockSpeed():
 	if(abs(velocity.x) > maxSpeed[movingState]):
 		if(abs(velocity.x) > 1.5*maxSpeed[movingState]):
-			velocity.x = move_toward(velocity.x, 0, deceleration)
+			velocity.x = move_toward(velocity.x, 0, deceleration * 3)
 		else:
 			velocity.x = velocity.x / abs(velocity.x) * maxSpeed[movingState]
 	if(abs(velocity.y) > maxSpeed[movingState]):
 		if(abs(velocity.y) > 1.5*maxSpeed[movingState]):
-			velocity.y = move_toward(velocity.y, 0, deceleration)
+			velocity.y = move_toward(velocity.y, 0, deceleration * 3)
 		else:
 			velocity.y = velocity.y / abs(velocity.y) * maxSpeed[movingState]
 
@@ -106,7 +106,6 @@ func looseHunger(amount):
 	if movingState == 1:
 		amount *= 2
 	hunger -= amount
-	print(hunger)
 	if hunger <= 0:
 		hunger = 0
 		takeDamage(10)

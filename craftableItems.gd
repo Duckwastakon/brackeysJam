@@ -85,6 +85,7 @@ var cratables = {
 			"sticks": 4,
 			"rocks": 5
 		},
+		"builds": ["workbench"],
 		"amount": 1,
 		"time": 8,
 	},
@@ -100,7 +101,6 @@ var cratables = {
 			"sticks": 10,
 			"logs": 3,
 		},
-		"builds": ["workbench"],
 		"amount": 1,
 		"time": 3,
 	},
@@ -156,11 +156,11 @@ var resourceNodes = {
 		"scale": 0.08,
 		"multiDrop": false,
 		"drops": {
-			"iron": {
-				"chance": 20,
-				"minAmount": 1,
-				"maxAmount": 3,
-			},
+			#"iron": {
+			#	"chance": 20,
+			#	"minAmount": 1,
+			#	"maxAmount": 3,
+			#},
 			"rocks": {
 				"chance": 100,
 				"minAmount": 2,

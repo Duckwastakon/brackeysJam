@@ -7,13 +7,24 @@ signal damage
 
 var healthShowcaseTween: Tween
 
+var resourceChances = {
+	"tree": 60,
+	"rock": 0,
+}
+
 const resource = preload("res://resources/dropped_item.tscn")
 @onready var resourceSprite = $resourceSprite
 
 func _ready() -> void:
 	connect("damage", shakeObject)
 	
-	setupResource("tree")
+	var randNum = randi_range(1, 100)
+	print(randNum)
+	for obj in resourceChances:
+		print(obj)
+		if resourceChances[obj] < randNum:
+			setupResource(obj)
+			break
 	
 	healthShowcaseTween = create_tween()
 	healthShowcaseTween.tween_property(indicatorBackground, "modulate", Color.from_rgba8(255, 255, 255, 0), 2)
@@ -45,10 +56,10 @@ func shakeObject(tool):
 	if CraftableItems.items[tool]["tier"] < CraftableItems.resourceNodes[resourceName]["damageTier"]:
 		dmg = 0
 	
+	print(dmg)
+	
 	var DPD = CraftableItems.resourceNodes[resourceName]["hp"] / CraftableItems.resourceNodes[resourceName]["dropTimes"]
 	var droppedResources = (dmg - (dmg % DPD)) / DPD
-	if hp%DPD<(hp-dmg)%DPD:
-		droppedResources += 1
 	
 	for i in droppedResources:
 		hp -= DPD
@@ -60,6 +71,15 @@ func shakeObject(tool):
 			
 			queue_free()
 			break
+	
+	hp -= dmg-droppedResources*DPD
+	if(hp > 0 and hp%DPD == 0):
+		generateItem()
+	elif(hp <= 0):
+		for x in 5:
+			generateItem()
+			
+		queue_free()
 	
 	healthShowcase()
 	

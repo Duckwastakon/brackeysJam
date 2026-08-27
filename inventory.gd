@@ -50,7 +50,7 @@ func drawInventory():
 		slotContainer.add_child(newInvSlot)
 		newInvSlot.visible = true
 		newInvSlot.position = Vector2(slotContainer.size.x/2 - allSlotSize/2 + 64*i,0)
-		newInvSlot.get_child(0).text = str(i+1)
+		newInvSlot.get_child(0).text = ""
 	
 	equipItem(0)
 
