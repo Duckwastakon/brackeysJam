@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bos1y8rtmwq8d"]
+
+[ext_resource type="Script" uid="uid://cpl6d5gtemyu8" path="res://animals/scene/monster.gd" id="1_anrsy"]
+[ext_resource type="Texture2D" uid="uid://dr1kw3j0kdejg" path="res://drawn assets/monster.PNG" id="1_ttlna"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5yw2n"]
+radius = 110.039276
+height = 362.06882
+
+[node name="monster" type="CharacterBody2D" unique_id=462490961]
+script = ExtResource("1_anrsy")
+
+[node name="monster" type="Sprite2D" parent="." unique_id=1255467337]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_ttlna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1551802448]
+position = Vector2(7, 41.999996)
+rotation = -1.5824962
+shape = SubResource("CapsuleShape2D_5yw2n")
+
+[node name="switch" type="Timer" parent="." unique_id=998344148]
+
+[connection signal="timeout" from="switch" to="." method="_on_switch_timeout"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://gnx3tblbeb6x"]
+
+[ext_resource type="Script" uid="uid://dh1ebr2l3mdjh" path="res://animals/gd/animal.gd" id="1_xce6a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xce6a"]
+radius = 47.010635
+
+[node name="Animal" type="CharacterBody2D" unique_id=297821148]
+script = ExtResource("1_xce6a")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=632605598]
+
+[node name="Switch" type="Timer" parent="." unique_id=582591742]
+wait_time = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1972704939]
+shape = SubResource("CircleShape2D_xce6a")
+
+[connection signal="timeout" from="Switch" to="." method="_on_switch_timeout"]

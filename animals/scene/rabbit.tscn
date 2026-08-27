@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://2emhwtqfrjrn" path="res://drawn assets/rabbit.png" id="2_4dgfd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gbwfx"]
-radius = 23.135471
+radius = 15.008331
 
 [node name="Rabbit" type="CharacterBody2D" unique_id=1403473603]
 script = ExtResource("1_t6ioe")
 
 [node name="Rabbit" type="Sprite2D" parent="." unique_id=1807410776]
 position = Vector2(40.2, 40.2)
-scale = Vector2(0.04, 0.04)
+scale = Vector2(0.025, 0.025)
 texture = ExtResource("2_4dgfd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1777891247]
