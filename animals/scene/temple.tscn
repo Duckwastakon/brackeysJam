@@ -27,3 +27,4 @@ polygon = PackedVector2Array(113, -1280, -151, -1280, -174.80005, -1256, -176, -
 shape = SubResource("CircleShape2D_xqxgg")
 
 [connection signal="timeout" from="sacerfice" to="." method="_on_sacerfice_timeout"]
+[connection signal="body_entered" from="enter" to="." method="_on_enter_body_entered"]

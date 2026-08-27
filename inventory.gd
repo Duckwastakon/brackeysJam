@@ -70,6 +70,7 @@ func updateSlot(index):
 	updatedSlot.emit(index)
 
 func equipItem(ind):
+	Global.equippedIndex = ind  # --------------------------------------------------------------------------- Niko added this
 	for i in slotContainer.get_child_count():
 		if i == ind:
 			slotContainer.get_child(i).color = Color.from_rgba8(255, 255, 255, 50)

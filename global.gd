@@ -4,6 +4,8 @@ var dayTime = true
 var days = 0;
 var warmthObjects = []
 
+var equippedIndex = 0
+
 var wobblingObjects = []
 var rotationStates = []
 
