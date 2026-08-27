@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var movingState = 0
-@export var maxSpeed = [500, 1000]
-@export var accelerations = [150, 250]
+@export var maxSpeed = [500, 700]
+@export var accelerations = [150, 200]
 @export var deceleration = 100
 
 @onready var playerArt = $playerArt
@@ -85,8 +85,7 @@ func _input(event: InputEvent) -> void:
 		equipedItem = ""
 		var itemClone = itemPrefab.instantiate()
 		print(droppedItem)
-		itemClone.itemName = droppedItem[0]
-		itemClone.amount = droppedItem[1]
+		itemClone.setItem(droppedItem[0], droppedItem[1])
 		itemClone.global_position = global_position
 		itemClone.rotation_degrees = randi_range(0, 360)
 		itemClone.velocity = 500 * randf_range(1, 1.5) * global_position.direction_to(get_global_mouse_position())
@@ -144,6 +143,8 @@ func equipItem(index):
 func startPlacing():
 	placingController.visible = true
 	placingController.get_child(0).texture = load(CraftableItems.items[equipedItem]["png"])
+	placingController.get_child(0).scale = Vector2(CraftableItems.items[equipedItem]["scale"], CraftableItems.items[equipedItem]["scale"])
+	
 
 func stopPlacing():
 	placingController.visible = false
@@ -160,7 +161,8 @@ func mouseClicked():
 	elif equipedItemType == "tool":
 		attackingController.swingSignal.emit(equipedItem)
 	elif equipedItemType == "placeable":
-		placingController.placeBuild(equipedItem)
+		if(placingController.placeBuild(equipedItem)):
+			inventory.dropItem(equipedSlot)
 
 func _on_hunger_timer_timeout() -> void:
 	looseHunger(randi_range(3, 5))
@@ -172,6 +174,8 @@ func _on_warmth_timer_timeout() -> void:
 	$warmthTimer.start()
 	changeTemperature(calculateWarmthChange())
 
+var warmthObjects = []
+
 func calculateWarmthChange():
 	var amount = 0
 	var multiplier = 1
@@ -182,9 +186,21 @@ func calculateWarmthChange():
 		amount -= randi_range(8, 20)
 		multiplier += 0.25
 	
-	for warmthObject in Global.warmthObjects:
-		if global_position.distance_to(warmthObject.global_position) < 100:
-			amount += randi_range(5, 10)
-			multiplier -= randf_range(0.05, 0.1)
+	for warmthObject in warmthObjects:
+		amount += CraftableItems.placeables[warmthObject]["warmth"] * randf_range(0.5, 1.5)
 	
 	return amount * multiplier
+
+func _on_placeable_enter_area_entered(area: Area2D) -> void:
+	if(CraftableItems.placeables[area.type].has("warmth")):
+		warmthObjects.append(area.type)
+	inventory.addPlaceable(area.type)
+	
+	print(warmthObjects)
+
+func _on_placeable_enter_area_exited(area: Area2D) -> void:
+	if(CraftableItems.placeables[area.type].has("warmth")):
+		warmthObjects.erase(area.type)
+	inventory.removePlaceable(area.type)
+	
+	print(warmthObjects)

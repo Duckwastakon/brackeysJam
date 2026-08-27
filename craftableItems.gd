@@ -2,8 +2,10 @@ extends Node
 
 var items = {
 	"fists": {
+		"png": "",
 		"type": "tool",
 		"toolType": "",
+		"tier": 0,
 		"dmg": 1,
 		"dmgMultiplier": 1
 	},
@@ -11,59 +13,80 @@ var items = {
 		"points" : 3,
 		"type": "item",
 		"stackable": true,
-		"png": "res://drawn assets/log.PNG"
+		"png": "res://drawn assets/log.PNG",
+		"scale": 0.08,
 	},
 	"sticks": {
 		"points" : 2,
 		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/stick.PNG",
+		"scale": 0.08,
 	},
 	"rocks": {
 		"points" : 2,
 		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/rockOre.PNG",
+		"scale": 0.08,
 	},
 	"leafs": {
 		"points" : 1,
 		"type": "item",
 		"stackable": true,
 		"png": "res://drawn assets/leaf.PNG",
+		"scale": 0.08,
 	},
 	"pickaxe": {
 		"points" : 26,
 		"type": "tool",
 		"stackable": false,
 		"png": "res://drawn assets/Iron_Picaxe.PNG",
+		"scale": 0.05,
+		"toolType": "pickaxe",
+		"tier": 1,
+		"dmg": 2,
+		"dmgMultiplier": 3
 	},
 	"sword": {
 		"points" : 26,
 		"type": "tool",
 		"stackable": false,
 		"png": "res://drawn assets/Iron_sword.PNG",
+		"scale": 0.05,
+		"toolType": "sword",
+		"tier": 0,
+		"dmg": 1,
+		"dmgMultiplier": 5
 	},
 	"axe": {
 		"points" : 26,
 		"type": "tool",
 		"stackable": false,
 		"png": "res://drawn assets/Iron_axe.PNG",
+		"scale": 0.05,
+		"toolType": "axe",
+		"tier": 1,
+		"dmg": 1,
+		"dmgMultiplier": 4
 	},
-	"campfire":{
+	"campfire": {
 		"points" : 15,
 		"type": "placeable",
 		"stackable": false,
 		"png": "res://drawn assets/log.PNG",
+		"scale": 0.08,
 	}
 }
 
 var cratables = {
 	"sword": {
 		"items": {
-			"sticks": 3
+			"sticks": 4,
+			"rocks": 5
 		},
 		"amount": 1,
-		"time": 3,
+		"time": 8,
 	},
 	"axe": {
 		"items": {
@@ -74,17 +97,30 @@ var cratables = {
 	},
 	"pickaxe": {
 		"items": {
-			"sticks": 8
+			"sticks": 10,
+			"logs": 3,
 		},
+		"builds": ["workbench"],
 		"amount": 1,
 		"time": 3,
 	},
 	"campfire": {
 		"items": {
-			"sticks": 5
+			"logs": 3,
+			"sticks": 3,
+			"leafs": 5,
 		},
 		"amount": 1,
 		"time": 5,
+	}
+}
+
+var placeables = {
+	"campfire": {
+		"scale": 0.15,
+		"lifetime": 60,
+		"warmth": 10,
+		"range": 100,
 	}
 }
 

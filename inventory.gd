@@ -3,6 +3,8 @@ extends CanvasLayer
 var inventory = []
 var invAmounts = []
 
+var surroundingPlaceables = []
+
 @export var inventorySize = 6
 @onready var invSlot = $invSlot
 @onready var slotContainer = $container
@@ -47,8 +49,7 @@ func drawInventory():
 		
 		slotContainer.add_child(newInvSlot)
 		newInvSlot.visible = true
-		newInvSlot.position = Vector2(slotContainer.size.x/2 - allSlotSize/2 + 64*i,
-		slotContainer.size.y/2)
+		newInvSlot.position = Vector2(slotContainer.size.x/2 - allSlotSize/2 + 64*i,0)
 		newInvSlot.get_child(0).text = str(i+1)
 	
 	equipItem(0)
@@ -57,7 +58,7 @@ func updateSlot(index):
 	var slot = slotContainer.get_child(index)
 	var slotItem
 	if (inventory[index] == ""):
-		slotItem = {"stackable": false, "png": ""}
+		slotItem = {"stackable": false, "png": "", "scale": 0}
 	else:
 		slotItem = CraftableItems.items[inventory[index]]
 	
@@ -67,6 +68,8 @@ func updateSlot(index):
 		slot.get_child(0).text = ""
 	
 	slot.get_child(1).texture = load(slotItem["png"])
+	print(slotItem)
+	slot.get_child(1).scale = Vector2(slotItem["scale"], slotItem["scale"])
 	updatedSlot.emit(index)
 
 func equipItem(ind):
@@ -76,6 +79,7 @@ func equipItem(ind):
 			slotContainer.get_child(i).color = Color.from_rgba8(255, 255, 255, 50)
 		else:
 			slotContainer.get_child(i).color = Color.from_rgba8(255, 255, 255, 25)
+	$equipedItemName.text = inventory[ind]
 	return([inventory[ind], invAmounts[ind]])
 
 func getItem(ind):
@@ -108,10 +112,12 @@ func dropItem(index):
 	inventory[index] = ""
 	invAmounts[index] = 0
 	updateSlot(index)
+	setCrafting()
+	$equipedItemName.text = ""
 	return item
 
-func setCrafting():
-	if crafting: return
+func setCrafting(override = false):
+	if crafting and !override: return
 	
 	for c in craftableContainer.get_children():
 		#if c is Button:
@@ -133,6 +139,11 @@ func setCrafting():
 			else:
 				possible = false
 				break
+		if(CraftableItems.cratables[craftable].has("builds")):
+			for build in CraftableItems.cratables[craftable]["builds"]:
+				if(!surroundingPlaceables.has(build)):
+					possible = false
+					break
 		
 		if(possible):
 			var newButton: Button = craftableButton.duplicate()
@@ -144,6 +155,7 @@ func setCrafting():
 			craftableContainer.add_child(newButton)
 			newButton.position = Vector2(8+64*x, 8+64*y)
 			newButton.get_child(0).texture = load(CraftableItems.items[craftable]["png"])
+			newButton.get_child(0).scale = Vector2(CraftableItems.items[craftable]["scale"], CraftableItems.items[craftable]["scale"])
 			newButton.visible = true
 			
 			newButton.connect("mouse_entered", showData.bind(craftable, newButton))
@@ -165,8 +177,8 @@ func craft(itemName, costs, btn: Button):
 	if(crafting): return
 	if(!checkHasSpace(itemName, costs)): return
 	
-	startCrafting.emit()
 	crafting = true
+	startCrafting.emit()
 	var craftingTime = 3
 	
 	var colorRectInd = ColorRect.new()
@@ -184,6 +196,7 @@ func craft(itemName, costs, btn: Button):
 	for item in costs:
 		removeItem(item, costs[item])
 	addItem(itemName, 1)
+	await setCrafting(true)
 	
 	crafting = false
 	timerTween.kill()
@@ -265,3 +278,9 @@ func updateBar(bar: Control, amount: float):
 	await newTween.finished
 	newTween.kill()
 	blinkingIndicator.queue_free()
+
+func addPlaceable(placeableName):
+	surroundingPlaceables.append(placeableName)
+
+func removePlaceable(placeableName):
+	surroundingPlaceables.erase(placeableName)

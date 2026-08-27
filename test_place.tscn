@@ -9,3 +9,9 @@
 
 [node name="resource" parent="." unique_id=554154062 instance=ExtResource("2_ne85i")]
 position = Vector2(584, 216)
+
+[node name="resource2" parent="." unique_id=684998147 instance=ExtResource("2_ne85i")]
+position = Vector2(224, 216)
+
+[node name="resource3" parent="." unique_id=473476655 instance=ExtResource("2_ne85i")]
+position = Vector2(840, 216)

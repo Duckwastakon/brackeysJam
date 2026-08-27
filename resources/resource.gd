@@ -1,8 +1,11 @@
 extends Area2D
 
 var resourceName
+var maxHealth
 var hp
 signal damage
+
+var healthShowcaseTween: Tween
 
 const resource = preload("res://resources/dropped_item.tscn")
 @onready var resourceSprite = $resourceSprite
@@ -11,10 +14,14 @@ func _ready() -> void:
 	connect("damage", shakeObject)
 	
 	setupResource("tree")
+	
+	healthShowcaseTween = create_tween()
+	healthShowcaseTween.tween_property(indicatorBackground, "modulate", Color.from_rgba8(255, 255, 255, 0), 2)
 
 func setupResource(name):
 	resourceName = name
 	var data = CraftableItems.resourceNodes[name]
+	maxHealth = data["hp"]
 	hp = data["hp"]
 	resourceSprite.texture = load(data["png"])
 	resourceSprite.scale *= randf_range(0.8, 1.2)
@@ -35,6 +42,8 @@ func shakeObject(tool):
 	var toolType = CraftableItems.items[tool]["toolType"]
 	if CraftableItems.resourceNodes[resourceName]["toolMult"] == toolType:
 		dmg *= CraftableItems.items[tool]["dmgMultiplier"]
+	if CraftableItems.items[tool]["tier"] < CraftableItems.resourceNodes[resourceName]["damageTier"]:
+		dmg = 0
 	
 	var DPD = CraftableItems.resourceNodes[resourceName]["hp"] / CraftableItems.resourceNodes[resourceName]["dropTimes"]
 	var droppedResources = (dmg - (dmg % DPD)) / DPD
@@ -51,6 +60,8 @@ func shakeObject(tool):
 			
 			queue_free()
 			break
+	
+	healthShowcase()
 	
 	if shakeAmount <= 0:
 		shakeAmount = 8
@@ -85,3 +96,17 @@ func generateItem():
 				var itemAmt = randi_range(possibleItems[item]["minAmount"], possibleItems[item]["maxAmount"])
 				dropResource(item, itemAmt)
 				return
+
+@onready var indicatorBackground = $background
+@onready var indicatorFill = $background/fill
+
+func healthShowcase():
+	healthShowcaseTween.kill()
+	healthShowcaseTween = create_tween()
+	healthShowcaseTween.tween_property(indicatorBackground, "modulate", Color.from_rgba8(255, 255, 255, 0), 2)
+	indicatorBackground.modulate = Color.from_rgba8(255, 255, 255, 255)
+	
+	var newScale: float = float(hp) / float(maxHealth)
+	
+	indicatorFill.scale = Vector2(newScale, 1)
+	healthShowcaseTween.play()

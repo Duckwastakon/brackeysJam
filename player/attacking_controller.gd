@@ -12,6 +12,9 @@ var tool = "fists"
 func _ready() -> void:
 	connect("swingSignal", swing)
 
+func _process(delta: float) -> void:
+	$rotator2.look_at(get_global_mouse_position())
+
 func swing(equipedItem):
 	if(!canAttack): return
 	tool = equipedItem
@@ -23,7 +26,10 @@ func swing(equipedItem):
 		$hitBoxRotating/toolImage.flip_h = false
 		$hitBoxRotating/toolImage.rotation_degrees = 135
 	
-	$Area/CollisionShape2D.disabled = false
+	$rotator2/Area/CollisionShape2D.disabled = false
+	
+	print(equipedItem)
+	$hitBoxRotating/toolImage.texture = load(CraftableItems.items[equipedItem]["png"])
 	$hitBoxRotating/toolImage.visible = true
 	
 	var mousePos = get_global_mouse_position()
@@ -37,7 +43,7 @@ func swing(equipedItem):
 	rotationTween.play()
 	
 	await rotationTween.finished
-	$Area/CollisionShape2D.disabled = true
+	$rotator2/Area/CollisionShape2D.disabled = true
 	$hitBoxRotating/toolImage.visible = false
 	rotationTween.kill()
 	dir *= -1

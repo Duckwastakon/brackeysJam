@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ceuq5cxfwv0ag"]
+
+[ext_resource type="Script" uid="uid://j7yvnmng8hwx" path="res://resources/placeable.gd" id="1_ry8eb"]
+[ext_resource type="Texture2D" uid="uid://dastplk4p4nbd" path="res://drawn assets/picaxe.PNG" id="2_lfayb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gruer"]
+
+[node name="placeable" type="Area2D" unique_id=953579857]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_ry8eb")
+
+[node name="range" type="CollisionShape2D" parent="." unique_id=990053304]
+shape = SubResource("CircleShape2D_gruer")
+disabled = true
+
+[node name="placeableImage" type="Sprite2D" parent="." unique_id=612950984]
+texture = ExtResource("2_lfayb")
