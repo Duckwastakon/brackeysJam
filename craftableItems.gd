@@ -77,8 +77,8 @@ var items = {
 		"points" : 15,
 		"type": "placeable",
 		"stackable": false,
-		"png": "res://drawn assets/log.PNG",
-		"scale": 0.08,
+		"png": "res://drawn assets/builds/campfire.PNG",
+		"scale": 0.04,
 	},
 	"raw meat": {
 		"points": 50,
@@ -88,16 +88,23 @@ var items = {
 		"stackable": true,
 		"foodScore": 15,
 		"heal": -20,
+	},
+	"cooked meat": {
+		"points": 75,
+		"type": "food",
+		"scale": 0.05,
+		"png": "res://drawn assets/food/cooked.PNG",
+		"stackable": true,
+		"foodScore": 40,
+		"heal": 15,
 	}
 }
 
 var cratables = {
 	"wood sword": {
 		"items": {
-			"sticks": 4,
-			"rocks": 5
+			"sticks": 12,
 		},
-		"builds": ["workbench"],
 		"amount": 1,
 		"time": 8,
 	},
@@ -124,15 +131,23 @@ var cratables = {
 		},
 		"amount": 1,
 		"time": 5,
+	},
+	"cooked meat": {
+		"builds": ["campfire"],
+		"items": {
+			"raw meat": 1,
+		},
+		"amount": 1,
+		"time": 0.7,
 	}
 }
 
 var placeables = {
 	"campfire": {
-		"scale": 0.15,
+		"scale": 0.12,
 		"lifetime": 60,
 		"warmth": 10,
-		"range": 100,
+		"range": 125,
 	}
 }
 

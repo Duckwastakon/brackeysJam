@@ -9,8 +9,12 @@ var max_stop: int
 var random_wait: bool
 var true_sprite = preload("res://drawn assets/animals/monster.PNG")
 
-var is_revealed = false
+var is_revealed = true
+var chasing = false
+var pause = false
+var leaving = false
 
+var player: CharacterBody2D
 
 var f = true
 var movement: Vector2 = Vector2.ZERO
@@ -28,33 +32,57 @@ func disguise_as(type: String) -> void:
 	max_stop = data["max_stop"]
 	random_wait = data["random_wait"]
 	sprite.texture = data["sprite"]
+	scale = data["scale"]
 	is_revealed = false
 
 func reveal() -> void:
 	is_revealed = true
+	if player != null:
+		startChasing()
 	sprite.texture = true_sprite
+	scale = Vector2(2.5, 2.5)
+
+func startChasing():
+	print("startChase")
+	chasing = true
+	switch.stop()
 
 func _ready() -> void:
 	if not switch.timeout.is_connected(_on_switch_timeout):
 		switch.timeout.connect(_on_switch_timeout)
 	switch.start()
+	
+	$playerSearching/CollisionShape2D.disabled = false
 
 func _physics_process(delta: float) -> void:
 	Global.wobble(sprite, velocity)
+	if leaving:
+		SPEED = 1200
+		velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2)
+		move_and_slide()
+		return
 	if is_revealed:
-		chase_behavior()
+		if(chasing):
+			print("chasing")
+			print(velocity)
+			print(SPEED)
+			chase_behavior()
 		SPEED = AnimalData.mon_speed
-	velocity = movement * SPEED
+	velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2)
 	move_and_slide()
 	maxStop = stop == max_stop
 
 func chase_behavior() -> void:
-	pass  # fill in later — e.g. move toward player
+	if pause:
+		movement = Vector2.ZERO
+	else:
+		movement = global_position.direction_to(player.global_position).normalized()
+	
 
 func _on_switch_timeout() -> void:
-	if is_revealed:
+	if chasing:
 		return
-
+	
 	if randf() < shapeshift_chance:
 		if randf() < reveal_chance:
 			reveal()
@@ -62,7 +90,7 @@ func _on_switch_timeout() -> void:
 		else:
 			disguise_as(AnimalData.profiles.keys().pick_random())
 			return
-
+	
 	if random_wait:
 		switch.wait_time = randi_range(1, 5)
 	random()
@@ -88,3 +116,37 @@ func random() -> void:
 		stop = 0
 	else:
 		f = randf() < 0.5
+
+func _on_player_searching_area_entered(area: Area2D) -> void:
+	player = area.get_parent()
+	if(is_revealed):
+		startChasing()
+
+func _on_damage_area_entered(area: Area2D) -> void:
+	area.get_parent().takeDamage(25)
+	leave()
+	#pause = true
+	
+	#await get_tree().create_timer(randf_range(1, 2)).timeout
+	
+	#pause = false
+
+func _on_player_searching_area_exited(area: Area2D) -> void:
+	if chasing and player != null and is_revealed and area != $damage:
+		leave()
+
+func leave():
+	if leaving or player == null: return
+	movement = -global_position.direction_to(player.global_position)
+	switch.stop()
+	leaving = true
+	chasing = false
+	player = null
+	
+	await get_tree().create_timer(3).timeout
+	
+	queue_free()
+
+func takeDamage(amt):
+	if(!is_revealed):
+		reveal()

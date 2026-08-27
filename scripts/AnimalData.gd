@@ -29,7 +29,7 @@ var profiles = {
 
 var phase = 1
 var change = 10
-var norm = 50
+var norm = 710
 var mon_speed
 
 func _ready() -> void:

@@ -17,8 +17,8 @@ const rchance := 0.1
 var temple_instance: Node2D = null
 var templeSpawned = false
 
-var monster_spawn_chance = 0.05
-var monster_instance: Node2D = null
+var monster_spawn_chance = 0.2
+var monster_instance: CharacterBody2D = null
 
 var chunks := {}
 var current_chunk_coord := Vector2i.ZERO
@@ -36,6 +36,11 @@ func _ready() -> void:
 	spawn_temple()
 
 func _process(delta: float) -> void:
+	print(monster_instance)
+	if monster_instance != null:
+		print(player.global_position.distance_to(monster_instance.global_position))
+		if(player.global_position.distance_to(monster_instance.global_position) > 2500):
+			monster_instance.queue_free()
 	var player_chunk = Vector2i(
 		floori(player.global_position.x / chunkSE),
 		floori(player.global_position.y / chunkSE)
@@ -80,7 +85,8 @@ func generate_animal(spawn_position: Vector2) -> void:
 		monster_instance = monster_scene.instantiate()
 		ySortingContainer.add_child(monster_instance)
 		monster_instance.global_position = spawn_position
-		monster_instance.disguise_as(get_random_animal_type())
+		if randf() < 0.6:
+			monster_instance.disguise_as(get_random_animal_type())
 		return
 
 	var animal_type = get_random_animal_type()

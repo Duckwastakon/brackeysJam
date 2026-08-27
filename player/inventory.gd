@@ -279,9 +279,11 @@ func updateBar(bar: Control, amount: float):
 
 func addPlaceable(placeableName):
 	surroundingPlaceables.append(placeableName)
+	setCrafting()
 
 func removePlaceable(placeableName):
 	surroundingPlaceables.erase(placeableName)
+	setCrafting()
 
 func delay(time):
 	$delay/fill.scale = Vector2(1,1)

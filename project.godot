@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 Global="*uid://7ichyk2gekxj"
 CraftableItems="*uid://c6smdl5rtjks5"
 AnimalData="*uid://dudwexie2sjh2"
+CameraController="*uid://cf0vjnqnwccb4"
 
 [display]
 
