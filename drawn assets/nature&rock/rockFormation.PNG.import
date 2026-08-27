@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtk6ydc7bdkuv"
-path="res://.godot/imported/player.PNG-13d988f212fa6f064c1babbb96bd49d5.ctex"
+uid="uid://tie8jp1asck1"
+path="res://.godot/imported/rockFormation.PNG-b2005539fcf3a1ae9f66e9c1f7c13004.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/player.PNG"
-dest_files=["res://.godot/imported/player.PNG-13d988f212fa6f064c1babbb96bd49d5.ctex"]
+source_file="res://drawn assets/nature&rock/rockFormation.PNG"
+dest_files=["res://.godot/imported/rockFormation.PNG-b2005539fcf3a1ae9f66e9c1f7c13004.ctex"]
 
 [params]
 

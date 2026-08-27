@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnlgqh8b6wqvi"
-path="res://.godot/imported/fox.PNG-f832c7c273eca290e2cae5f363951330.ctex"
+uid="uid://dh72pkriumo4o"
+path="res://.godot/imported/deer.PNG-6bca06b18b03295753e3133819ff782a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/fox.PNG"
-dest_files=["res://.godot/imported/fox.PNG-f832c7c273eca290e2cae5f363951330.ctex"]
+source_file="res://drawn assets/animals/deer.PNG"
+dest_files=["res://.godot/imported/deer.PNG-6bca06b18b03295753e3133819ff782a.ctex"]
 
 [params]
 

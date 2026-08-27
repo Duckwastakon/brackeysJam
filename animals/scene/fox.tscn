@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3ob1g7bmwj20"]
 
-[ext_resource type="Texture2D" uid="uid://2emhwtqfrjrn" path="res://drawn assets/rabbit.png" id="1_3e6xf"]
+[ext_resource type="Texture2D" uid="uid://2emhwtqfrjrn" path="res://drawn assets/animals/rabbit.png" id="1_3e6xf"]
 [ext_resource type="Script" uid="uid://dt5idygw830ef" path="res://animals/gd/fox.gd" id="1_sjour"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sjour"]

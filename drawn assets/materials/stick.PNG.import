@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce3q6ludsykn8"
-path="res://.godot/imported/temple.PNG-9bb74ea1406442abb7aba97641faeb71.ctex"
+uid="uid://c0m61pqfd8787"
+path="res://.godot/imported/stick.PNG-7d786e91813a150f055eddb13d68523a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/temple.PNG"
-dest_files=["res://.godot/imported/temple.PNG-9bb74ea1406442abb7aba97641faeb71.ctex"]
+source_file="res://drawn assets/materials/stick.PNG"
+dest_files=["res://.godot/imported/stick.PNG-7d786e91813a150f055eddb13d68523a.ctex"]
 
 [params]
 

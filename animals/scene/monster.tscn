@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bos1y8rtmwq8d"]
 
 [ext_resource type="Script" uid="uid://cpl6d5gtemyu8" path="res://animals/gd/monster.gd" id="1_anrsy"]
-[ext_resource type="Texture2D" uid="uid://dr1kw3j0kdejg" path="res://drawn assets/monster.PNG" id="1_ttlna"]
+[ext_resource type="Texture2D" uid="uid://dr1kw3j0kdejg" path="res://drawn assets/animals/monster.PNG" id="1_ttlna"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5yw2n"]
 radius = 110.039276

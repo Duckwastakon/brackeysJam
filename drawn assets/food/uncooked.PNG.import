@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr1kw3j0kdejg"
-path="res://.godot/imported/monster.PNG-25e93f9bf0bc936f8572a9db145b1091.ctex"
+uid="uid://3ruus0yykgca"
+path="res://.godot/imported/uncooked.PNG-f8dac31ec887f174f6ab90ccdf4328b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/monster.PNG"
-dest_files=["res://.godot/imported/monster.PNG-25e93f9bf0bc936f8572a9db145b1091.ctex"]
+source_file="res://drawn assets/food/uncooked.PNG"
+dest_files=["res://.godot/imported/uncooked.PNG-f8dac31ec887f174f6ab90ccdf4328b4.ctex"]
 
 [params]
 

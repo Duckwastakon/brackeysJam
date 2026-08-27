@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjf0m67tueaka"]
 
 [ext_resource type="Script" uid="uid://cco3ewf4jjf1" path="res://inventory.gd" id="1_sqil7"]
-[ext_resource type="Texture2D" uid="uid://doi4mdb5efp85" path="res://drawn assets/Iron_axe.PNG" id="2_4rms4"]
+[ext_resource type="Texture2D" uid="uid://doi4mdb5efp85" path="res://drawn assets/tools/Iron_axe.PNG" id="2_4rms4"]
 [ext_resource type="Script" uid="uid://wcvuv5qiwxlo" path="res://player/crafting_info.gd" id="2_dpmf6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4rms4"]

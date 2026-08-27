@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://codvpa8rx26px"
-path="res://.godot/imported/sword.PNG-ca83a74e00deec96e6c14d5477d5079b.ctex"
+uid="uid://cb7jrs2mvas5u"
+path="res://.godot/imported/blacktemple.PNG-1affe463430e2dd1431eb27e72f4c6c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/sword.PNG"
-dest_files=["res://.godot/imported/sword.PNG-ca83a74e00deec96e6c14d5477d5079b.ctex"]
+source_file="res://drawn assets/builds/blacktemple.PNG"
+dest_files=["res://.godot/imported/blacktemple.PNG-1affe463430e2dd1431eb27e72f4c6c6.ctex"]
 
 [params]
 

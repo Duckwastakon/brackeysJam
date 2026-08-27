@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2emhwtqfrjrn"
-path="res://.godot/imported/rabbit.png-7fe5e16b342ff4f66ef2bbb9e7cffa07.ctex"
+uid="uid://bxvwc125yxjms"
+path="res://.godot/imported/stonePicaxe.PNG-bf31e5099232195833022e42e6388325.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/rabbit.png"
-dest_files=["res://.godot/imported/rabbit.png-7fe5e16b342ff4f66ef2bbb9e7cffa07.ctex"]
+source_file="res://drawn assets/tools/stonePicaxe.PNG"
+dest_files=["res://.godot/imported/stonePicaxe.PNG-bf31e5099232195833022e42e6388325.ctex"]
 
 [params]
 

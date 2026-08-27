@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5wive46u1m7k"
-path="res://.godot/imported/Iron_sword.PNG-1f8b82aad73c89c9cf3ea776025e20cd.ctex"
+uid="uid://b1ijdyg0x37vm"
+path="res://.godot/imported/woodpicaxe.PNG-6c62530ad796246f2cd263cd9ce78476.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/Iron_sword.PNG"
-dest_files=["res://.godot/imported/Iron_sword.PNG-1f8b82aad73c89c9cf3ea776025e20cd.ctex"]
+source_file="res://drawn assets/tools/woodpicaxe.PNG"
+dest_files=["res://.godot/imported/woodpicaxe.PNG-6c62530ad796246f2cd263cd9ce78476.ctex"]
 
 [params]
 

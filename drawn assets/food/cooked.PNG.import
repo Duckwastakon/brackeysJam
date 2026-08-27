@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl72yfds32s7a"
-path="res://.godot/imported/rockOre.PNG-40aea5bddb4edbe35bc148d16588c31e.ctex"
+uid="uid://d2bhmpa2taome"
+path="res://.godot/imported/cooked.PNG-7e97e5d1e9c5880149b4b192450a49c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/rockOre.PNG"
-dest_files=["res://.godot/imported/rockOre.PNG-40aea5bddb4edbe35bc148d16588c31e.ctex"]
+source_file="res://drawn assets/food/cooked.PNG"
+dest_files=["res://.godot/imported/cooked.PNG-7e97e5d1e9c5880149b4b192450a49c0.ctex"]
 
 [params]
 

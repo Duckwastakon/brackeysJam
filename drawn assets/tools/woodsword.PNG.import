@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dastplk4p4nbd"
-path="res://.godot/imported/picaxe.PNG-24f18aa6b0b920fc490eed2fdc24bfab.ctex"
+uid="uid://dv4m2630dqswr"
+path="res://.godot/imported/woodsword.PNG-1baed27f684d85ca0adf907f2d9af9c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/picaxe.PNG"
-dest_files=["res://.godot/imported/picaxe.PNG-24f18aa6b0b920fc490eed2fdc24bfab.ctex"]
+source_file="res://drawn assets/tools/woodsword.PNG"
+dest_files=["res://.godot/imported/woodsword.PNG-1baed27f684d85ca0adf907f2d9af9c6.ctex"]
 
 [params]
 

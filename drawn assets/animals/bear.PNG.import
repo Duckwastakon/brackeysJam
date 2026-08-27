@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doi4mdb5efp85"
-path="res://.godot/imported/Iron_axe.PNG-aa851d3feec5a4eca95be51db7948e44.ctex"
+uid="uid://okpwbseqwk5i"
+path="res://.godot/imported/bear.PNG-f7c788f9f081e76236533adfb9281769.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/Iron_axe.PNG"
-dest_files=["res://.godot/imported/Iron_axe.PNG-aa851d3feec5a4eca95be51db7948e44.ctex"]
+source_file="res://drawn assets/animals/bear.PNG"
+dest_files=["res://.godot/imported/bear.PNG-f7c788f9f081e76236533adfb9281769.ctex"]
 
 [params]
 

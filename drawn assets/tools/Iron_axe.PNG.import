@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv6otejxswtap"
-path="res://.godot/imported/log.PNG-365f451251d3d25a825125a8adb67f1b.ctex"
+uid="uid://doi4mdb5efp85"
+path="res://.godot/imported/Iron_axe.PNG-8fd078fbbb5b019a4767e00c4b8c23c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/log.PNG"
-dest_files=["res://.godot/imported/log.PNG-365f451251d3d25a825125a8adb67f1b.ctex"]
+source_file="res://drawn assets/tools/Iron_axe.PNG"
+dest_files=["res://.godot/imported/Iron_axe.PNG-8fd078fbbb5b019a4767e00c4b8c23c6.ctex"]
 
 [params]
 

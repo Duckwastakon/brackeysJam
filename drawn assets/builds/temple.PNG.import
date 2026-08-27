@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://okpwbseqwk5i"
-path="res://.godot/imported/bear.PNG-8eb22ff99d5805153eb8a9708fbda54a.ctex"
+uid="uid://ce3q6ludsykn8"
+path="res://.godot/imported/temple.PNG-bc0ad4ea6d174bededd18814fb1fa9b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/bear.PNG"
-dest_files=["res://.godot/imported/bear.PNG-8eb22ff99d5805153eb8a9708fbda54a.ctex"]
+source_file="res://drawn assets/builds/temple.PNG"
+dest_files=["res://.godot/imported/temple.PNG-bc0ad4ea6d174bededd18814fb1fa9b7.ctex"]
 
 [params]
 

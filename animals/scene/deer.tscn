@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://36aywxoprrye"]
 
 [ext_resource type="Script" uid="uid://m1bbmuvtx7a1" path="res://animals/gd/deer.gd" id="1_bdqs5"]
-[ext_resource type="Texture2D" uid="uid://2emhwtqfrjrn" path="res://drawn assets/rabbit.png" id="1_uaicw"]
+[ext_resource type="Texture2D" uid="uid://2emhwtqfrjrn" path="res://drawn assets/animals/rabbit.png" id="1_uaicw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdqs5"]
 radius = 23.135471

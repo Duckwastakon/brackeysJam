@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tie8jp1asck1"
-path="res://.godot/imported/rockFormation.PNG-69d01d0aae3abd68be98c3c49fb97686.ctex"
+uid="uid://io1q8l5ki7rr"
+path="res://.godot/imported/Iron_Picaxe.PNG-4cf248a4c5c6497b05aaefcf631cad5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/rockFormation.PNG"
-dest_files=["res://.godot/imported/rockFormation.PNG-69d01d0aae3abd68be98c3c49fb97686.ctex"]
+source_file="res://drawn assets/tools/Iron_Picaxe.PNG"
+dest_files=["res://.godot/imported/Iron_Picaxe.PNG-4cf248a4c5c6497b05aaefcf631cad5d.ctex"]
 
 [params]
 

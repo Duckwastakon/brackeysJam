@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpa2c0dkkkgxf"
-path="res://.godot/imported/leaf.PNG-1a35f95ab8a88d8a9c4df91c98f8a812.ctex"
+uid="uid://2emhwtqfrjrn"
+path="res://.godot/imported/rabbit.png-c05b51ac14e4784e0aa3a2e73a5871cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/leaf.PNG"
-dest_files=["res://.godot/imported/leaf.PNG-1a35f95ab8a88d8a9c4df91c98f8a812.ctex"]
+source_file="res://drawn assets/animals/rabbit.png"
+dest_files=["res://.godot/imported/rabbit.png-c05b51ac14e4784e0aa3a2e73a5871cf.ctex"]
 
 [params]
 

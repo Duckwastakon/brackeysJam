@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0m61pqfd8787"
-path="res://.godot/imported/stick.PNG-bba8248e6180cbbebcac98fa6504349d.ctex"
+uid="uid://dhy5hkrldfbi4"
+path="res://.godot/imported/stoneaxe.PNG-15998e6cbd374e581f5ab54a627d1dc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://drawn assets/stick.PNG"
-dest_files=["res://.godot/imported/stick.PNG-bba8248e6180cbbebcac98fa6504349d.ctex"]
+source_file="res://drawn assets/tools/stoneaxe.PNG"
+dest_files=["res://.godot/imported/stoneaxe.PNG-15998e6cbd374e581f5ab54a627d1dc0.ctex"]
 
 [params]
 
