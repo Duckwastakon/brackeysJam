@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ceuq5cxfwv0ag"]
 
 [ext_resource type="Script" uid="uid://j7yvnmng8hwx" path="res://resources/placeable.gd" id="1_ry8eb"]
-[ext_resource type="Texture2D" uid="uid://dastplk4p4nbd" path="res://drawn assets/picaxe.PNG" id="2_lfayb"]
+[ext_resource type="Texture2D" uid="uid://dastplk4p4nbd" path="res://drawn assets/tools/picaxe.PNG" id="2_lfayb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gruer"]
 

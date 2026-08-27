@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ug4iwky8f33o"]
 
 [ext_resource type="Script" uid="uid://btnvshrl6uq3a" path="res://player/player.gd" id="1_oul6g"]
-[ext_resource type="Texture2D" uid="uid://dtk6ydc7bdkuv" path="res://drawn assets/player.PNG" id="2_rkbax"]
+[ext_resource type="Texture2D" uid="uid://dtk6ydc7bdkuv" path="res://drawn assets/animals/player.PNG" id="2_rkbax"]
 [ext_resource type="PackedScene" uid="uid://be2n0j4kn3iek" path="res://player/attacking_controller.tscn" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://cjf0m67tueaka" path="res://player/inventory.tscn" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://di3impjd3xs1x" path="res://player/placingController.gd" id="5_qjkh3"]

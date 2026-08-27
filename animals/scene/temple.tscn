@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://nibnovgbn0vr"]
 
 [ext_resource type="Script" uid="uid://q3wtsj6kaa01" path="res://scripts/sacerfice.gd" id="1_u61kv"]
-[ext_resource type="Texture2D" uid="uid://ce3q6ludsykn8" path="res://drawn assets/temple.PNG" id="2_xqxgg"]
+[ext_resource type="Texture2D" uid="uid://ce3q6ludsykn8" path="res://drawn assets/builds/temple.PNG" id="2_xqxgg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xqxgg"]
 radius = 99.08077
