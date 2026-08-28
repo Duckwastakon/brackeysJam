@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cco3ewf4jjf1" path="res://player/inventory.gd" id="1_sqil7"]
 [ext_resource type="Texture2D" uid="uid://doi4mdb5efp85" path="res://drawn assets/tools/Iron_axe.PNG" id="2_4rms4"]
 [ext_resource type="Script" uid="uid://wcvuv5qiwxlo" path="res://player/crafting_info.gd" id="2_dpmf6"]
+[ext_resource type="Texture2D" uid="uid://b38qm7ndcf6kg" path="res://drawn assets/ui/icon heart.PNG" id="2_hhxvs"]
+[ext_resource type="Texture2D" uid="uid://cbn6k4hir1roy" path="res://drawn assets/ui/icon temperature.PNG" id="3_jygep"]
+[ext_resource type="Texture2D" uid="uid://b0hwpbatxtag5" path="res://drawn assets/ui/icon meat.PNG" id="4_mswto"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4rms4"]
 outline_size = 4
@@ -81,13 +84,11 @@ offset_right = 192.0
 offset_bottom = 16.0
 color = Color(1, 0.58370584, 0.5135992, 1)
 
-[node name="icon" type="ColorRect" parent="health" unique_id=1884173818]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 16.0
-offset_right = 40.0
-offset_bottom = 48.0
-color = Color(0.99607843, 0.4862745, 0.5372549, 0.5529412)
+[node name="IconHeart" type="Sprite2D" parent="health" unique_id=1249735861]
+modulate = Color(0.99607843, 0.4862745, 0.5372549, 1)
+position = Vector2(24, 32)
+scale = Vector2(0.028125, 0.028125007)
+texture = ExtResource("2_hhxvs")
 
 [node name="warmth" type="Control" parent="." unique_id=695753778]
 layout_mode = 3
@@ -111,13 +112,11 @@ offset_right = 192.0
 offset_bottom = 16.0
 color = Color(0, 0.85005337, 0.8836335, 1)
 
-[node name="icon3" type="ColorRect" parent="warmth" unique_id=690895390]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 16.0
-offset_right = 40.0
-offset_bottom = 48.0
-color = Color(0.0073031676, 0.8303494, 0.8001004, 0.5529412)
+[node name="IconTemperature" type="Sprite2D" parent="warmth" unique_id=1345471215]
+modulate = Color(0.007843138, 0.83137256, 0.8, 1)
+position = Vector2(31.999975, 32.00001)
+scale = Vector2(0.031249993, 0.031250007)
+texture = ExtResource("3_jygep")
 
 [node name="hunger" type="Control" parent="." unique_id=165997058]
 layout_mode = 3
@@ -141,13 +140,11 @@ offset_right = 192.0
 offset_bottom = 16.0
 color = Color(0.9290363, 0.64221257, 0.4239976, 1)
 
-[node name="icon2" type="ColorRect" parent="hunger" unique_id=1441680399]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 16.0
-offset_right = 40.0
-offset_bottom = 48.0
-color = Color(0.99999994, 0.62121767, 0.3059253, 0.5529412)
+[node name="IconMeat" type="Sprite2D" parent="hunger" unique_id=228805333]
+modulate = Color(1, 0.61960787, 0.30588236, 1)
+position = Vector2(32, 32)
+scale = Vector2(0.025000006, 0.024999999)
+texture = ExtResource("4_mswto")
 
 [node name="craftableItems" type="Control" parent="." unique_id=1193138500]
 layout_mode = 3

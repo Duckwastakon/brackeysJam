@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://be2n0j4kn3iek"]
 
 [ext_resource type="Script" uid="uid://dfjwqn78bbh6t" path="res://player/attacking_controller.gd" id="1_g2scx"]
-[ext_resource type="Texture2D" uid="uid://doi4mdb5efp85" path="res://drawn assets/tools/Iron_axe.PNG" id="2_jyfqc"]
+[ext_resource type="Texture2D" uid="uid://b1l0ibwj5do8x" path="res://drawn assets/fist.PNG" id="2_jyfqc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyfqc"]
 size = Vector2(80, 80)
@@ -14,7 +14,7 @@ script = ExtResource("1_g2scx")
 [node name="toolImage" type="Sprite2D" parent="hitBoxRotating" unique_id=2017833192]
 visible = false
 position = Vector2(64, 0)
-rotation = 2.3561945
+rotation = 3.1415927
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_jyfqc")
 

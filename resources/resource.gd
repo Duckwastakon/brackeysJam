@@ -38,7 +38,7 @@ func setupResource(name):
 	maxHealth = data["hp"]
 	hp = data["hp"]
 	resourceSprite.texture = load(data["png"])
-	resourceSprite.scale *= randf_range(0.8, 1.2)
+	scale = Vector2(data["scale"], data["scale"]) * randf_range(0.8, 1.2)
 
 func dropResource(itemName, amount):
 	var newResource: CharacterBody2D = resource.instantiate()

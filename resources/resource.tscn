@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bu0pmkhglv6yv"]
 
 [ext_resource type="Script" uid="uid://ds6ngnraiyuwp" path="res://resources/resource.gd" id="1_dtidl"]
-[ext_resource type="Texture2D" uid="uid://tie8jp1asck1" path="res://drawn assets/nature&rock/rockFormation.PNG" id="2_bo38f"]
+[ext_resource type="Texture2D" uid="uid://d2hsetkeuftc8" path="res://drawn assets/nature&rock/rock_formation.PNG" id="2_bo38f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d33tg"]
-size = Vector2(96, 112)
+size = Vector2(96, 88)
 
 [node name="resource" type="Area2D" unique_id=554154062]
 y_sort_enabled = true
@@ -13,11 +13,11 @@ collision_mask = 16
 script = ExtResource("1_dtidl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474364631]
-position = Vector2(0, 24)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_d33tg")
 
 [node name="resourceSprite" type="Sprite2D" parent="." unique_id=1046662729]
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_bo38f")
 
 [node name="background" type="ColorRect" parent="." unique_id=1985639695]

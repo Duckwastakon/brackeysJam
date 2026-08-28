@@ -4,6 +4,7 @@ var cloneable = preload("res://resources/placeable.tscn")
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
+	$placeableDisplay.rotation_degrees = -rotation_degrees
 
 func placeBuild(buildName):
 	var data = CraftableItems.items[buildName]

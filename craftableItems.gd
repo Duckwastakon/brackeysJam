@@ -2,7 +2,7 @@ extends Node
 
 var items = {
 	"fists": {
-		"png": "",
+		"png": "res://drawn assets/fist.PNG",
 		"type": "tool",
 		"toolType": "",
 		"tier": 0,
@@ -374,7 +374,7 @@ var placeables = {
 var resourceNodes = {
 	"tree": {
 		"png": "res://drawn assets/nature&rock/tree.PNG",
-		"scale": 0.08,
+		"scale": 1,
 		"multiDrop": true,
 		"drops": {
 			"sticks": {
@@ -400,7 +400,7 @@ var resourceNodes = {
 	},
 	"apple tree": {
 		"png": "res://drawn assets/nature&rock/tree apple.PNG",
-		"scale": 0.08,
+		"scale": 1,
 		"multiDrop": true,
 		"drops": {
 			"apple": {
@@ -431,7 +431,7 @@ var resourceNodes = {
 	},
 	"gold tree": {
 		"png": "res://drawn assets/nature&rock/three gold.PNG",
-		"scale": 0.1,
+		"scale": 1,
 		"multiDrop": false,
 		"drops": {
 			"gold logs": {
@@ -452,7 +452,7 @@ var resourceNodes = {
 	},
 	"bush": {
 		"png": "res://drawn assets/nature&rock/bush.PNG",
-		"scale": 0.1,
+		"scale": 1,
 		"multiDrop": false,
 		"drops": {
 			"sticks": {
@@ -473,7 +473,7 @@ var resourceNodes = {
 	},
 	"cherry bush": {
 		"png": "res://drawn assets/nature&rock/bush cherry.PNG",
-		"scale": 0.08,
+		"scale": 1,
 		"multiDrop": true,
 		"drops": {
 			"cherry": {
@@ -499,7 +499,7 @@ var resourceNodes = {
 	},
 	"rock": {
 		"png": "res://drawn assets/nature&rock/rockFormation.PNG",
-		"scale": 0.08,
+		"scale": 1,
 		"multiDrop": false,
 		"drops": {
 			#"iron": {
@@ -520,7 +520,7 @@ var resourceNodes = {
 	},
 	"iron rock": {
 		"png": "res://drawn assets/nature&rock/iron recource.PNG",
-		"scale": 0.08,
+		"scale": 1,
 		"multiDrop": true,
 		"drops": {
 			"iron": {
