@@ -17,6 +17,8 @@ const rchance := 0.1
 var temple_instance: Node2D = null
 var templeSpawned = false
 
+var canSpawnMonster = false
+
 var monster_spawn_chance = 0.2
 var monster_instance: CharacterBody2D = null
 
@@ -34,11 +36,11 @@ func _ready() -> void:
 	generate_chunk(Vector2i.ZERO)
 	_update_chunks()
 	spawn_temple()
+	
+	canSpawnMonster = true
 
 func _process(delta: float) -> void:
-	print(monster_instance)
 	if monster_instance != null:
-		print(player.global_position.distance_to(monster_instance.global_position))
 		if(player.global_position.distance_to(monster_instance.global_position) > 2500):
 			monster_instance.queue_free()
 	var player_chunk = Vector2i(
@@ -81,7 +83,7 @@ func generate_resources(tile_positions: Array[Vector2]) -> void:
 			generate_animal(pos + Vector2(randi_range(1, tileS), randi_range(1, tileS)))
 
 func generate_animal(spawn_position: Vector2) -> void:
-	if monster_instance == null and randf() < monster_spawn_chance:
+	if monster_instance == null and canSpawnMonster and randf() < monster_spawn_chance:
 		monster_instance = monster_scene.instantiate()
 		monster_instance.player = player
 		ySortingContainer.add_child(monster_instance)
@@ -128,7 +130,7 @@ func _on_day_timeout() -> void:
 		timer.start()
 
 func _on_monster_timer_timeout() -> void:
-	if monster_instance == null and randf() < 0.5:
+	if monster_instance == null and canSpawnMonster and randf() < 0.5:
 		monster_instance = monster_scene.instantiate()
 		monster_instance.player = player
 		ySortingContainer.add_child(monster_instance)
