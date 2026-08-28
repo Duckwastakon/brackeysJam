@@ -34,6 +34,7 @@ func disguise_as(type: String) -> void:
 	sprite.texture = data["sprite"]
 	scale = data["scale"]
 	is_revealed = false
+	$damage/CollisionShape2D.disabled = true
 
 func reveal() -> void:
 	is_revealed = true
@@ -41,9 +42,17 @@ func reveal() -> void:
 		startChasing()
 	sprite.texture = true_sprite
 	scale = Vector2(2.5, 2.5)
+	
+	pause = true
+	
+	await get_tree().create_timer(2).timeout
+	pause = false
+	$damage/CollisionShape2D.disabled = false
 
 func startChasing():
 	print("startChase")
+	CameraController.zoomInCamera(0.25)
+	CameraController.infShake(1)
 	chasing = true
 	switch.stop()
 
@@ -51,8 +60,6 @@ func _ready() -> void:
 	if not switch.timeout.is_connected(_on_switch_timeout):
 		switch.timeout.connect(_on_switch_timeout)
 	switch.start()
-	
-	$playerSearching/CollisionShape2D.disabled = false
 
 func _physics_process(delta: float) -> void:
 	Global.wobble(sprite, velocity)
@@ -66,6 +73,7 @@ func _physics_process(delta: float) -> void:
 			print("chasing")
 			print(velocity)
 			print(SPEED)
+			print(pause)
 			chase_behavior()
 		SPEED = AnimalData.mon_speed
 	velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2)
@@ -77,6 +85,7 @@ func chase_behavior() -> void:
 		movement = Vector2.ZERO
 	else:
 		movement = global_position.direction_to(player.global_position).normalized()
+		print(global_position.direction_to(player.global_position).normalized())
 	
 
 func _on_switch_timeout() -> void:
@@ -118,11 +127,13 @@ func random() -> void:
 		f = randf() < 0.5
 
 func _on_player_searching_area_entered(area: Area2D) -> void:
+	if area == $damage: return
 	player = area.get_parent()
 	if(is_revealed):
 		startChasing()
 
 func _on_damage_area_entered(area: Area2D) -> void:
+	if area == $playerSearching: return
 	area.get_parent().takeDamage(25)
 	leave()
 	#pause = true
@@ -137,11 +148,14 @@ func _on_player_searching_area_exited(area: Area2D) -> void:
 
 func leave():
 	if leaving or player == null: return
+	print("leaving")
 	movement = -global_position.direction_to(player.global_position)
 	switch.stop()
 	leaving = true
 	chasing = false
 	player = null
+	CameraController.stopShaking()
+	CameraController.unZoomCamera()
 	
 	await get_tree().create_timer(3).timeout
 	

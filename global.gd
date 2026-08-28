@@ -10,6 +10,7 @@ var wobblingObjects = []
 var rotationStates = []
 
 func wobble(objectSprite, velocity):
+	if(objectSprite == null): return
 	var rotatingState = 1
 	
 	if(wobblingObjects.find(objectSprite) != -1):
@@ -17,8 +18,6 @@ func wobble(objectSprite, velocity):
 	else:
 		wobblingObjects.append(objectSprite)
 		rotationStates.append(1)
-		
-		await get_tree().create_timer(2).timeout
 	
 	if(velocity != Vector2.ZERO):
 		if (velocity.x > 0):

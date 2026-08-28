@@ -83,6 +83,7 @@ func generate_resources(tile_positions: Array[Vector2]) -> void:
 func generate_animal(spawn_position: Vector2) -> void:
 	if monster_instance == null and randf() < monster_spawn_chance:
 		monster_instance = monster_scene.instantiate()
+		monster_instance.player = player
 		ySortingContainer.add_child(monster_instance)
 		monster_instance.global_position = spawn_position
 		if randf() < 0.6:
@@ -125,5 +126,17 @@ func _on_day_timeout() -> void:
 	else:
 		Global.dayTime = true
 		timer.start()
-		
+
+func _on_monster_timer_timeout() -> void:
+	if monster_instance == null and randf() < 0.5:
+		monster_instance = monster_scene.instantiate()
+		monster_instance.player = player
+		ySortingContainer.add_child(monster_instance)
+		var posx = randi_range(-1000, 1000)
+		var rand = randi_range(-1, 1)
+		while rand == 0:
+			rand = randi_range(-1, 1)
+		var posy = rand * (1000 - abs(posx))
+		monster_instance.global_position = player.global_position + Vector2(posx, posy)
 	
+	$monsterTimer.start(randi_range(30, 60))

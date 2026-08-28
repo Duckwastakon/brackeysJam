@@ -56,6 +56,12 @@ offset_bottom = 64.0
 [node name="Day" type="Timer" parent="." unique_id=1343260313]
 wait_time = 10.0
 
+[node name="monsterTimer" type="Timer" parent="." unique_id=1745496294]
+wait_time = 40.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="background/body" to="." method="_on_body_body_entered"]
 [connection signal="body_exited" from="background/load" to="." method="_on_load_body_exited"]
 [connection signal="timeout" from="Day" to="." method="_on_day_timeout"]
+[connection signal="timeout" from="monsterTimer" to="." method="_on_monster_timer_timeout"]
