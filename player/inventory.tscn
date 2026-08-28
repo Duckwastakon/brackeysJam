@@ -11,9 +11,45 @@
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcavu"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="LabelSettings" id="LabelSettings_sqil7"]
 font_color = Color(0, 0, 0, 1)
 outline_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jygep"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mswto"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_dpmf6"]
 outline_size = 4
@@ -39,13 +75,13 @@ label_settings = SubResource("LabelSettings_4rms4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="invSlot" type="ColorRect" parent="." unique_id=1055310263]
+[node name="invSlot" type="Panel" parent="." unique_id=1929340903]
 visible = false
 offset_left = 384.0
 offset_top = 512.0
 offset_right = 448.0
 offset_bottom = 576.0
-color = Color(1, 1, 1, 0.09803922)
+theme_override_styles/panel = SubResource("StyleBoxFlat_fcavu")
 
 [node name="Label" type="Label" parent="invSlot" unique_id=1469025909]
 z_index = 1
@@ -66,27 +102,28 @@ position = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 64.0
-offset_top = 448.0
+offset_top = 456.0
 offset_right = 320.0
-offset_bottom = 512.0
+offset_bottom = 520.0
 
-[node name="background" type="ColorRect" parent="health" unique_id=2114921211]
+[node name="background" type="Panel" parent="health" unique_id=1621960599]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 48.0
 offset_top = 24.0
-offset_right = 248.0
-offset_bottom = 40.0
-color = Color(0.53224236, 0.53224236, 0.53224236, 1)
+offset_right = 256.0
+offset_bottom = 48.0
 
 [node name="fill" type="ColorRect" parent="health/background" unique_id=1169170729]
 layout_mode = 0
-offset_right = 192.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 200.0
 offset_bottom = 16.0
 color = Color(1, 0.58370584, 0.5135992, 1)
 
 [node name="IconHeart" type="Sprite2D" parent="health" unique_id=1249735861]
 modulate = Color(0.99607843, 0.4862745, 0.5372549, 1)
-position = Vector2(24, 32)
+position = Vector2(24, 40)
 scale = Vector2(0.028125, 0.028125007)
 texture = ExtResource("2_hhxvs")
 
@@ -94,55 +131,57 @@ texture = ExtResource("2_hhxvs")
 layout_mode = 3
 anchors_preset = 0
 offset_left = 832.0
-offset_top = 448.0
+offset_top = 456.0
 offset_right = 1088.0
-offset_bottom = 512.0
+offset_bottom = 520.0
 
-[node name="background3" type="ColorRect" parent="warmth" unique_id=31855484]
+[node name="background3" type="Panel" parent="warmth" unique_id=1454324256]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 48.0
 offset_top = 24.0
-offset_right = 248.0
-offset_bottom = 40.0
-color = Color(0.53224236, 0.53224236, 0.53224236, 1)
+offset_right = 256.0
+offset_bottom = 48.0
 
 [node name="fill" type="ColorRect" parent="warmth/background3" unique_id=239162408]
 layout_mode = 0
-offset_right = 192.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 200.0
 offset_bottom = 16.0
 color = Color(0, 0.85005337, 0.8836335, 1)
 
 [node name="IconTemperature" type="Sprite2D" parent="warmth" unique_id=1345471215]
 modulate = Color(0.007843138, 0.83137256, 0.8, 1)
-position = Vector2(31.999975, 32.00001)
-scale = Vector2(0.031249993, 0.031250007)
+position = Vector2(23.999977, 32.00001)
+scale = Vector2(0.037499994, 0.03750001)
 texture = ExtResource("3_jygep")
 
 [node name="hunger" type="Control" parent="." unique_id=165997058]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 448.0
-offset_top = 448.0
+offset_top = 456.0
 offset_right = 704.0
-offset_bottom = 512.0
+offset_bottom = 520.0
 
-[node name="background2" type="ColorRect" parent="hunger" unique_id=752846547]
+[node name="background2" type="Panel" parent="hunger" unique_id=811382613]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 48.0
 offset_top = 24.0
-offset_right = 248.0
-offset_bottom = 40.0
-color = Color(0.53224236, 0.53224236, 0.53224236, 1)
+offset_right = 256.0
+offset_bottom = 48.0
 
 [node name="fill" type="ColorRect" parent="hunger/background2" unique_id=698780531]
 layout_mode = 0
-offset_right = 192.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 200.0
 offset_bottom = 16.0
 color = Color(0.9290363, 0.64221257, 0.4239976, 1)
 
 [node name="IconMeat" type="Sprite2D" parent="hunger" unique_id=228805333]
 modulate = Color(1, 0.61960787, 0.30588236, 1)
-position = Vector2(32, 32)
+position = Vector2(24, 32)
 scale = Vector2(0.025000006, 0.024999999)
 texture = ExtResource("4_mswto")
 
@@ -158,6 +197,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 56.0
 offset_bottom = 56.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_jygep")
 
 [node name="craftableImage" type="Sprite2D" parent="craftable" unique_id=694645284]
 position = Vector2(24, 24)
@@ -168,23 +208,29 @@ texture = ExtResource("2_4rms4")
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 128.0
-offset_bottom = 192.0
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 192.0
+offset_bottom = 208.0
 mouse_filter = 2
 script = ExtResource("2_dpmf6")
 
-[node name="ColorRect" type="ColorRect" parent="craftingInfo" unique_id=1250208943]
+[node name="Panel" type="Panel" parent="craftingInfo" unique_id=1955854872]
 layout_mode = 0
 offset_right = 128.0
-offset_bottom = 24.0
+offset_bottom = 40.0
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mswto")
 
 [node name="Label" type="Label" parent="craftingInfo" unique_id=22894273]
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 24.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 32.0
 text = "sword"
 label_settings = SubResource("LabelSettings_dpmf6")
+horizontal_alignment = 1
 
 [node name="delay" type="ColorRect" parent="." unique_id=191220741]
 visible = false

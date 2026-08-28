@@ -498,7 +498,7 @@ var resourceNodes = {
 		"damageTier": 0,
 	},
 	"rock": {
-		"png": "res://drawn assets/nature&rock/rockFormation.PNG",
+		"png": "res://drawn assets/nature&rock/rock_formation.PNG",
 		"scale": 1,
 		"multiDrop": false,
 		"drops": {
@@ -508,7 +508,7 @@ var resourceNodes = {
 			#	"maxAmount": 3,
 			#},
 			"rocks": {
-				"chance": 100,
+				"chance": 80,
 				"minAmount": 2,
 				"maxAmount": 3,
 			},

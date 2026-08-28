@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 var movingState = 0
-@export var maxSpeed = [500, 1000]
-@export var accelerations = [150, 250]
-@export var deceleration = 100
+const maxSpeed = [500, 1000]
+const accelerations = [150, 250]
+const deceleration = 100
 
 @onready var playerArt = $playerArt
 @onready var inventory = $inventory
@@ -24,6 +24,8 @@ var temperatureChange
 
 var cooldown = false
 
+var dead = false
+
 func _ready() -> void:
 	healthChange = inventory.changeHealth
 	hungerChange = inventory.changeHunger
@@ -35,6 +37,7 @@ func itemChanged(index):
 		equipItem(index)
 
 func _physics_process(delta: float) -> void:
+	if dead: return
 	var movementDirection = Vector2(Input.get_axis("left", "right"), 
 	Input.get_axis("up", "down")).normalized()
 	
@@ -66,6 +69,8 @@ func lockSpeed():
 			velocity.y = velocity.y / abs(velocity.y) * maxSpeed[movingState]
 
 func _input(event: InputEvent) -> void:
+	if dead: return
+	
 	if Input.is_action_just_pressed("shift"):
 		movingState = 1
 	if Input.is_action_just_released("shift") and movingState == 1:
@@ -80,6 +85,8 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("4"): equipItem(3)
 	if Input.is_action_just_pressed("5"): equipItem(4)
 	if Input.is_action_just_pressed("6"): equipItem(5)
+	if Input.is_action_just_pressed("7"): equipItem(6)
+	if Input.is_action_just_pressed("8"): equipItem(7)
 	
 	if Input.is_action_just_pressed("q"):
 		var droppedItem = inventory.dropItem(equipedSlot)
@@ -97,12 +104,13 @@ func _on_item_pickup_area_entered(area: Area2D) -> void:
 	if(inventory.pickUpItem(area.get_parent().itemName, area.get_parent().amount)):
 		area.get_parent().queue_free()
 
-func takeDamage(amount):
+func takeDamage(amount, deathText):
+	if dead: return
 	health -= amount
 	healthChange.emit(health)
 	
 	if health <= 0:
-		die()
+		die(deathText)
 
 func looseHunger(amount):
 	if movingState == 1:
@@ -110,7 +118,7 @@ func looseHunger(amount):
 	hunger -= amount
 	if hunger <= 0:
 		hunger = 0
-		takeDamage(10)
+		takeDamage(10, "you starved to death")
 	hungerChange.emit(hunger)
 
 func eat(foodItem):
@@ -125,10 +133,23 @@ func eat(foodItem):
 
 func changeTemperature(amount):
 	temperature += amount
+	if temperature <= 0:
+		temperature = 0
+		takeDamage(randi_range(7, 12), "You froze to death")
 	temperatureChange.emit(temperature)
 
-func die():
-	pass
+@onready var deathUI = $deathUI
+
+func die(deathText):
+	$hungerTimer.stop()
+	$warmthTimer.stop()
+	
+	dead = true
+	$playerArt.texture = load("res://drawn assets/player dead.PNG")
+	
+	CameraController.zoomInCamera(0.4)
+	
+	deathUI.activate(deathText)
 
 @onready var placingController = $placingController
 

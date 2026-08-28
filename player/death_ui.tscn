@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dgxksxrldbtq0"]
+
+[ext_resource type="Script" uid="uid://dcd3vuu40fdsa" path="res://player/death_ui.gd" id="1_j72s7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dc13"]
+bg_color = Color(1, 1, 1, 0.5882353)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j72s7"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_roh6y"]
+bg_color = Color(1, 1, 1, 0.78431374)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_j72s7"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0dc13"]
+font_size = 24
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="deathUI" type="CanvasLayer" unique_id=1429977294]
+script = ExtResource("1_j72s7")
+
+[node name="Control" type="Control" parent="." unique_id=1911928869]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control" unique_id=1203222729]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 400.0
+offset_right = 704.0
+offset_bottom = 432.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0dc13")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j72s7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_roh6y")
+
+[node name="Label" type="Label" parent="Control/Button" unique_id=853059149]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 32.0
+text = "return to menu"
+label_settings = SubResource("LabelSettings_j72s7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control" unique_id=1670542840]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 280.0
+offset_right = 720.0
+offset_bottom = 359.0
+text = "you starved to death"
+label_settings = SubResource("LabelSettings_0dc13")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

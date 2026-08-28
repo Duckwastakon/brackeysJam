@@ -5,7 +5,7 @@ var invAmounts = []
 
 var surroundingPlaceables = []
 
-@export var inventorySize = 6
+@export var inventorySize = 8
 @onready var invSlot = $invSlot
 @onready var slotContainer = $container
 
@@ -42,14 +42,15 @@ func newTemperature(amount):
 	updateBar($warmth, amount)
 
 func drawInventory():
-	var allSlotSize = 64*inventorySize
+	var gapSize = 8
+	var allSlotSize = 64*inventorySize + gapSize * (inventorySize-1)
 	
 	for i in inventorySize:
 		var newInvSlot = invSlot.duplicate()
 		
 		slotContainer.add_child(newInvSlot)
 		newInvSlot.visible = true
-		newInvSlot.position = Vector2(slotContainer.size.x/2 - allSlotSize/2 + 64*i,0)
+		newInvSlot.position = Vector2(slotContainer.size.x/2 - allSlotSize/2 + 64*i + gapSize*(i-1),0)
 		newInvSlot.get_child(0).text = ""
 	
 	equipItem(0)
@@ -75,9 +76,9 @@ func equipItem(ind):
 	Global.equippedIndex = ind  # --------------------------------------------------------------------------- Niko added this
 	for i in slotContainer.get_child_count():
 		if i == ind:
-			slotContainer.get_child(i).color = Color.from_rgba8(255, 255, 255, 50)
+			slotContainer.get_child(i).modulate = Color.from_rgba8(255, 255, 255, 175)
 		else:
-			slotContainer.get_child(i).color = Color.from_rgba8(255, 255, 255, 25)
+			slotContainer.get_child(i).modulate = Color.from_rgba8(255, 255, 255, 120)
 	$equipedItemName.text = inventory[ind]
 	return([inventory[ind], invAmounts[ind]])
 
@@ -242,7 +243,7 @@ func showData(itemName, btn):
 	else:
 		dataShowcase.get_child(1).text = itemName
 	
-	dataShowcase.get_child(0).size = Vector2(128, 24*(data.size()+1))
+	dataShowcase.get_child(0).size = Vector2(128, 4 + 28*(data.size()+1))
 	
 	var i = 1
 	for resourceName in data:
@@ -253,7 +254,7 @@ func showData(itemName, btn):
 		
 		newText.text = txt
 		dataShowcase.add_child(newText)
-		newText.position = Vector2(0, 24 * i)
+		newText.position = Vector2(8, 28 * i)
 		i+=1
 
 func hideData(btn):
@@ -261,7 +262,7 @@ func hideData(btn):
 		dataShowcase.visible = false
 
 func updateBar(bar: Control, amount: float):
-	var background: ColorRect = bar.get_child(0)
+	var background: Panel = bar.get_child(0)
 	var fill: ColorRect = background.get_child(0)
 	
 	var blinkingIndicator = fill.duplicate()

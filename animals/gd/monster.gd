@@ -134,7 +134,9 @@ func _on_player_searching_area_entered(area: Area2D) -> void:
 
 func _on_damage_area_entered(area: Area2D) -> void:
 	if area == $playerSearching: return
-	area.get_parent().takeDamage(25)
+	if area.get_parent().dead == true: return
+	
+	area.get_parent().takeDamage(60, "The monster killed you")
 	leave()
 	#pause = true
 	
