@@ -8,8 +8,13 @@ signal damage
 var healthShowcaseTween: Tween
 
 var resourceChances = {
-	"tree": 60,
-	"rock": 0,
+	"apple tree": 90,
+	"cherry bush": 80,
+	"bush": 60,
+	"gold tree": 50,
+	"tree": 45,
+	"rock": 15,
+	"iron rock": 0,
 }
 
 const resource = preload("res://resources/dropped_item.tscn")

@@ -27,10 +27,10 @@ position = Vector2(320, 320)
 [node name="background" type="ColorRect" parent="." unique_id=1830299228]
 offset_right = 640.0
 offset_bottom = 640.0
-color = Color(0.2357319, 0.23573193, 0.2357319, 1)
+color = Color(0.6190818, 0.6190818, 0.6190819, 1)
 
 [node name="Paper" type="Sprite2D" parent="background" unique_id=1432470522]
-modulate = Color(1, 1, 1, 0.47058824)
+modulate = Color(1, 1, 1, 0)
 position = Vector2(320, 320.00003)
 scale = Vector2(1.2190477, 1.8285716)
 texture = ExtResource("2_kxmgb")

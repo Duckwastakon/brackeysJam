@@ -45,7 +45,7 @@ func reveal() -> void:
 	
 	pause = true
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.8).timeout
 	pause = false
 	$damage/CollisionShape2D.disabled = false
 

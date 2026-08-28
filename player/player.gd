@@ -120,7 +120,7 @@ func eat(foodItem):
 	healthChange.emit(health)
 	hungerChange.emit(hunger)
 	inventory.removeItem(foodItem, 1)
-	await inventory.delay(3)
+	await inventory.delay(0.8)
 	cooldown = false
 
 func changeTemperature(amount):
@@ -149,7 +149,6 @@ func startPlacing():
 	placingController.visible = true
 	placingController.get_child(0).texture = load(CraftableItems.items[equipedItem]["png"])
 	placingController.get_child(0).scale = Vector2(CraftableItems.items[equipedItem]["scale"], CraftableItems.items[equipedItem]["scale"])
-	
 
 func stopPlacing():
 	placingController.visible = false
@@ -179,7 +178,7 @@ func mouseClicked():
 
 func _on_hunger_timer_timeout() -> void:
 	looseHunger(randi_range(3, 5))
-	$hungerTimer.wait_time = randf_range(0.8, 1.5)
+	$hungerTimer.wait_time = randf_range(2.8, 7)
 	$hungerTimer.start()
 
 func _on_warmth_timer_timeout() -> void:

@@ -50,12 +50,12 @@ func zoomInCamera(amount):
 	var currentCam: Camera2D = get_viewport().get_camera_2d()
 	
 	var newTween = create_tween()
-	newTween.tween_property(currentCam, "zoom", Vector2(0.75 + amount, 0.75 + amount), 0.4)
+	newTween.tween_property(currentCam, "zoom", Vector2(0.9 + amount, 0.9 + amount), 0.4)
 	newTween.play()
 
 func unZoomCamera():
 	var currentCam: Camera2D = get_viewport().get_camera_2d()
 	
 	var newTween = create_tween()
-	newTween.tween_property(currentCam, "zoom", Vector2(0.75, 0.75), 0.4)
+	newTween.tween_property(currentCam, "zoom", Vector2(0.9, 0.9), 0.4)
 	newTween.play()
