@@ -14,12 +14,17 @@ config/name="brackeysJam"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dbajksq72cq4w"
+
 [autoload]
 
 Global="*uid://7ichyk2gekxj"
 CraftableItems="*uid://c6smdl5rtjks5"
 AnimalData="*uid://dudwexie2sjh2"
 CameraController="*uid://cf0vjnqnwccb4"
+Transition="*uid://c10laslh2eulm"
 
 [display]
 
@@ -28,7 +33,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

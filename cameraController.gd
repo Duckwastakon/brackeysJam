@@ -3,6 +3,7 @@ extends Node
 var shakeTime = 0
 
 func shakeCamera(intensity: float):
+	intensity *= Global.shake_intensity
 	var currentCam: Camera2D = get_viewport().get_camera_2d()
 	
 	if shakeTime <= 0:
@@ -27,6 +28,7 @@ func shakeCamera(intensity: float):
 var shaking = false
 
 func infShake(intensity):
+	intensity *= Global.shake_intensity
 	var currentCam: Camera2D = get_viewport().get_camera_2d()
 	shaking = true
 	

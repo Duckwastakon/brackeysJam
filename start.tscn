@@ -1,18 +1,82 @@
 [gd_scene format=3 uid="uid://bpwyk7d2hh1rn"]
 
+[ext_resource type="Texture2D" uid="uid://5tqol34svhwn" path="res://drawn assets/ui/cog.PNG" id="1_ots34"]
+[ext_resource type="Script" uid="uid://rfw033neh7n0" path="res://start.gd" id="1_qn1rc"]
+[ext_resource type="Script" uid="uid://c2wbalac5keno" path="res://settings.gd" id="3_1n0d2"]
+[ext_resource type="Texture2D" uid="uid://cwydavob4413y" path="res://drawn assets/nature&rock/tree.PNG" id="4_y5hus"]
+[ext_resource type="Texture2D" uid="uid://dtk6ydc7bdkuv" path="res://drawn assets/animals/player.PNG" id="5_oiuna"]
+[ext_resource type="Texture2D" uid="uid://2emhwtqfrjrn" path="res://drawn assets/animals/rabbit.png" id="6_4a3qj"]
+[ext_resource type="Script" uid="uid://c3kj5ktpt6ybv" path="res://musicslider.gd" id="7_g38d0"]
+[ext_resource type="Script" uid="uid://do6x7pesdes3d" path="res://sfx_slider.gd" id="8_pob1m"]
+[ext_resource type="Script" uid="uid://drwxluxlim0p7" path="res://shake_slider.gd" id="9_gophc"]
+[ext_resource type="Script" uid="uid://c8g2eg8721ww2" path="res://window_menu.gd" id="10_p0nl4"]
+
 [node name="start" type="Node2D" unique_id=1343881043]
+script = ExtResource("1_qn1rc")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1862715656]
+[node name="Panel" type="PanelContainer" parent="." unique_id=1432948446]
+offset_left = 1156.0
+offset_top = 11.0
+offset_right = 1986.0
+offset_bottom = 636.0
 
-[node name="Control" type="Control" parent="." unique_id=1725675940]
+[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=20921038]
+layout_mode = 2
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
+
+[node name="player" type="Sprite2D" parent="Panel" unique_id=2008162162]
+position = Vector2(119.000015, 382)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_oiuna")
+flip_h = true
+
+[node name="Tree" type="Sprite2D" parent="Panel" unique_id=898105507]
+position = Vector2(666, 343)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_y5hus")
+
+[node name="Rabbit" type="Sprite2D" parent="Panel" unique_id=727282140]
+position = Vector2(363, 294)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_4a3qj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1591040519]
+offset_left = 1156.0
+offset_top = 593.0
+offset_right = 1987.0
+offset_bottom = 636.0
+color = Color(0.32690775, 0.32690796, 0.32690778, 0.39215687)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1064702843]
+offset_left = 1156.0
+offset_top = 11.0
+offset_right = 1987.0
+offset_bottom = 54.0
+color = Color(0.32690775, 0.32690796, 0.32690778, 0.39215687)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=210547673]
+offset_left = 1199.0
+offset_top = 54.495148
+offset_right = 1737.5074
+offset_bottom = 97.49515
+rotation = 1.5707964
+color = Color(0.32690775, 0.32690796, 0.32690778, 0.39215687)
+
+[node name="ColorRect5" type="ColorRect" parent="." unique_id=1004434276]
+offset_left = 1986.0
+offset_top = 54.0
+offset_right = 2524.5073
+offset_bottom = 97.0
+rotation = 1.5707964
+color = Color(0.32690775, 0.32690796, 0.32690778, 0.39215687)
+
+[node name="first" type="Control" parent="." unique_id=1725675940]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -573.0
-offset_top = -322.0
-offset_right = 573.0
-offset_bottom = 324.0
+offset_right = 1146.0
+offset_bottom = 646.0
 
-[node name="ColorRect" type="ColorRect" parent="Control" unique_id=371622408]
+[node name="background" type="ColorRect" parent="first" unique_id=371622408]
 layout_mode = 0
 offset_left = -3.0
 offset_top = -2.0
@@ -20,21 +84,41 @@ offset_right = 1148.0
 offset_bottom = 649.0
 color = Color(0.19973177, 0.19973174, 0.19973174, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Control" unique_id=840490426]
+[node name="ColorRect2" type="ColorRect" parent="first" unique_id=840490426]
 layout_mode = 0
 offset_left = 387.0
 offset_top = -2.0
 offset_right = 762.0
 offset_bottom = 647.0
-color = Color(0.8196546, 0.8196545, 0.8196545, 1)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=686103039]
+[node name="ColorRect3" type="ColorRect" parent="first" unique_id=652203875]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -2.0
+offset_right = 393.0
+offset_bottom = 183.0
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=381227848]
-offset_left = -185.0
-offset_top = -278.0
-offset_right = 190.0
-offset_bottom = -196.0
+[node name="settings" type="TextureButton" parent="first" unique_id=1635856461]
+layout_mode = 0
+offset_left = -61.999992
+offset_top = -152.00002
+offset_right = 2506.0
+offset_bottom = 2416.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("1_ots34")
+texture_pressed = ExtResource("1_ots34")
+texture_hover = ExtResource("1_ots34")
+script = ExtResource("3_1n0d2")
+metadata/_edit_lock_ = true
+
+[node name="Game name" type="RichTextLabel" parent="first" unique_id=381227848]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 80.0
+offset_right = 634.0
+offset_bottom = 163.0
 theme_override_colors/default_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_font_sizes/normal_font_size = 60
 text = "Game name"
@@ -42,17 +126,194 @@ fit_content = true
 tab_size = 8
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Control/CanvasLayer" unique_id=343309911]
-offset_left = -58.0
-offset_top = -109.0
-offset_right = 71.0
-offset_bottom = -78.0
+[node name="start" type="Button" parent="first" unique_id=343309911]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 422.0
+offset_right = 740.0
+offset_bottom = 478.0
 text = "Start"
 
-[node name="Button2" type="Button" parent="Control/CanvasLayer" unique_id=428536427]
-offset_left = -58.0
-offset_top = -19.0
-offset_right = 71.0
-offset_bottom = 12.0
-text = "Settings
+[node name="exit" type="Button" parent="first" unique_id=1140293639]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 526.0
+offset_right = 741.0
+offset_bottom = 582.0
+text = "Exit
 "
+
+[node name="first2" type="Control" parent="." unique_id=1564005408]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2000.0
+offset_right = 3146.0
+offset_bottom = 646.0
+
+[node name="background" type="ColorRect" parent="first2" unique_id=1464860519]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -2.0
+offset_right = 1148.0
+offset_bottom = 649.0
+color = Color(0.19973177, 0.19973174, 0.19973174, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="first2" unique_id=1091508185]
+layout_mode = 0
+offset_left = 387.0
+offset_top = -2.0
+offset_right = 762.0
+offset_bottom = 647.0
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="first2" unique_id=1928564648]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -2.0
+offset_right = 393.0
+offset_bottom = 183.0
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
+
+[node name="settings2" type="TextureButton" parent="first2" unique_id=95202943]
+layout_mode = 0
+offset_left = 489.99994
+offset_top = -159.00002
+offset_right = 3058.0
+offset_bottom = 2409.0
+rotation = 1.5707964
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("1_ots34")
+texture_pressed = ExtResource("1_ots34")
+texture_hover = ExtResource("1_ots34")
+script = ExtResource("3_1n0d2")
+
+[node name="Settings name" type="RichTextLabel" parent="first2" unique_id=2038023386]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 80.0
+offset_right = 634.0
+offset_bottom = 163.0
+theme_override_colors/default_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/normal_font_size = 60
+text = "Settings"
+fit_content = true
+tab_size = 8
+horizontal_alignment = 1
+
+[node name="music" type="Control" parent="first2" unique_id=519763547]
+anchors_preset = 0
+offset_left = -2000.0
+offset_right = -1960.0
+offset_bottom = 40.0
+
+[node name="musicslider" type="HSlider" parent="first2/music" unique_id=832291096]
+layout_mode = 0
+offset_left = 2419.0
+offset_top = 369.0
+offset_right = 2679.0
+offset_bottom = 385.0
+script = ExtResource("7_g38d0")
+
+[node name="music" type="Label" parent="first2/music" unique_id=1765081579]
+layout_mode = 0
+offset_left = 2420.0
+offset_top = 338.0
+offset_right = 2529.0
+offset_bottom = 361.0
+text = "Music Volume"
+
+[node name="number" type="Label" parent="first2/music" unique_id=1421802671]
+layout_mode = 0
+offset_left = 2692.0
+offset_top = 365.0
+offset_right = 2732.0
+offset_bottom = 388.0
+
+[node name="sfx" type="Control" parent="first2" unique_id=796556687]
+anchors_preset = 0
+offset_left = -2000.0
+offset_right = -1960.0
+offset_bottom = 40.0
+
+[node name="SFX slider" type="HSlider" parent="first2/sfx" unique_id=546663895]
+layout_mode = 0
+offset_left = 2419.0
+offset_top = 432.0
+offset_right = 2679.0
+offset_bottom = 448.0
+script = ExtResource("8_pob1m")
+
+[node name="SFX" type="Label" parent="first2/sfx" unique_id=2060855638]
+layout_mode = 0
+offset_left = 2420.0
+offset_top = 401.0
+offset_right = 2529.0
+offset_bottom = 424.0
+text = "SFX Volume"
+
+[node name="number" type="Label" parent="first2/sfx" unique_id=1307934079]
+layout_mode = 0
+offset_left = 2689.0
+offset_top = 430.0
+offset_right = 2729.0
+offset_bottom = 453.0
+
+[node name="shake" type="Control" parent="first2" unique_id=842577612]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="shake slider" type="HSlider" parent="first2/shake" unique_id=1551799652]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 495.0
+offset_right = 679.0
+offset_bottom = 511.0
+script = ExtResource("9_gophc")
+
+[node name="shake2" type="Label" parent="first2/shake" unique_id=469161333]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 464.0
+offset_right = 529.0
+offset_bottom = 487.0
+text = "Screen shake"
+
+[node name="number" type="Label" parent="first2/shake" unique_id=2121366890]
+layout_mode = 0
+offset_left = 687.0
+offset_top = 493.0
+offset_right = 727.0
+offset_bottom = 516.0
+
+[node name="window" type="Control" parent="first2" unique_id=562709376]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Windowed" type="Label" parent="first2/window" unique_id=392191826]
+layout_mode = 0
+offset_left = 573.0
+offset_top = 532.0
+offset_right = 706.0
+offset_bottom = 555.0
+text = "Windows options"
+
+[node name="Window menu" type="MenuButton" parent="first2/window" unique_id=1343599867]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 526.0
+offset_right = 534.0
+offset_bottom = 562.0
+text = "Windowed"
+script = ExtResource("10_p0nl4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1862715656]
+position = Vector2(1548, 324)
+
+[connection signal="pressed" from="first/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="first/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="first/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="first2/settings2" to="." method="_on_settings_2_pressed"]
+[connection signal="value_changed" from="first2/music/musicslider" to="first2/music/musicslider" method="_on_value_changed"]
+[connection signal="value_changed" from="first2/sfx/SFX slider" to="first2/sfx/SFX slider" method="_on_value_changed"]
