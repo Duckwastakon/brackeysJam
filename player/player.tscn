@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://di3impjd3xs1x" path="res://player/placingController.gd" id="5_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://dgxksxrldbtq0" path="res://player/death_ui.tscn" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://bbksmisedkw6x" path="res://player/action_info_text.tscn" id="7_boad6"]
+[ext_resource type="PackedScene" uid="uid://cyrtqywl6pyuq" path="res://book.tscn" id="8_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(48, 48)
@@ -109,6 +110,8 @@ linear_accel_min = -20.0
 linear_accel_max = -10.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_boad6")
+
+[node name="Book" parent="." unique_id=1248501636 instance=ExtResource("8_rgyib")]
 
 [connection signal="area_entered" from="itemPickup" to="." method="_on_item_pickup_area_entered"]
 [connection signal="area_entered" from="placeableEnter" to="." method="_on_placeable_enter_area_entered"]

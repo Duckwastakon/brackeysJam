@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cyrtqywl6pyuq"]
+
+[ext_resource type="Texture2D" uid="uid://bsq18d0dx4cn8" path="res://drawn assets/ui/book.PNG" id="1_kh36y"]
+[ext_resource type="Script" uid="uid://ofe1bxl7elti" path="res://texture_button.gd" id="2_y0hms"]
+[ext_resource type="Script" uid="uid://b24x6nwuh71vf" path="res://v_box_container.gd" id="3_fijbg"]
+
+[node name="Book" type="CanvasLayer" unique_id=1248501636]
+layer = 100
+
+[node name="RecipePanel" type="PanelContainer" parent="." unique_id=2014203205]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RecipePanel" unique_id=892023695]
+layout_mode = 2
+
+[node name="info" type="Label" parent="RecipePanel/VBoxContainer" unique_id=412957859]
+layout_mode = 2
+text = "info"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RecipePanel/VBoxContainer" unique_id=2075862601]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RecipePanel/VBoxContainer/ScrollContainer" unique_id=1829933376]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_fijbg")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=167011963]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = -162.00003
+offset_right = 2534.0
+offset_bottom = 2398.0
+grow_horizontal = 0
+rotation = 1.0589215
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("1_kh36y")
+stretch_mode = 1
+script = ExtResource("2_y0hms")
+
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

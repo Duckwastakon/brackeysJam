@@ -75,6 +75,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1146.0
 offset_bottom = 646.0
+metadata/_edit_use_anchors_ = true
 
 [node name="background" type="ColorRect" parent="first" unique_id=371622408]
 layout_mode = 0
@@ -310,6 +311,14 @@ script = ExtResource("10_p0nl4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1862715656]
 position = Vector2(1548, 324)
+
+[node name="Label" type="Label" parent="." unique_id=878153724]
+offset_left = 68.0
+offset_top = 141.0
+offset_right = 146.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 20
+text = "Settings"
 
 [connection signal="pressed" from="first/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="first/start" to="." method="_on_start_pressed"]

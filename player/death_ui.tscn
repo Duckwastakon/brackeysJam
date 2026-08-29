@@ -87,3 +87,5 @@ label_settings = SubResource("LabelSettings_0dc13")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
