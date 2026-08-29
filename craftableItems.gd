@@ -64,6 +64,7 @@ var items = {
 		"stackable": true,
 		"png": "res://drawn assets/materials/iron smelted.PNG",
 		"scale": 0.08,
+		"desc": "Like Iron ore but is useful on crafting tools and more"
 	},
 	"wood pickaxe": {
 		"points" : 26,
@@ -76,6 +77,7 @@ var items = {
 		"dmg": 2,
 		"dmgMultiplier": 3,
 		"cooldown": 2,
+		"desc": "A basic picaxe carved from wood. Better than fists, worse than everything else."
 	},
 	"stone pickaxe": {
 		"points" : 30,
@@ -88,6 +90,7 @@ var items = {
 		"dmg": 3,
 		"dmgMultiplier": 4,
 		"cooldown": 1.8,
+		"desc": "A stone picaxe. Can never be let down by a classic."
 	},
 	"iron pickaxe": {
 		"points" : 60,
@@ -100,6 +103,7 @@ var items = {
 		"dmg": 3,
 		"dmgMultiplier": 5,
 		"cooldown": 1.4,
+		"desc": "An iron picaxe. Able to smash anything and everything. A great tool."
 	},
 	"wood sword": {
 		"points" : 26,
@@ -111,7 +115,8 @@ var items = {
 		"tier": 0,
 		"dmg": 1,
 		"dmgMultiplier": 2,
-		"cooldown": 2.5
+		"cooldown": 2.5,
+		"desc": "A basic sword carved from wood. Better than fists, worse than everything else."
 	},
 	"stone sword": {
 		"points" : 26,
@@ -124,6 +129,7 @@ var items = {
 		"dmg": 1,
 		"dmgMultiplier": 5,
 		"cooldown": 1.9,
+		"desc": "A stone sword. Can never be let down by a classic."
 	},
 	"iron sword": {
 		"points" : 75,
@@ -136,6 +142,7 @@ var items = {
 		"dmg": 1,
 		"dmgMultiplier": 20,
 		"cooldown": 1.75,
+		"desc": "An iron sword. Able to cut through anything and everything. A great tool."
 	},
 	"wood axe": {
 		"points" : 26,
@@ -147,7 +154,8 @@ var items = {
 		"tier": 1,
 		"dmg": 1,
 		"dmgMultiplier": 4,
-		"cooldown": 2
+		"cooldown": 2,
+		"desc": "A basic axe carved from wood. Better than fists, worse than everything else."
 	},
 	"stone axe": {
 		"points" : 40,
@@ -159,7 +167,8 @@ var items = {
 		"tier": 2,
 		"dmg": 2,
 		"dmgMultiplier": 5,
-		"cooldown": 2
+		"cooldown": 2,
+		"desc": "A stone axe. Can never be let down by a classic."
 	},
 	"iron axe": {
 		"points" : 80,
@@ -171,7 +180,8 @@ var items = {
 		"tier": 3,
 		"dmg": 5,
 		"dmgMultiplier": 5,
-		"cooldown": 1.5
+		"cooldown": 1.5,
+		"desc": "An iron axe. Able to cut down and everything. A great tool."
 	},
 	"campfire": {
 		"points" : 15,
@@ -179,6 +189,7 @@ var items = {
 		"stackable": false,
 		"png": "res://drawn assets/builds/campfire.PNG",
 		"scale": 0.05,
+		"desc": "A source of heat in any situation."
 	},
 	"smelter": {
 		"points" : 20,
@@ -186,6 +197,7 @@ var items = {
 		"stackable": false,
 		"png": "res://drawn assets/builds/furnaceon.PNG",
 		"scale": 0.05,
+		"desc": "Aids in smelting both food and ore into their ideal states."
 	},
 	"crafting table": {
 		"points" : 15,
@@ -193,6 +205,7 @@ var items = {
 		"stackable": false,
 		"png": "res://drawn assets/builds/crafter.PNG",
 		"scale": 0.05,
+		"desc": "For a creative mind, a place to work is all that is needed. A table for more difficult crafts."
 	},
 	"apple": {
 		"points": 10,
@@ -229,6 +242,7 @@ var items = {
 		"stackable": true,
 		"foodScore": 40,
 		"heal": 15,
+		"desc": "Meat. But its not bad for your stomach!"
 	}
 }
 
