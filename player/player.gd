@@ -8,6 +8,8 @@ const deceleration = 100
 @onready var playerArt = $playerArt
 @onready var inventory = $inventory
 @onready var attackingController = $AttackingController
+@onready var actionTextController = $actionInfoText
+@onready var moveParticles = $moveParticles
 
 const itemPrefab = preload("res://resources/dropped_item.tscn")
 
@@ -37,6 +39,7 @@ func itemChanged(index):
 		equipItem(index)
 
 func _physics_process(delta: float) -> void:
+	moveParticles.emitting = velocity != Vector2.ZERO
 	if dead: return
 	var movementDirection = Vector2(Input.get_axis("left", "right"), 
 	Input.get_axis("up", "down")).normalized()
@@ -52,6 +55,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, deceleration)
 		velocity.y = move_toward(velocity.y, 0, deceleration)
+	
 	
 	Global.wobble(playerArt, velocity)
 	move_and_slide()
@@ -73,8 +77,10 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("shift"):
 		movingState = 1
+		moveParticles.speed_scale = 1.5
 	if Input.is_action_just_released("shift") and movingState == 1:
 		movingState = 0
+		moveParticles.speed_scale = 1
 	
 	if Input.is_action_just_pressed("click"):
 		mouseClicked()
@@ -106,6 +112,7 @@ func _on_item_pickup_area_entered(area: Area2D) -> void:
 
 func takeDamage(amount, deathText):
 	if dead: return
+	actionTextController.makeText("Ouch")
 	health -= amount
 	healthChange.emit(health)
 	
@@ -117,12 +124,14 @@ func looseHunger(amount):
 		amount *= 2
 	hunger -= amount
 	if hunger <= 0:
+		actionTextController.makeText("Starving")
 		hunger = 0
 		takeDamage(10, "you starved to death")
 	hungerChange.emit(hunger)
 
 func eat(foodItem):
 	var data = CraftableItems.items[foodItem]
+	actionTextController.makeText("Nom")
 	hunger += data["foodScore"]
 	health += data["heal"]
 	healthChange.emit(health)
@@ -134,6 +143,7 @@ func eat(foodItem):
 func changeTemperature(amount):
 	temperature += amount
 	if temperature <= 0:
+		actionTextController.makeText("Cold")
 		temperature = 0
 		takeDamage(randi_range(7, 12), "You froze to death")
 	temperatureChange.emit(temperature)
@@ -179,18 +189,21 @@ func mouseClicked():
 	cooldown = true
 	if(equipedItem == ""):
 		attackingController.swingSignal.emit("fists")
+		actionTextController.makeText("Swing")
 		await inventory.delay(2.5)
 		cooldown = false
 		return
 	var equipedItemType = CraftableItems.items[equipedItem]["type"]
 	if equipedItemType == "item":
 		attackingController.swingSignal.emit("fists")
+		actionTextController.makeText("Swing")
 		await inventory.delay(2.5)
 	elif equipedItemType == "food":
 		eat(equipedItem)
 		return
 	elif equipedItemType == "tool":
 		attackingController.swingSignal.emit(equipedItem)
+		actionTextController.makeText("Swing")
 		await inventory.delay(CraftableItems.items[equipedItem]["cooldown"])
 	elif equipedItemType == "placeable":
 		if(placingController.placeBuild(equipedItem)):

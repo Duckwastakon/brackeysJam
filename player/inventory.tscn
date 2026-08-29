@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cbn6k4hir1roy" path="res://drawn assets/ui/icon temperature.PNG" id="3_jygep"]
 [ext_resource type="Texture2D" uid="uid://b0hwpbatxtag5" path="res://drawn assets/ui/icon meat.PNG" id="4_mswto"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_jygep"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_4rms4"]
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
@@ -39,6 +43,30 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymg6f"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0cee"]
+bg_color = Color(0.7514611, 0.7514611, 0.75146097, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mswto"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 4
@@ -55,8 +83,23 @@ corner_radius_bottom_left = 8
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j2au"]
+bg_color = Color(0.3083999, 0.30839992, 0.30839977, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8vh0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="inventory" type="CanvasLayer" unique_id=313071139]
 script = ExtResource("1_sqil7")
+labelSettings = SubResource("LabelSettings_jygep")
 
 [node name="container" type="Control" parent="." unique_id=1815920908]
 layout_mode = 3
@@ -190,19 +233,27 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 320.0
 offset_bottom = 384.0
+mouse_filter = 2
 
 [node name="craftable" type="Button" parent="." unique_id=837457257]
 visible = false
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 56.0
-offset_bottom = 56.0
+offset_left = -128.0
+offset_top = -56.0
+offset_right = -80.0
+offset_bottom = -8.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_jygep")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ymg6f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g0cee")
 
 [node name="craftableImage" type="Sprite2D" parent="craftable" unique_id=694645284]
 position = Vector2(24, 24)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_4rms4")
+
+[node name="TextureRect" type="TextureRect" parent="craftable" unique_id=106140818]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
 
 [node name="craftingInfo" type="Control" parent="." unique_id=2047304642]
 visible = false
@@ -232,15 +283,16 @@ text = "sword"
 label_settings = SubResource("LabelSettings_dpmf6")
 horizontal_alignment = 1
 
-[node name="delay" type="ColorRect" parent="." unique_id=191220741]
+[node name="delay" type="Panel" parent="." unique_id=511477144]
 visible = false
 offset_left = 128.0
 offset_top = 616.0
 offset_right = 1024.0
 offset_bottom = 624.0
-color = Color(0.326184, 0.326184, 0.32618397, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_5j2au")
 
-[node name="fill" type="ColorRect" parent="delay" unique_id=1391116311]
+[node name="fill" type="Panel" parent="delay" unique_id=354236741]
 layout_mode = 0
 offset_right = 896.0
 offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x8vh0")

@@ -172,6 +172,8 @@ func checkHasSpace(itemName, cost):
 	
 	return false
 
+@export var labelSettings: LabelSettings
+
 func craft(itemName, costs, btn: Button):
 	if(crafting): return
 	if(!checkHasSpace(itemName, costs)): return
@@ -188,10 +190,23 @@ func craft(itemName, costs, btn: Button):
 	colorRectInd.scale = Vector2(1, 0)
 	colorRectInd.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
+	var timeLeft: float = float(craftingTime)
+	
+	var craftingTimeDisplay: Label = Label.new()
+	craftingTimeDisplay.size = Vector2(btn.size.x, btn.size.y)
+	craftingTimeDisplay.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	craftingTimeDisplay.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	craftingTimeDisplay.label_settings = labelSettings
+	btn.add_child(craftingTimeDisplay)
+	
 	var timerTween = create_tween()
 	timerTween.tween_property(colorRectInd, "scale", Vector2(1, -1), craftingTime)
 	timerTween.play()
-	await timerTween.finished
+	while timeLeft > 0:
+		craftingTimeDisplay. text = str(timeLeft)
+		await get_tree().create_timer(0.1).timeout
+		timeLeft -= 0.1
+	
 	for item in costs:
 		removeItem(item, costs[item])
 	addItem(itemName, 1)
@@ -199,6 +214,8 @@ func craft(itemName, costs, btn: Button):
 	
 	crafting = false
 	timerTween.kill()
+	
+	craftingTimeDisplay.queue_free()
 	if(colorRectInd):
 		colorRectInd.queue_free()
 

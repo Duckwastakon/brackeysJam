@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bbksmisedkw6x"]
+
+[ext_resource type="Script" uid="uid://drv8ts3itjvhd" path="res://player/action_info_text.gd" id="1_2eulw"]
+
+[node name="actionInfoText" type="Node2D" unique_id=1895944469]
+script = ExtResource("1_2eulw")
