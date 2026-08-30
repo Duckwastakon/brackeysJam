@@ -4,9 +4,6 @@ extends Control
 @onready var first = $Start/first
 @onready var second = $Start/second
 @onready var third = $Start/third
-@onready var text = $Start/test/text
-@onready var test = $Start/test/MenuBar
-@onready var heading = $Start/test/heading
 
 var start = 715.0
 var end = 37.0

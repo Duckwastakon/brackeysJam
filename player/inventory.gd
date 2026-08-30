@@ -101,6 +101,7 @@ func canPickup(itemName):
 func pickUpItem(itemName, amount = 1):
 	var result = canPickup(itemName)
 	if(result):
+		AudioController.playSound("res://audios/pickup.mp3")
 		addItem(itemName, amount)
 	
 	return result

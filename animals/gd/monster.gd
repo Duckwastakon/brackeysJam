@@ -51,6 +51,7 @@ func reveal() -> void:
 
 func startChasing():
 	print("startChase")
+	AudioController.playSound("res://audios/horror.mp3")
 	CameraController.zoomInCamera(0.25)
 	CameraController.infShake(1)
 	chasing = true
