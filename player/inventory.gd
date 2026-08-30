@@ -23,8 +23,8 @@ signal updatedSlot
 
 func _ready() -> void:
 	for i in inventorySize:
-		inventory.append("")
-		invAmounts.append(0)
+		inventory.append("raw meat")
+		invAmounts.append(99)
 	
 	drawInventory()
 	
@@ -203,7 +203,8 @@ func craft(itemName, costs, btn: Button):
 	timerTween.tween_property(colorRectInd, "scale", Vector2(1, -1), craftingTime)
 	timerTween.play()
 	while timeLeft > 0:
-		craftingTimeDisplay.text = str(timeLeft)
+		if(craftingTimeDisplay != null):
+			craftingTimeDisplay.text = str(timeLeft)
 		await get_tree().create_timer(0.1).timeout
 		timeLeft -= 0.1
 	
@@ -214,7 +215,8 @@ func craft(itemName, costs, btn: Button):
 	
 	timerTween.kill()
 	
-	craftingTimeDisplay.queue_free()
+	if craftingTimeDisplay != null:
+		craftingTimeDisplay.queue_free()
 	if(colorRectInd):
 		colorRectInd.queue_free()
 	
