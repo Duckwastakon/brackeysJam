@@ -78,11 +78,8 @@ func _on_timer_timeout() -> void:
 	sprite.queue_free()
 
 
-func _on_button_pressed() -> void:
-	var tween = create_tween()
-	tween.tween_property(Transition.fade, "color:a", 1.0, 0.4)
-	await tween.finished
-	get_tree().quit()
+func _on_button_pressed() -> void: 
+	Transition.change_scene("res://start.tscn")
 
 
 func _on_timer_2_timeout() -> void:

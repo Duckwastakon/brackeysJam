@@ -77,15 +77,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -68.5
+offset_left = -124.5
 offset_top = -69.0
-offset_right = 107.5
+offset_right = 163.5
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 disabled = true
-text = "Quit gaame"
+text = "Back to main menu"
 
 [node name="Timer" type="Timer" parent="." unique_id=67653620]
 wait_time = 10.0
