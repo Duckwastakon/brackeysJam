@@ -42,6 +42,7 @@ func getPosition():
 
 
 func _on_timer_timeout() -> void:
+	$ColorRect2/Button.disabled = false
 	var index = randi() % all.size()
 	var random_item = all[index]
 	var item_data = get_item_data(random_item)

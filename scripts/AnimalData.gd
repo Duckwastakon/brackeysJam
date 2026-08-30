@@ -27,8 +27,6 @@ var profiles = {
 	},
 }
 
-var phase = 1
-var change = 10
 var norm = 350
 var mon_speed
 
@@ -36,7 +34,7 @@ func _ready() -> void:
 	set_monster_speed()
 
 func set_monster_speed():
-	var current = norm + change * phase
+	var current = norm
 	if Global.dayTime:
 		mon_speed = current
 	else:

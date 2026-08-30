@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b38qm7ndcf6kg" path="res://drawn assets/ui/icon heart.PNG" id="2_hhxvs"]
 [ext_resource type="Texture2D" uid="uid://cbn6k4hir1roy" path="res://drawn assets/ui/icon temperature.PNG" id="3_jygep"]
 [ext_resource type="Texture2D" uid="uid://b0hwpbatxtag5" path="res://drawn assets/ui/icon meat.PNG" id="4_mswto"]
-[ext_resource type="Texture2D" uid="uid://5tqol34svhwn" path="res://drawn assets/ui/cog.PNG" id="7_fcavu"]
-[ext_resource type="Texture2D" uid="uid://bsq18d0dx4cn8" path="res://drawn assets/ui/book.PNG" id="7_mswto"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jygep"]
 outline_size = 4
@@ -240,22 +238,21 @@ mouse_filter = 2
 [node name="craftable" type="Button" parent="." unique_id=837457257]
 visible = false
 offset_left = -128.0
-offset_top = -56.0
-offset_right = -80.0
-offset_bottom = -8.0
+offset_top = -64.0
+offset_right = -64.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_jygep")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ymg6f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_g0cee")
 
 [node name="craftableImage" type="Sprite2D" parent="craftable" unique_id=694645284]
-position = Vector2(24, 24)
+position = Vector2(32, 32)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_4rms4")
 
 [node name="TextureRect" type="TextureRect" parent="craftable" unique_id=106140818]
 layout_mode = 0
-offset_right = 48.0
-offset_bottom = 48.0
+offset_right = 64.0
+offset_bottom = 64.0
 
 [node name="craftingInfo" type="Control" parent="." unique_id=2047304642]
 visible = false
@@ -298,25 +295,3 @@ layout_mode = 0
 offset_right = 896.0
 offset_bottom = 8.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_x8vh0")
-
-[node name="settings" type="Button" parent="." unique_id=1904402820]
-offset_left = 1056.0
-offset_top = 16.0
-offset_right = 1120.0
-offset_bottom = 80.0
-
-[node name="Book" type="Sprite2D" parent="settings" unique_id=1026453819]
-position = Vector2(32.00001, 32)
-scale = Vector2(0.06875002, 0.06875002)
-texture = ExtResource("7_fcavu")
-
-[node name="craftingRecipes" type="Button" parent="." unique_id=399204388]
-offset_left = 960.0
-offset_top = 16.0
-offset_right = 1024.0
-offset_bottom = 80.0
-
-[node name="Book" type="Sprite2D" parent="craftingRecipes" unique_id=601658479]
-position = Vector2(32, 32)
-scale = Vector2(0.04375, 0.04375)
-texture = ExtResource("7_mswto")

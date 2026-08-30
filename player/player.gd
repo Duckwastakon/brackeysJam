@@ -210,7 +210,6 @@ func mouseClicked():
 			inventory.dropItem(equipedSlot)
 	elif equipedItemType == "gun":
 		shootWeapon()
-		inventory.dropItem(equipedItem)
 	cooldown = false
 
 func _on_hunger_timer_timeout() -> void:
@@ -229,10 +228,10 @@ func calculateWarmthChange():
 	var amount = 0
 	var multiplier = 1
 	if(Global.dayTime):
-		amount -= randi_range(2, 5)
+		amount -= randi_range(-2, 5)
 		multiplier += 0.2
 	else:
-		amount -= randi_range(8, 20)
+		amount -= randi_range(4, 14)
 		multiplier += 0.25
 	
 	for warmthObject in warmthObjects:
@@ -251,4 +250,19 @@ func _on_placeable_enter_area_exited(area: Area2D) -> void:
 	inventory.removePlaceable(area.type)
 
 func shootWeapon():
-	pass
+	if(CameraController.shaking):
+		Transition.change_scene("res://end.tscn")
+	else:
+		if $Label.visible: return
+		$Label.visible = true
+		
+		var inLabel = create_tween()
+		inLabel.tween_property($Label, "modulate", Color.from_rgba8(255, 255, 255, 255), 0.2)
+		inLabel.play()
+		await inLabel.finished
+		await get_tree().create_timer(4)
+		var outlabel = create_tween()
+		outlabel.tween_property($Label, "modulate", Color.from_rgba8(255, 255, 255, 0), 0.5)
+		outlabel.play()
+		await outlabel.finished
+		$Label.visible = false

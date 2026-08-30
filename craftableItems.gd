@@ -247,7 +247,8 @@ var items = {
 	"gun": {
 		"type": "gun",
 		"scale": 0.05,
-		"png": "res://drawn assets/tools/gun.PNG"
+		"png": "res://drawn assets/tools/gun.PNG",
+		"stackable": false,
 	}
 }
 
@@ -379,18 +380,18 @@ var placeables = {
 		"scale": 0.12,
 		"lifetime": 60,
 		"warmth": 15,
-		"range": 350,
+		"range": 250,
 	},
 	"smelter": {
 		"scale": 0.15,
 		"lifetime": 999999,
 		"warmth": 8,
-		"range": 400,
+		"range": 300,
 	},
 	"crafting table": {
 		"scale": 0.15,
 		"lifetime": 9999999,
-		"range": 400,
+		"range": 300,
 	},
 }
 

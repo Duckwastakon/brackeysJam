@@ -22,11 +22,13 @@ func setPlaceable(placeableName):
 	var newRange: Panel = preload("res://resources/warmth_zone.tscn").instantiate()
 	
 	if(data.has("warmth")):
-		newRange.size = Vector2(data["range"], data["range"])
+		newRange.size = Vector2(data["range"] * 2, data["range"] * 2)
 		get_parent().get_parent().add_child(newRange)
+		newRange.get_child(0).scale = Vector2(data["range"] * 2 / 320, data["range"] * 2 / 320)
+		newRange.get_child(0).position = Vector2(data["range"] ,data["range"])
 		newRange.z_index = 2
 		
-		newRange.global_position = global_position + Vector2(-data["range"]/2, -data["range"]/2)
+		newRange.global_position = global_position + Vector2(-data["range"], -data["range"])
 	
 	await get_tree().create_timer(data["lifetime"]).timeout
 	

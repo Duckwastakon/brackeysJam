@@ -326,3 +326,4 @@ text = "Settings"
 [connection signal="pressed" from="first2/settings2" to="." method="_on_settings_2_pressed"]
 [connection signal="value_changed" from="first2/music/musicslider" to="first2/music/musicslider" method="_on_value_changed"]
 [connection signal="value_changed" from="first2/sfx/SFX slider" to="first2/sfx/SFX slider" method="_on_value_changed"]
+[connection signal="value_changed" from="first2/shake/shake slider" to="first2/shake/shake slider" method="_on_value_changed"]

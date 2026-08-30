@@ -148,11 +148,11 @@ func _on_monster_timer_timeout() -> void:
 		monster_instance = monster_scene.instantiate()
 		monster_instance.player = player
 		ySortingContainer.add_child(monster_instance)
-		var posx = randi_range(-1000, 1000)
+		var posx = randi_range(-500, 500)
 		var rand = randi_range(-1, 1)
 		while rand == 0:
 			rand = randi_range(-1, 1)
-		var posy = rand * (1000 - abs(posx))
+		var posy = rand * (500 - abs(posx))
 		monster_instance.global_position = player.global_position + Vector2(posx, posy)
 	
 	$monsterTimer.start(randi_range(30, 60))

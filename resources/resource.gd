@@ -8,10 +8,10 @@ signal damage
 var healthShowcaseTween: Tween
 
 var resourceChances = {
-	"apple tree": 90,
-	"cherry bush": 80,
-	"bush": 60,
-	"gold tree": 50,
+	"apple tree": 95,
+	"cherry bush": 90,
+	"bush": 65,
+	"gold tree": 60,
 	"tree": 45,
 	"rock": 15,
 	"iron rock": 0,

@@ -70,10 +70,6 @@ func _physics_process(delta: float) -> void:
 		return
 	if is_revealed:
 		if(chasing):
-			print("chasing")
-			print(velocity)
-			print(SPEED)
-			print(pause)
 			chase_behavior()
 		SPEED = AnimalData.mon_speed
 	velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2)

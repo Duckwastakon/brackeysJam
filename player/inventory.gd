@@ -148,11 +148,11 @@ func setCrafting(override = false):
 			var newButton: Button = craftableButton.duplicate()
 			var currentButtons = i
 			i+=1
-			var y = (currentButtons - (currentButtons%5))/5
-			var x = currentButtons - y*5
+			var y = (currentButtons - (currentButtons%4))/4
+			var x = currentButtons - y*4
 			
 			craftableContainer.add_child(newButton)
-			newButton.position = Vector2(8+64*x, 8+64*y)
+			newButton.position = Vector2(8+68*x, 8+68*y)
 			newButton.get_child(0).texture = load(CraftableItems.items[craftable]["png"])
 			newButton.get_child(0).scale = Vector2(CraftableItems.items[craftable]["scale"], CraftableItems.items[craftable]["scale"])
 			newButton.visible = true

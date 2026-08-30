@@ -46,18 +46,6 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gw1ob"]
-bg_color = Color(0.46929657, 0.46929657, 0.4692964, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
 [node name="Book" type="CanvasLayer" unique_id=1248501636]
 process_mode = 3
 layer = 100
@@ -128,7 +116,6 @@ offset_left = 320.0
 offset_top = 192.0
 offset_right = 832.0
 offset_bottom = 512.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gw1ob")
 
 [node name="music" type="Control" parent="settingsPanel" unique_id=831607431]
 anchors_preset = 0
@@ -248,4 +235,3 @@ script = ExtResource("9_cdt36")
 [connection signal="pressed" from="settings" to="settings" method="_on_pressed"]
 [connection signal="value_changed" from="settingsPanel/music/musicslider" to="settingsPanel/music/musicslider" method="_on_value_changed"]
 [connection signal="value_changed" from="settingsPanel/sfx/SFX slider" to="settingsPanel/sfx/SFX slider" method="_on_value_changed"]
-[connection signal="value_changed" from="settingsPanel/shake/shake slider" to="settingsPanel/shake/shake slider" method="_on_value_changed"]

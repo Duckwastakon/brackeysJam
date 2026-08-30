@@ -4,7 +4,10 @@ var dayTime = true
 var days = 0;
 var warmthObjects = []
 
-var shake_intensity := 1.0 
+var shake_intensity := 50.0
+var mainAudio = 50
+var sfxAudio = 50
+
 var in_craft = false # if is looking up recepies. freeze game time? 
 
 var equippedIndex = 0

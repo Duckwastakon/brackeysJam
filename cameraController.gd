@@ -28,7 +28,7 @@ func shakeCamera(intensity: float):
 var shaking = false
 
 func infShake(intensity):
-	intensity *= Global.shake_intensity
+	intensity *= Global.shake_intensity / 50
 	var currentCam: Camera2D = get_viewport().get_camera_2d()
 	shaking = true
 	

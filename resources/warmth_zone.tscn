@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c6uolq6l8m331"]
 
+[ext_resource type="Texture2D" uid="uid://dgijqxpewxoxl" path="res://resources/circleSprite.png" id="1_u64c0"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsvqj"]
 bg_color = Color(0.9322737, 0.73424906, 0.4267882, 0.5882353)
 corner_radius_top_left = 300
@@ -11,3 +13,8 @@ corner_radius_bottom_left = 300
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_qsvqj")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=969262970]
+position = Vector2(20, 20)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_u64c0")

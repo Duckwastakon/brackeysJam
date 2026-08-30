@@ -37,12 +37,7 @@ func update_points() -> void:
 	needPoints = needPoints * 1.2
 
 func _on_sacerfice_timeout() -> void:
-	if AnimalData.phase == 5:
-		timer.start()
-	else:
-		AnimalData.phase += 1
-		AnimalData.set_monster_speed()
-		timer.start()
+	timer.start()
 
 func added() -> void:
 	if AnimalData.phase == 1:
