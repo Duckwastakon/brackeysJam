@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cxrdstbrxjehq" path="res://end.gd" id="1_lt2ag"]
 [ext_resource type="Shader" uid="uid://d15h10x5gsf71" path="res://end.gdshader" id="1_n735c"]
 [ext_resource type="Script" uid="uid://dur5fe1cpinby" path="res://color_rect.gd" id="2_egc6y"]
+[ext_resource type="Texture2D" uid="uid://dxhhdu6gs2ulq" path="res://drawn assets/Untitled33_20260830113650.PNG" id="4_75yvt"]
+[ext_resource type="Texture2D" uid="uid://txolc1vohc6" path="res://drawn assets/Untitled33_20260830113958.PNG" id="5_jclhh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_egc6y"]
 shader = ExtResource("1_n735c")
@@ -11,6 +13,17 @@ shader_parameter/color_b = Color(0.25, 0.25, 0.25, 1)
 shader_parameter/stripe_width = 0.1
 shader_parameter/custom_time = 0.0
 shader_parameter/angle = 0.785
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m3e5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_jclhh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="end" type="Node2D" unique_id=454523401]
 script = ExtResource("1_lt2ag")
@@ -75,8 +88,26 @@ disabled = true
 text = "Quit gaame"
 
 [node name="Timer" type="Timer" parent="." unique_id=67653620]
-wait_time = 4.0
+wait_time = 10.0
 autostart = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=145880173]
+position = Vector2(26, 744)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1323150150]
+position = Vector2(564, 328)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_75yvt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=590674982]
+position = Vector2(653, 222.50002)
+rotation = 0.01745329
+scale = Vector2(0.70000005, 0.6968749)
+sprite_frames = SubResource("SpriteFrames_m3e5g")
+
+[node name="Timer2" type="Timer" parent="." unique_id=34187178]
+wait_time = 5.0
 
 [connection signal="pressed" from="ColorRect2/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

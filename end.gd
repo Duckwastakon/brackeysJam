@@ -2,14 +2,23 @@ extends Node2D
 @onready var one = $Marker2D
 @onready var two = $Marker2D2
 @onready var timer = $Timer
+@onready var drawing = $Node2D
+@onready var tim = $Timer2
 
 var all
 var p = Vector2(0, 0)
 var down = 964
 
 func _ready() -> void:
+	tim.start()
+	drawing.visible = true
+	drawing.position.y = -809.0
+	var tween = create_tween()
+	tween.tween_property(drawing, "position:y", -4.0, 5)
 	all = shuffle()
 	getPosition()
+
+
 
 func shuffle() -> Array:
 	var unique_names := {}
@@ -74,3 +83,8 @@ func _on_button_pressed() -> void:
 	tween.tween_property(Transition.fade, "color:a", 1.0, 0.4)
 	await tween.finished
 	get_tree().quit()
+
+
+func _on_timer_2_timeout() -> void:
+	var tween = create_tween()
+	tween.tween_property(drawing, "position:y", 744.0, 5)
