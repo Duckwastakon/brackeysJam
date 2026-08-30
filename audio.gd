@@ -6,7 +6,6 @@ func playSound(sound, speed = 1):
 	add_child(newSfx)
 	newSfx.position = Vector2.ZERO
 	newSfx.stream = load(sound)
-	newSfx.spee
 	newSfx.bus = &"SFX"
 	newSfx.play()
 	await newSfx.finished

@@ -67,7 +67,7 @@ offset_top = 292.0
 offset_right = 446.0
 offset_bottom = 347.0
 theme_override_font_sizes/font_size = 40
-text = "Game Name"
+text = "untrusted forest"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="ColorRect2" unique_id=1656544899]
