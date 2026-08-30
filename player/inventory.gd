@@ -203,7 +203,7 @@ func craft(itemName, costs, btn: Button):
 	timerTween.tween_property(colorRectInd, "scale", Vector2(1, -1), craftingTime)
 	timerTween.play()
 	while timeLeft > 0:
-		craftingTimeDisplay. text = str(timeLeft)
+		craftingTimeDisplay.text = str(timeLeft)
 		await get_tree().create_timer(0.1).timeout
 		timeLeft -= 0.1
 	
