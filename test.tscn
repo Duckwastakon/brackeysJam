@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://dvrrdpn1chlye"]
+
+[ext_resource type="Script" uid="uid://cwal0fsy301l5" path="res://test.gd" id="1_37kl0"]
+
+[node name="test" type="Node2D" unique_id=1687273672]
+script = ExtResource("1_37kl0")
+
+[node name="Start" type="CanvasLayer" parent="." unique_id=616653611]
+
+[node name="Panel" type="Panel" parent="Start" unique_id=2044857567]
+visible = false
+offset_left = 135.0
+offset_top = 37.0
+offset_right = 1047.0
+offset_bottom = 360.0
+
+[node name="Label" type="Label" parent="Start/Panel" unique_id=1338063028]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 894.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 24
+text = "Survival of the fittest. The forst is home to nature and something beyond that. Use your survival skills to satisfy your hunger and dont forget about warmth. Do what you have to. Build, explore, chop down trees, hunt. But be careful... for there is a creature, a being, a monster, a god. It show up to hunt you down or.. pretend to be one of the creatures around you. Do not trust what you hunt. For it will catch you if you attack it. It is unkillable. Unless you find the secret wepon (a gun, duh.). So be careful out there..and hunt down the beast of this forest."
+autowrap_mode = 2
+
+[node name="remnider" type="Panel" parent="Start" unique_id=1237094195]
+visible = false
+offset_left = 138.0
+offset_top = 715.0
+offset_right = 1050.0
+offset_bottom = 883.0
+
+[node name="Label" type="Label" parent="Start/remnider" unique_id=363799416]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 894.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 40
+text = "So, to run by again.
+There are 3 things you need to remember"
+autowrap_mode = 2
+
+[node name="first" type="Panel" parent="Start" unique_id=129423889]
+offset_left = 135.0
+offset_top = 715.0
+offset_right = 1047.0
+offset_bottom = 1032.0
+
+[node name="Label" type="Label" parent="Start/first" unique_id=319185900]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 894.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 40
+text = "Survival is priority number one. You have 2 needs. Hunger and Warmth. One or the other getting too low, your health will decline and the only way to get it back is by eating."
+autowrap_mode = 2
+
+[node name="second" type="Panel" parent="Start" unique_id=633376190]
+visible = false
+offset_left = 138.0
+offset_top = 715.0
+offset_right = 1050.0
+offset_bottom = 883.0
+
+[node name="Label" type="Label" parent="Start/second" unique_id=532868221]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 894.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 40
+text = "The forest is always changing . Your placed crafts will dissapear if you get too far."
+autowrap_mode = 2
+
+[node name="third" type="Panel" parent="Start" unique_id=77198788]
+visible = false
+offset_left = 139.0
+offset_top = 715.0
+offset_right = 1051.0
+offset_bottom = 1084.0
+
+[node name="Label" type="Label" parent="Start/third" unique_id=591471068]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 894.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 40
+text = "The monster will try to hunt you down. The only way to kill it is with a gun you cannot craft. 
+It is also able to morph into any other animal you see and will immediately attack when provoked."
+autowrap_mode = 2
+
+[node name="test" type="Panel" parent="Start" unique_id=1232612998]
+offset_left = 133.0
+offset_top = 40.0
+offset_right = 1045.0
+offset_bottom = 619.0
+
+[node name="heading" type="Label" parent="Start/test" unique_id=1093053298]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 894.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 40
+text = "Test Time!
+(I did tell you there are things to remember for a reason)"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="text" type="Label" parent="Start/test" unique_id=19401793]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 279.0
+offset_right = 871.0
+offset_bottom = 331.0
+theme_override_font_sizes/font_size = 28
+text = "What are the two needs you have to take care of in the game?"
+
+[node name="MenuBar" type="MenuBar" parent="Start/test" unique_id=2091524066]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 336.0
+offset_right = 659.0
+offset_bottom = 376.0
+
+[node name="OptionButton" type="OptionButton" parent="Start/test" unique_id=1906654164]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 20.0
+item_count = 1
+popup/item_0/id = 0
+
+[node name="Button" type="Button" parent="." unique_id=409404457]
+offset_left = 22.0
+offset_top = 32.0
+offset_right = 99.0
+offset_bottom = 347.0
+text = "^"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
