@@ -112,6 +112,7 @@ func _on_item_pickup_area_entered(area: Area2D) -> void:
 
 func takeDamage(amount, deathText):
 	if dead: return
+	AudioController.playSound("res://audios/hurt.mp3")
 	actionTextController.makeText("Ouch")
 	health -= amount
 	healthChange.emit(health)
@@ -130,6 +131,7 @@ func looseHunger(amount):
 	hungerChange.emit(hunger)
 
 func eat(foodItem):
+	AudioController.playSound("res://audios/drop.mp3")
 	var data = CraftableItems.items[foodItem]
 	actionTextController.makeText("Nom")
 	hunger += data["foodScore"]
@@ -190,6 +192,7 @@ func mouseClicked():
 	if cooldown: return
 	cooldown = true
 	if(equipedItem == ""):
+		AudioController.playSound("res://audios/swing.mp3")
 		attackingController.swingSignal.emit("fists")
 		actionTextController.makeText("Swing")
 		await inventory.delay(1.2)
@@ -197,6 +200,7 @@ func mouseClicked():
 		return
 	var equipedItemType = CraftableItems.items[equipedItem]["type"]
 	if equipedItemType == "item":
+		AudioController.playSound("res://audios/swing.mp3")
 		attackingController.swingSignal.emit("fists")
 		actionTextController.makeText("Swing")
 		await inventory.delay(1.2)
@@ -204,10 +208,12 @@ func mouseClicked():
 		eat(equipedItem)
 		return
 	elif equipedItemType == "tool":
+		AudioController.playSound("res://audios/swing.mp3")
 		attackingController.swingSignal.emit(equipedItem)
 		actionTextController.makeText("Swing")
 		await inventory.delay(CraftableItems.items[equipedItem]["cooldown"])
 	elif equipedItemType == "placeable":
+		AudioController.playSound("res://audios/drop.mp3")
 		if(placingController.placeBuild(equipedItem)):
 			inventory.dropItem(equipedSlot)
 	elif equipedItemType == "gun":
@@ -253,6 +259,7 @@ func _on_placeable_enter_area_exited(area: Area2D) -> void:
 
 func shootWeapon():
 	if(CameraController.shaking):
+		AudioController.playSound("res://audios/swing.mp3")
 		Transition.change_scene("res://end.tscn")
 	else:
 		if $Label.visible: return
