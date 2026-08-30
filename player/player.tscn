@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bbksmisedkw6x" path="res://player/action_info_text.tscn" id="7_boad6"]
 [ext_resource type="Texture2D" uid="uid://da3p75fx5ctiw" path="res://drawn assets/ui/dust.PNG" id="8_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://cyrtqywl6pyuq" path="res://book.tscn" id="8_rgyib"]
+[ext_resource type="PackedScene" uid="uid://c4cie1a1ljk2n" path="res://test.tscn" id="10_8t03j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(48, 48)
@@ -131,6 +132,9 @@ text = "no monster in range"
 label_settings = SubResource("LabelSettings_hg6s5")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="test" parent="." unique_id=1687273672 instance=ExtResource("10_8t03j")]
+position = Vector2(-640, -360)
 
 [connection signal="area_entered" from="itemPickup" to="." method="_on_item_pickup_area_entered"]
 [connection signal="area_entered" from="placeableEnter" to="." method="_on_placeable_enter_area_entered"]

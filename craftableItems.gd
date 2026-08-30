@@ -342,8 +342,8 @@ var cratables = {
 	},
 	"crafting table": {
 		"items": {
-			"sticks": 25,
-			"logs": 10,
+			"sticks": 5,
+			"logs": 1,
 			"rocks": 3,
 		},
 		"amount": 1,
@@ -351,8 +351,8 @@ var cratables = {
 	},
 	"smelter": {
 		"items": {
-			"rocks": 15,
-			"logs": 10,
+			"rocks": 5,
+			"logs": 3,
 		},
 		"amount": 1,
 		"time": 6,
@@ -542,7 +542,7 @@ var resourceNodes = {
 		"scale": 1.7,
 		"multiDrop": true,
 		"drops": {
-			"iron": {
+			"iron ore": {
 				"chance": 20,
 				"minAmount": 1,
 				"maxAmount": 2,
