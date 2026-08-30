@@ -25,6 +25,7 @@ radius = 280.01608
 script = ExtResource("1_2c7f8")
 monster_scene = ExtResource("2_e8e5r")
 animal_scene = ExtResource("6_7lyie")
+metadata/_edit_horizontal_guides_ = [-248.0]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1659856733]
 environment = SubResource("Environment_kffv2")

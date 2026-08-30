@@ -25,6 +25,7 @@ CraftableItems="*uid://c6smdl5rtjks5"
 AnimalData="*uid://dudwexie2sjh2"
 CameraController="*uid://cf0vjnqnwccb4"
 Transition="*uid://c10laslh2eulm"
+AudioController="*uid://bbkfi144o2vp4"
 
 [display]
 
@@ -33,7 +34,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [input]
 

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bbkfi144o2vp4"]
+
+[ext_resource type="Script" uid="uid://d0udnsrhcbgjf" path="res://audio.gd" id="1_qc0l7"]
+[ext_resource type="AudioStream" uid="uid://dsu20peifma2s" path="res://audios/backgroundMusic.mp3" id="2_q45hi"]
+
+[node name="audio" type="Node2D" unique_id=1662706173]
+script = ExtResource("1_qc0l7")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=708267528]
+current = true
+
+[node name="backgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=2024201513]
+stream = ExtResource("2_q45hi")
+autoplay = true
+bus = &"Music"

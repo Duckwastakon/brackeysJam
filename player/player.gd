@@ -133,7 +133,9 @@ func eat(foodItem):
 	var data = CraftableItems.items[foodItem]
 	actionTextController.makeText("Nom")
 	hunger += data["foodScore"]
+	hunger = clamp(hunger, 0, 100)
 	health += data["heal"]
+	health = clamp(health, 0, 100)
 	healthChange.emit(health)
 	hungerChange.emit(hunger)
 	inventory.removeItem(foodItem, 1)
