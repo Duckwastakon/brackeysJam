@@ -23,8 +23,8 @@ signal updatedSlot
 
 func _ready() -> void:
 	for i in inventorySize:
-		inventory.append("raw meat")
-		invAmounts.append(99)
+		inventory.append("")
+		invAmounts.append(0)
 	
 	drawInventory()
 	
