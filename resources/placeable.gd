@@ -19,6 +19,16 @@ func setPlaceable(placeableName):
 	rangeCollision.shape.radius = data["range"]
 	rangeCollision.disabled = false
 	
+	var newRange: Panel = preload("res://resources/warmth_zone.tscn").instantiate()
+	
+	if(data.has("warmth")):
+		newRange.size = Vector2(data["range"], data["range"])
+		get_parent().get_parent().add_child(newRange)
+		newRange.z_index = 2
+		
+		newRange.global_position = global_position + Vector2(-data["range"]/2, -data["range"]/2)
+	
 	await get_tree().create_timer(data["lifetime"]).timeout
 	
 	queue_free()
+	newRange.queue_free()

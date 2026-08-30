@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 var movingState = 0
-const maxSpeed = [500, 1000]
-const accelerations = [150, 250]
-const deceleration = 100
+const maxSpeed = [325, 500]
+const accelerations = [100, 150]
+const deceleration = 75
 
 @onready var playerArt = $playerArt
 @onready var inventory = $inventory
@@ -208,6 +208,9 @@ func mouseClicked():
 	elif equipedItemType == "placeable":
 		if(placingController.placeBuild(equipedItem)):
 			inventory.dropItem(equipedSlot)
+	elif equipedItemType == "gun":
+		shootWeapon()
+		inventory.dropItem(equipedItem)
 	cooldown = false
 
 func _on_hunger_timer_timeout() -> void:
@@ -241,12 +244,11 @@ func _on_placeable_enter_area_entered(area: Area2D) -> void:
 	if(CraftableItems.placeables[area.type].has("warmth")):
 		warmthObjects.append(area.type)
 	inventory.addPlaceable(area.type)
-	
-	print(warmthObjects)
 
 func _on_placeable_enter_area_exited(area: Area2D) -> void:
 	if(CraftableItems.placeables[area.type].has("warmth")):
 		warmthObjects.erase(area.type)
 	inventory.removePlaceable(area.type)
-	
-	print(warmthObjects)
+
+func shootWeapon():
+	pass

@@ -6,7 +6,8 @@ extends Node2D
 @export var monster_scene: PackedScene
 @export var animal_scene: PackedScene
 @export var temple_scene: PackedScene = preload("res://animals/scene/temple.tscn")
-@export var resource_scene: PackedScene = preload("res://resources/resource.tscn")
+var resource_scene = preload("res://resources/resource.tscn")
+var crateScene = preload("res://resources/crate.tscn")
 @onready var timer = $Day
 
 const chunkSE := 640
@@ -36,6 +37,8 @@ func _ready() -> void:
 	generate_chunk(Vector2i.ZERO)
 	_update_chunks()
 	spawn_temple()
+	
+	Global.dayTime = true
 	
 	canSpawnMonster = true
 
@@ -74,11 +77,16 @@ func generate_chunk(coord: Vector2i) -> void:
 func generate_resources(tile_positions: Array[Vector2]) -> void:
 	for pos in tile_positions:
 		if randf() < rchance:
-			var new_rec = resource_scene.instantiate()
+			var new_rec
+			if randi_range(1, 20) == 1:
+				new_rec = crateScene.instantiate()
+			else:
+				new_rec = resource_scene.instantiate()
+			
 			ySortingContainer.add_child(new_rec)
 			new_rec.position = pos + Vector2(randi_range(1, tileS), randi_range(1, tileS))
-			
-
+		
+		
 		if randf() < 1.0/200:
 			generate_animal(pos + Vector2(randi_range(1, tileS), randi_range(1, tileS)))
 
@@ -125,9 +133,15 @@ func _on_day_timeout() -> void:
 	if Global.dayTime:
 		Global.dayTime = false
 		timer.start()
+		var newTween = create_tween()
+		newTween.tween_property($CanvasModulate, "color", Color.from_rgba8(114, 114, 114, 255), 1)
+		newTween.play()
 	else:
 		Global.dayTime = true
 		timer.start()
+		var newTween = create_tween()
+		newTween.tween_property($CanvasModulate, "color", Color.from_rgba8(255, 255, 255, 255), 1)
+		newTween.play()
 
 func _on_monster_timer_timeout() -> void:
 	if monster_instance == null and canSpawnMonster and randf() < 0.5:

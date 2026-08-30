@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c6uolq6l8m331"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsvqj"]
+bg_color = Color(0.9322737, 0.73424906, 0.4267882, 0.5882353)
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
+
+[node name="warmthZone" type="Panel" unique_id=467162977]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qsvqj")

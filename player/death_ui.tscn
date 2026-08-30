@@ -48,6 +48,7 @@ outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [node name="deathUI" type="CanvasLayer" unique_id=1429977294]
+visible = false
 script = ExtResource("1_j72s7")
 
 [node name="Control" type="Control" parent="." unique_id=1911928869]

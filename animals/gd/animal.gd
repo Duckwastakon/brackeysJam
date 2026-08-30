@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 		print(running)
 		if movement == Vector2.ZERO:
 			start_moving()
-		velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2) * 3
+		velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2) * 1.5
 		print(movement.normalized() * SPEED * randf_range(0.8, 1.2) * 3)
 	else:
 		velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2)

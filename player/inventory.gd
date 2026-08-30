@@ -212,12 +212,13 @@ func craft(itemName, costs, btn: Button):
 	addItem(itemName, 1)
 	await setCrafting(true)
 	
-	crafting = false
 	timerTween.kill()
 	
 	craftingTimeDisplay.queue_free()
 	if(colorRectInd):
 		colorRectInd.queue_free()
+	
+	crafting = false
 
 func addItem(item, amount):
 	var id

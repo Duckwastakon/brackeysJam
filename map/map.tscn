@@ -6,6 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://ug4iwky8f33o" path="res://player/player.tscn" id="3_v01jy"]
 [ext_resource type="PackedScene" uid="uid://gnx3tblbeb6x" path="res://animals/scene/animal.tscn" id="6_7lyie"]
 
+[sub_resource type="Environment" id="Environment_kffv2"]
+background_mode = 3
+tonemap_mode = 1
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.3
+fog_light_energy = 5.04
+fog_density = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v01jy"]
 size = Vector2(640, 640)
 
@@ -16,6 +25,9 @@ radius = 280.01608
 script = ExtResource("1_2c7f8")
 monster_scene = ExtResource("2_e8e5r")
 animal_scene = ExtResource("6_7lyie")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1659856733]
+environment = SubResource("Environment_kffv2")
 
 [node name="ySortedObjects" type="Node2D" parent="." unique_id=1853962959]
 z_index = 1
@@ -54,12 +66,15 @@ offset_right = 64.0
 offset_bottom = 64.0
 
 [node name="Day" type="Timer" parent="." unique_id=1343260313]
-wait_time = 10.0
+wait_time = 30.0
+autostart = true
 
 [node name="monsterTimer" type="Timer" parent="." unique_id=1745496294]
 wait_time = 40.0
 one_shot = true
 autostart = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=807718981]
 
 [connection signal="body_entered" from="background/body" to="." method="_on_body_body_entered"]
 [connection signal="body_exited" from="background/load" to="." method="_on_load_body_exited"]
