@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bbkfi144o2vp4"]
+[gd_scene format=3 uid="uid://dr81j1c1iewnr"]
 
 [ext_resource type="Script" uid="uid://d0udnsrhcbgjf" path="res://audio.gd" id="1_qc0l7"]
 [ext_resource type="AudioStream" uid="uid://dsu20peifma2s" path="res://audios/backgroundMusic.mp3" id="2_q45hi"]
@@ -13,3 +13,5 @@ current = true
 stream = ExtResource("2_q45hi")
 autoplay = true
 bus = &"Music"
+
+[connection signal="finished" from="backgroundMusic" to="." method="_on_background_music_finished"]
