@@ -190,14 +190,14 @@ func mouseClicked():
 	if(equipedItem == ""):
 		attackingController.swingSignal.emit("fists")
 		actionTextController.makeText("Swing")
-		await inventory.delay(2.5)
+		await inventory.delay(1.2)
 		cooldown = false
 		return
 	var equipedItemType = CraftableItems.items[equipedItem]["type"]
 	if equipedItemType == "item":
 		attackingController.swingSignal.emit("fists")
 		actionTextController.makeText("Swing")
-		await inventory.delay(2.5)
+		await inventory.delay(1.2)
 	elif equipedItemType == "food":
 		eat(equipedItem)
 		return
