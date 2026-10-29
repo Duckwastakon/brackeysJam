@@ -38,7 +38,11 @@ func setupResource(name):
 	maxHealth = data["hp"]
 	hp = data["hp"]
 	resourceSprite.texture = load(data["png"])
+	resourceSprite.modulate = data["color"]
 	scale = Vector2(data["scale"], data["scale"]) * randf_range(0.8, 1.2)
+	if data.has("smol"):
+		$background.position.y = 36
+	
 
 func dropResource(itemName, amount):
 	var newResource: CharacterBody2D = resource.instantiate()
@@ -58,6 +62,7 @@ func shakeObject(tool):
 		dmg *= CraftableItems.items[tool]["dmgMultiplier"]
 	if CraftableItems.items[tool]["tier"] < CraftableItems.resourceNodes[resourceName]["damageTier"]:
 		dmg = 0
+		Transition.betterTools()
 	
 	var DPD = CraftableItems.resourceNodes[resourceName]["hp"] / CraftableItems.resourceNodes[resourceName]["dropTimes"]
 	var droppedResources = (dmg - (dmg % DPD)) / DPD

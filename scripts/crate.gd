@@ -37,6 +37,7 @@ func shakeObject(tool):
 	var dmg = CraftableItems.items[tool]["dmg"]
 	if CraftableItems.items[tool]["tier"] < 3:
 		dmg = 0
+		Transition.betterTools()
 	else:
 		dmg = 1
 	

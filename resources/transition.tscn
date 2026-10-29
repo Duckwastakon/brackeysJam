@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c10laslh2eulm"]
+
+[ext_resource type="Script" uid="uid://c6yhqe1b0qluv" path="res://scripts/transition.gd" id="1_2gi1b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2gi1b"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Transition" type="CanvasLayer" unique_id=76786558]
+layer = 100
+script = ExtResource("1_2gi1b")
+
+[node name="Fade" type="ColorRect" parent="." unique_id=679538063]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="equipedItemName2" type="Label" parent="." unique_id=1070035276]
+modulate = Color(1, 1, 1, 0)
+offset_left = 384.0
+offset_top = 424.0
+offset_right = 768.0
+offset_bottom = 447.0
+text = "Better tools needed"
+label_settings = SubResource("LabelSettings_2gi1b")
+horizontal_alignment = 1
+vertical_alignment = 1

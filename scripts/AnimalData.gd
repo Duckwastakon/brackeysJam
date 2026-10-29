@@ -27,7 +27,7 @@ var profiles = {
 	},
 }
 
-var norm = 375
+var norm = 400
 var mon_speed
 
 func _ready() -> void:

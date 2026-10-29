@@ -63,6 +63,7 @@ func _on_timer_timeout() -> void:
 	
 	var sprite = Sprite2D.new()
 	sprite.texture = icon_texture
+	sprite.modulate = item_data["color"]
 	sprite.scale = Vector2(0.2, 0.2)
 	add_child(sprite)
 	sprite.position = p
@@ -73,15 +74,19 @@ func _on_timer_timeout() -> void:
 	tween.tween_property(sprite, "rotation", sprite.rotation + TAU * 2, 8)
 	
 	getPosition()
-	timer.start(randi_range(3, 6))
+	timer.start(randi_range(1, 2))
 	await tween.finished
 	sprite.queue_free()
 
 
 func _on_button_pressed() -> void: 
-	Transition.change_scene("res://start.tscn")
+	Transition.change_scene("res://menus/start.tscn")
 
 
 func _on_timer_2_timeout() -> void:
 	var tween = create_tween()
 	tween.tween_property(drawing, "position:y", 744.0, 5)
+
+
+func _on_button_button_up() -> void:
+	pass # Replace with function body.

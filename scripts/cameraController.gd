@@ -3,17 +3,15 @@ extends Node
 var shakeTime = 0
 
 func shakeCamera(intensity: float):
-	intensity *= Global.shake_intensity
+	intensity *= Global.shake_intensity / 50
 	var currentCam: Camera2D = get_viewport().get_camera_2d()
-	
 	if shakeTime <= 0:
 		shakeTime = randi_range(7, 9)
 		while shakeTime > 0:
-			var offsetx = randi_range(-32, 32) * intensity
-			var offsety = randi_range(-32, 32) * intensity
-			
+			var offsetx = randi_range(-16, 16)/ 2 * intensity
+			var offsety = randi_range(-16, 16)/ 2 * intensity
 			var newTween = create_tween()
-			newTween.tween_property(currentCam, "offset", Vector2(offsetx, offsety), 0.04)
+			newTween.tween_property(currentCam, "offset", Vector2(offsetx, offsety), 0.02)
 			newTween.play()
 			await newTween.finished
 			shakeTime -= 1
@@ -21,7 +19,6 @@ func shakeCamera(intensity: float):
 		var newTween = create_tween()
 		newTween.tween_property(currentCam, "offset", Vector2(0, 0),  0.04)
 		newTween.play()
-	
 	else:
 		shakeTime = randi_range(7, 9)
 

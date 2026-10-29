@@ -16,7 +16,8 @@ func add_recipe_row(recipe_name: String) -> void:
 	
 	var icon = TextureRect.new()
 	icon.texture = load(item_data["png"])
-	icon.custom_minimum_size = Vector2(300, 300)
+	icon.custom_minimum_size = Vector2(200, 200)
+	icon.modulate = item_data["color"]
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	row.add_child(icon)
@@ -36,7 +37,8 @@ func add_recipe_row(recipe_name: String) -> void:
 		
 		var mat_icon = TextureRect.new()
 		mat_icon.texture = load(CraftableItems.items[mat_name]["png"])
-		mat_icon.custom_minimum_size = Vector2(225, 225)
+		mat_icon.modulate = CraftableItems.items[mat_name]["color"]
+		mat_icon.custom_minimum_size = Vector2(150, 150)
 		mat_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		mat_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		pair.add_child(mat_icon)

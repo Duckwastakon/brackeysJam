@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cpl6d5gtemyu8" path="res://animals/gd/monster.gd" id="1_anrsy"]
 [ext_resource type="Texture2D" uid="uid://dr1kw3j0kdejg" path="res://drawn assets/animals/monster.PNG" id="1_ttlna"]
 [ext_resource type="Script" uid="uid://bqeis0uk2svic" path="res://animals/gd/damage_area.gd" id="3_x6u82"]
+[ext_resource type="AudioStream" uid="uid://jorqp12d8y10" path="res://audios/horror.mp3" id="4_c3vng"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5yw2n"]
 radius = 23.998362
@@ -13,7 +14,7 @@ radius = 24.0
 height = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5yw2n"]
-radius = 450.0
+radius = 300.0
 
 [node name="monster" type="CharacterBody2D" unique_id=462490961]
 y_sort_enabled = true
@@ -57,6 +58,10 @@ script = ExtResource("3_x6u82")
 position = Vector2(0, 24)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_x6u82")
+
+[node name="Horror" type="AudioStreamPlayer" parent="." unique_id=527784073]
+stream = ExtResource("4_c3vng")
+bus = &"SFX"
 
 [connection signal="timeout" from="Switch" to="." method="_on_switch_timeout"]
 [connection signal="area_entered" from="damage" to="." method="_on_damage_area_entered"]

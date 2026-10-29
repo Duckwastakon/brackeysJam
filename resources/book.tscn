@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://cyrtqywl6pyuq"]
 
-[ext_resource type="Texture2D" uid="uid://bsq18d0dx4cn8" path="res://drawn assets/ui/book.PNG" id="1_kh36y"]
-[ext_resource type="Script" uid="uid://ofe1bxl7elti" path="res://texture_button.gd" id="2_y0hms"]
-[ext_resource type="Script" uid="uid://b24x6nwuh71vf" path="res://v_box_container.gd" id="3_fijbg"]
-[ext_resource type="Script" uid="uid://bpf8hpgn1sffw" path="res://settingsButton.gd" id="4_3r6c0"]
-[ext_resource type="Texture2D" uid="uid://5tqol34svhwn" path="res://drawn assets/ui/cog.PNG" id="4_f0xhj"]
-[ext_resource type="Script" uid="uid://c3kj5ktpt6ybv" path="res://musicslider.gd" id="6_gw1ob"]
-[ext_resource type="Script" uid="uid://do6x7pesdes3d" path="res://sfx_slider.gd" id="7_tt8fr"]
-[ext_resource type="Script" uid="uid://drwxluxlim0p7" path="res://shake_slider.gd" id="8_37pi6"]
-[ext_resource type="Script" uid="uid://c8g2eg8721ww2" path="res://window_menu.gd" id="9_cdt36"]
+[ext_resource type="Script" uid="uid://b24x6nwuh71vf" path="res://scripts/v_box_container.gd" id="1_2twn8"]
+[ext_resource type="Script" uid="uid://ofe1bxl7elti" path="res://scripts/texture_button.gd" id="2_5fam5"]
+[ext_resource type="Texture2D" uid="uid://bsq18d0dx4cn8" path="res://drawn assets/ui/book.PNG" id="3_7ry2q"]
+[ext_resource type="Script" uid="uid://bpf8hpgn1sffw" path="res://scripts/settingsButton.gd" id="4_eeysp"]
+[ext_resource type="Texture2D" uid="uid://5tqol34svhwn" path="res://drawn assets/ui/cog.PNG" id="5_hrcp0"]
+[ext_resource type="Script" uid="uid://c3kj5ktpt6ybv" path="res://scripts/musicslider.gd" id="6_hc82u"]
+[ext_resource type="Script" uid="uid://do6x7pesdes3d" path="res://scripts/sfx_slider.gd" id="7_s6rm1"]
+[ext_resource type="Script" uid="uid://drwxluxlim0p7" path="res://scripts/shake_slider.gd" id="8_rnpgo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tt8fr"]
+bg_color = Color(0, 0, 0, 0.29411766)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fijbg"]
 bg_color = Color(1, 1, 1, 0.5882353)
@@ -46,17 +52,12 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gw1ob"]
-bg_color = Color(0.46929657, 0.46929657, 0.4692964, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wrkw"]
+bg_color = Color(0, 0, 0, 0.29411766)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Book" type="CanvasLayer" unique_id=1248501636]
 process_mode = 3
@@ -69,24 +70,22 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 128.0
-offset_top = 22.0
+offset_top = 24.0
 offset_right = -128.0
-offset_bottom = -26.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tt8fr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RecipePanel" unique_id=892023695]
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="RecipePanel/VBoxContainer" unique_id=2075862601]
+[node name="ScrollContainer" type="ScrollContainer" parent="RecipePanel" unique_id=2075862601]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RecipePanel/VBoxContainer/ScrollContainer" unique_id=1829933376]
+[node name="VBoxContainer" type="VBoxContainer" parent="RecipePanel/ScrollContainer" unique_id=1829933376]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("3_fijbg")
+script = ExtResource("1_2twn8")
 
 [node name="TextureButton" type="Button" parent="." unique_id=1066905541]
 process_mode = 3
@@ -98,12 +97,12 @@ scale = Vector2(0.15, 0.15)
 theme_override_styles/normal = SubResource("StyleBoxFlat_fijbg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f0xhj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3r6c0")
-script = ExtResource("2_y0hms")
+script = ExtResource("2_5fam5")
 
 [node name="Book" type="Sprite2D" parent="TextureButton" unique_id=580643057]
 position = Vector2(266.6665, 266.66666)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_kh36y")
+texture = ExtResource("3_7ry2q")
 
 [node name="settings" type="Button" parent="." unique_id=2057766344]
 process_mode = 3
@@ -115,27 +114,27 @@ scale = Vector2(0.15, 0.15)
 theme_override_styles/normal = SubResource("StyleBoxFlat_fijbg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f0xhj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3r6c0")
-script = ExtResource("4_3r6c0")
+script = ExtResource("4_eeysp")
 
 [node name="Book" type="Sprite2D" parent="settings" unique_id=1990986390]
 position = Vector2(159.99982, 159.99997)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("4_f0xhj")
+texture = ExtResource("5_hrcp0")
 
 [node name="settingsPanel" type="Panel" parent="." unique_id=1883829243]
 visible = false
-offset_left = 320.0
+offset_left = 352.0
 offset_top = 192.0
-offset_right = 832.0
-offset_bottom = 512.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gw1ob")
+offset_right = 800.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7wrkw")
 
 [node name="music" type="Control" parent="settingsPanel" unique_id=831607431]
 anchors_preset = 0
-offset_left = -2296.0
-offset_top = -288.0
-offset_right = -2256.0
-offset_bottom = -248.0
+offset_left = -2336.0
+offset_top = -304.0
+offset_right = -2296.0
+offset_bottom = -264.0
 
 [node name="musicslider" type="HSlider" parent="settingsPanel/music" unique_id=534568760]
 layout_mode = 0
@@ -143,7 +142,7 @@ offset_left = 2419.0
 offset_top = 369.0
 offset_right = 2679.0
 offset_bottom = 385.0
-script = ExtResource("6_gw1ob")
+script = ExtResource("6_hc82u")
 
 [node name="music" type="Label" parent="settingsPanel/music" unique_id=1725179798]
 layout_mode = 0
@@ -162,10 +161,10 @@ offset_bottom = 388.0
 
 [node name="sfx" type="Control" parent="settingsPanel" unique_id=1700163909]
 anchors_preset = 0
-offset_left = -2296.0
-offset_top = -288.0
-offset_right = -2256.0
-offset_bottom = -248.0
+offset_left = -2336.0
+offset_top = -304.0
+offset_right = -2296.0
+offset_bottom = -264.0
 
 [node name="SFX slider" type="HSlider" parent="settingsPanel/sfx" unique_id=1146777278]
 layout_mode = 0
@@ -173,7 +172,7 @@ offset_left = 2419.0
 offset_top = 432.0
 offset_right = 2679.0
 offset_bottom = 448.0
-script = ExtResource("7_tt8fr")
+script = ExtResource("7_s6rm1")
 
 [node name="SFX" type="Label" parent="settingsPanel/sfx" unique_id=956371284]
 layout_mode = 0
@@ -192,10 +191,10 @@ offset_bottom = 453.0
 
 [node name="shake" type="Control" parent="settingsPanel" unique_id=663809734]
 anchors_preset = 0
-offset_left = -296.0
-offset_top = -288.0
-offset_right = -256.0
-offset_bottom = -248.0
+offset_left = -336.0
+offset_top = -304.0
+offset_right = -296.0
+offset_bottom = -264.0
 
 [node name="shake slider" type="HSlider" parent="settingsPanel/shake" unique_id=987678068]
 layout_mode = 0
@@ -203,7 +202,7 @@ offset_left = 419.0
 offset_top = 495.0
 offset_right = 679.0
 offset_bottom = 511.0
-script = ExtResource("8_37pi6")
+script = ExtResource("8_rnpgo")
 
 [node name="shake2" type="Label" parent="settingsPanel/shake" unique_id=366257107]
 layout_mode = 0
@@ -219,30 +218,6 @@ offset_left = 687.0
 offset_top = 493.0
 offset_right = 727.0
 offset_bottom = 516.0
-
-[node name="window" type="Control" parent="settingsPanel" unique_id=395264446]
-anchors_preset = 0
-offset_left = -296.0
-offset_top = -288.0
-offset_right = -256.0
-offset_bottom = -248.0
-
-[node name="Windowed" type="Label" parent="settingsPanel/window" unique_id=645774964]
-layout_mode = 0
-offset_left = 573.0
-offset_top = 532.0
-offset_right = 706.0
-offset_bottom = 555.0
-text = "Windows options"
-
-[node name="Window menu" type="MenuButton" parent="settingsPanel/window" unique_id=680824149]
-layout_mode = 0
-offset_left = 411.0
-offset_top = 526.0
-offset_right = 534.0
-offset_bottom = 562.0
-text = "Windowed"
-script = ExtResource("9_cdt36")
 
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
 [connection signal="pressed" from="settings" to="settings" method="_on_pressed"]

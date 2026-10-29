@@ -11,4 +11,4 @@ func activate(newText):
 
 func _on_button_pressed() -> void:
 	#await get_tree().create_timer(5.0).timeout
-	Transition.change_scene("res://start.tscn")
+	Transition.change_scene("res://menus/start.tscn")

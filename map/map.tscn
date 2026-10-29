@@ -40,7 +40,7 @@ position = Vector2(320, 320)
 [node name="background" type="ColorRect" parent="." unique_id=1830299228]
 offset_right = 640.0
 offset_bottom = 640.0
-color = Color(0.6190818, 0.6190818, 0.6190819, 1)
+color = Color(0, 0.6731757, 0.3845331, 1)
 
 [node name="Paper" type="Sprite2D" parent="background" unique_id=1432470522]
 modulate = Color(1, 1, 1, 0)
@@ -67,11 +67,11 @@ offset_right = 64.0
 offset_bottom = 64.0
 
 [node name="Day" type="Timer" parent="." unique_id=1343260313]
-wait_time = 45.0
+wait_time = 75.0
 autostart = true
 
 [node name="monsterTimer" type="Timer" parent="." unique_id=1745496294]
-wait_time = 40.0
+wait_time = 120.0
 one_shot = true
 autostart = true
 

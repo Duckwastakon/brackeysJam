@@ -70,6 +70,8 @@ func updateSlot(index):
 	
 	slot.get_child(1).texture = load(slotItem["png"])
 	slot.get_child(1).scale = Vector2(slotItem["scale"], slotItem["scale"])
+	if(slotItem.has("color")):
+		slot.get_child(1).modulate = slotItem["color"]
 	updatedSlot.emit(index)
 
 func equipItem(ind):
@@ -155,6 +157,7 @@ func setCrafting(override = false):
 			craftableContainer.add_child(newButton)
 			newButton.position = Vector2(8+68*x, 8+68*y)
 			newButton.get_child(0).texture = load(CraftableItems.items[craftable]["png"])
+			newButton.get_child(0).modulate = CraftableItems.items[craftable]["color"]
 			newButton.get_child(0).scale = Vector2(CraftableItems.items[craftable]["scale"], CraftableItems.items[craftable]["scale"])
 			newButton.visible = true
 			

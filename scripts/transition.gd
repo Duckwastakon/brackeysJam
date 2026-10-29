@@ -19,3 +19,13 @@ func change_scene(path: String, duration: float = 0.4) -> void:
 	var tween_in = create_tween()
 	tween_in.tween_property(fade, "color:a", 0.0, duration)
 	await tween_in.finished
+
+func betterTools():
+	if $equipedItemName2.modulate.a == 0:
+		print($equipedItemName2.modulate.a)
+		$equipedItemName2.modulate.a = 255
+		while($equipedItemName2.modulate.a != 0):
+			$equipedItemName2.modulate.a = lerpf($equipedItemName2.modulate.a, 0, 0.5)
+			await get_tree().create_timer(0.1).timeout
+	else:
+		$equipedItemName2.modulate.a = 255

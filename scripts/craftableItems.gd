@@ -1,5 +1,11 @@
 extends Node
 
+var brown = Color(0.913, 0.684, 0.561, 1.0)
+var gold = Color(0.888, 0.845, 0.58, 1.0)
+var green = Color(0.521, 0.829, 0.546, 1.0)
+var gray = Color(0.687, 0.684, 0.645, 1.0)
+var white = Color(1.0, 1.0, 1.0, 1.0)
+
 var items = {
 	"fists": {
 		"png": "res://drawn assets/fist.PNG",
@@ -7,7 +13,8 @@ var items = {
 		"toolType": "",
 		"tier": 0,
 		"dmg": 1,
-		"dmgMultiplier": 3
+		"dmgMultiplier": 3,
+		"color": white,
 	},
 	"logs": {
 		"points" : 2,
@@ -15,6 +22,7 @@ var items = {
 		"stackable": true,
 		"png": "res://drawn assets/materials/log.PNG",
 		"scale": 0.08,
+		"color": brown,
 	},
 	"gold logs": {
 		"points" : 8,
@@ -22,6 +30,7 @@ var items = {
 		"stackable": true,
 		"png": "res://drawn assets/materials/log gold.PNG",
 		"scale": 0.08,
+		"color": gold,
 	},
 	"sticks": {
 		"points" : 1,
@@ -29,6 +38,7 @@ var items = {
 		"stackable": true,
 		"png": "res://drawn assets/materials/stick.PNG",
 		"scale": 0.08,
+		"color": brown
 	},
 	"gold sticks": {
 		"points" : 5,
@@ -36,6 +46,7 @@ var items = {
 		"stackable": true,
 		"png": "res://drawn assets/materials/stick gold.PNG",
 		"scale": 0.08,
+		"color": gold
 	},
 	"leafs": {
 		"points" : 1,
@@ -43,6 +54,7 @@ var items = {
 		"stackable": true,
 		"png": "res://drawn assets/materials/leaf.PNG",
 		"scale": 0.08,
+		"color": green
 	},
 	"rocks": {
 		"points" : 3,
@@ -50,6 +62,7 @@ var items = {
 		"stackable": true,
 		"png": "res://drawn assets/materials/rock.PNG",
 		"scale": 0.08,
+		"color": gray
 	},
 	"iron ore": {
 		"points" : 7,
@@ -57,6 +70,7 @@ var items = {
 		"stackable": true,
 		"png": "res://drawn assets/materials/iron stone.PNG",
 		"scale": 0.08,
+		"color": white
 	},
 	"smelted iron": {
 		"points" : 10,
@@ -64,7 +78,8 @@ var items = {
 		"stackable": true,
 		"png": "res://drawn assets/materials/iron smelted.PNG",
 		"scale": 0.08,
-		"desc": "Like Iron ore but is useful on crafting tools and more"
+		"desc": "Like Iron ore but is useful on crafting tools and more",
+		"color": white
 	},
 	"wood pickaxe": {
 		"points" : 5,
@@ -77,7 +92,8 @@ var items = {
 		"dmg": 1,
 		"dmgMultiplier": 1,
 		"cooldown": 2,
-		"desc": "A basic picaxe carved from wood. Better than fists, worse than everything else."
+		"desc": "A basic picaxe carved from wood. Better than fists, worse than everything else.",
+		"color": brown
 	},
 	"stone pickaxe": {
 		"points" : 15,
@@ -90,7 +106,8 @@ var items = {
 		"dmg": 2,
 		"dmgMultiplier": 5,
 		"cooldown": 1.6,
-		"desc": "A stone picaxe. Can never be let down by a classic."
+		"desc": "A stone picaxe. Can never be let down by a classic.",
+		"color": gray
 	},
 	"iron pickaxe": {
 		"points" : 30,
@@ -103,7 +120,8 @@ var items = {
 		"dmg": 4,
 		"dmgMultiplier": 5,
 		"cooldown": 1.4,
-		"desc": "An iron picaxe. Able to smash anything and everything. A great tool."
+		"desc": "An iron picaxe. Able to smash anything and everything. A great tool.",
+		"color": white,
 	},
 	"wood sword": {
 		"points" : 5,
@@ -116,6 +134,7 @@ var items = {
 		"dmg": 1,
 		"dmgMultiplier": 3,
 		"cooldown": 1.5,
+		"color": brown,
 		"desc": "A basic sword carved from wood. Better than fists, worse than everything else."
 	},
 	"stone sword": {
@@ -129,6 +148,7 @@ var items = {
 		"dmg": 1,
 		"dmgMultiplier": 9,
 		"cooldown": 1.4,
+		"color": gray,
 		"desc": "A stone sword. Can never be let down by a classic."
 	},
 	"iron sword": {
@@ -142,6 +162,7 @@ var items = {
 		"dmg": 1,
 		"dmgMultiplier": 15,
 		"cooldown": 1.35,
+		"color": white,
 		"desc": "An iron sword. Able to cut through anything and everything. A great tool."
 	},
 	"wood axe": {
@@ -155,6 +176,7 @@ var items = {
 		"dmg": 1,
 		"dmgMultiplier": 4,
 		"cooldown": 1.7,
+		"color": brown,
 		"desc": "A basic axe carved from wood. Better than fists, worse than everything else."
 	},
 	"stone axe": {
@@ -168,6 +190,7 @@ var items = {
 		"dmg": 2,
 		"dmgMultiplier": 6,
 		"cooldown": 1.5,
+		"color": gray,
 		"desc": "A stone axe. Can never be let down by a classic."
 	},
 	"iron axe": {
@@ -181,6 +204,7 @@ var items = {
 		"dmg": 5,
 		"dmgMultiplier": 5,
 		"cooldown": 1.4,
+		"color": white,
 		"desc": "An iron axe. Able to cut down and everything. A great tool."
 	},
 	"campfire": {
@@ -189,6 +213,7 @@ var items = {
 		"stackable": false,
 		"png": "res://drawn assets/builds/campfire.PNG",
 		"scale": 0.05,
+		"color": white,
 		"desc": "A source of heat in any situation."
 	},
 	"smelter": {
@@ -197,6 +222,7 @@ var items = {
 		"stackable": false,
 		"png": "res://drawn assets/builds/furnaceon.PNG",
 		"scale": 0.05,
+		"color": gray,
 		"desc": "Aids in smelting both food and ore into their ideal states."
 	},
 	"crafting table": {
@@ -205,6 +231,7 @@ var items = {
 		"stackable": false,
 		"png": "res://drawn assets/builds/crafter.PNG",
 		"scale": 0.05,
+		"color": brown,
 		"desc": "For a creative mind, a place to work is all that is needed. A table for more difficult crafts."
 	},
 	"apple": {
@@ -215,6 +242,7 @@ var items = {
 		"stackable": true,
 		"foodScore": 15,
 		"heal": 5,
+		"color": white
 	},
 	"cherry": {
 		"points": 3,
@@ -224,6 +252,7 @@ var items = {
 		"stackable": true,
 		"foodScore": 8,
 		"heal": 3,
+		"color": white
 	},
 	"raw meat": {
 		"points": 50,
@@ -233,6 +262,7 @@ var items = {
 		"stackable": true,
 		"foodScore": 25,
 		"heal": -20,
+		"color": white
 	},
 	"cooked meat": {
 		"points": 75,
@@ -242,13 +272,15 @@ var items = {
 		"stackable": true,
 		"foodScore": 40,
 		"heal": 15,
-		"desc": "Meat. But its not bad for your stomach!"
+		"desc": "Meat. But its not bad for your stomach!",
+		"color": brown
 	},
 	"gun": {
 		"type": "gun",
 		"scale": 0.05,
 		"png": "res://drawn assets/tools/gun.PNG",
 		"stackable": false,
+		"color": white
 	}
 }
 
@@ -398,6 +430,7 @@ var placeables = {
 var resourceNodes = {
 	"tree": {
 		"png": "res://drawn assets/nature&rock/tree.PNG",
+		"color": brown,
 		"scale": 1.8,
 		"multiDrop": true,
 		"drops": {
@@ -424,6 +457,7 @@ var resourceNodes = {
 	},
 	"apple tree": {
 		"png": "res://drawn assets/nature&rock/tree apple.PNG",
+		"color": brown,
 		"scale": 1.8,
 		"multiDrop": true,
 		"drops": {
@@ -451,11 +485,12 @@ var resourceNodes = {
 		"hp": 20,
 		"dropTimes": 6,
 		"toolMult": "axe",
-		"damageTier": 1,
+		"damageTier": 0,
 	},
 	"gold tree": {
 		"png": "res://drawn assets/nature&rock/three gold.PNG",
 		"scale": 1.85,
+		"color": gold,
 		"multiDrop": false,
 		"drops": {
 			"gold logs": {
@@ -477,6 +512,7 @@ var resourceNodes = {
 	"bush": {
 		"png": "res://drawn assets/nature&rock/bush.PNG",
 		"scale": 0.9,
+		"color": green,
 		"multiDrop": false,
 		"drops": {
 			"sticks": {
@@ -498,6 +534,7 @@ var resourceNodes = {
 	"cherry bush": {
 		"png": "res://drawn assets/nature&rock/bush cherry.PNG",
 		"scale": 1,
+		"color": green,
 		"multiDrop": true,
 		"drops": {
 			"cherry": {
@@ -524,6 +561,7 @@ var resourceNodes = {
 	"rock": {
 		"png": "res://drawn assets/nature&rock/rock_formation.PNG",
 		"scale": 1.7,
+		"color": gray,
 		"multiDrop": false,
 		"drops": {
 			"rocks": {
@@ -536,10 +574,12 @@ var resourceNodes = {
 		"dropTimes": 7,
 		"toolMult": "pickaxe",
 		"damageTier": 1,
+		"smol": true,
 	},
 	"iron rock": {
 		"png": "res://drawn assets/nature&rock/iron recource.PNG",
 		"scale": 1.7,
+		"color": Color(0.895, 0.895, 0.895, 1.0),
 		"multiDrop": true,
 		"drops": {
 			"iron ore": {
@@ -557,5 +597,6 @@ var resourceNodes = {
 		"dropTimes": 10,
 		"toolMult": "pickaxe",
 		"damageTier": 2,
+		"smol": true,
 	}
 }

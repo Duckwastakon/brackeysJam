@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var rabbit = $Rabbit
 @onready var switch = $Switch
-var SPEED = 100
+var SPEED = 5
 var f = 1
 var movement : Vector2 = Vector2.ZERO
 var v = 0

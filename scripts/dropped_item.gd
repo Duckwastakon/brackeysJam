@@ -15,6 +15,7 @@ func setItem(item, amt):
 	itemName = item
 	amount = amt
 	$itemSprite.texture = load(CraftableItems.items[item]["png"])
+	$itemSprite.modulate = CraftableItems.items[item]["color"]
 
 func _physics_process(delta: float) -> void:
 	if(velocity != Vector2.ZERO):

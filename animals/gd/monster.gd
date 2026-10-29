@@ -50,12 +50,15 @@ func reveal() -> void:
 	$damage/CollisionShape2D.disabled = false
 
 func startChasing():
-	print("startChase")
-	AudioController.playSound("res://audios/horror.mp3")
 	CameraController.zoomInCamera(0.25)
 	CameraController.infShake(1)
 	chasing = true
 	switch.stop()
+	
+	$Horror.playing = true
+	await get_tree().create_timer(randi_range(3, 7)).timeout
+	
+	leave()
 
 func _ready() -> void:
 	if not switch.timeout.is_connected(_on_switch_timeout):
@@ -65,13 +68,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	Global.wobble(sprite, velocity)
 	if leaving:
-		SPEED = 1200
+		SPEED = 1500
 		velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2)
 		move_and_slide()
 		return
 	if is_revealed:
 		if(chasing):
 			chase_behavior()
+			
 		SPEED = AnimalData.mon_speed
 	velocity = movement.normalized() * SPEED * randf_range(0.8, 1.2)
 	move_and_slide()
@@ -82,7 +86,6 @@ func chase_behavior() -> void:
 		movement = Vector2.ZERO
 	else:
 		movement = global_position.direction_to(player.global_position).normalized()
-		print(global_position.direction_to(player.global_position).normalized())
 	
 
 func _on_switch_timeout() -> void:
@@ -133,20 +136,12 @@ func _on_damage_area_entered(area: Area2D) -> void:
 	if area == $playerSearching: return
 	if area.get_parent().dead == true: return
 	
-	area.get_parent().takeDamage(60, "The monster killed you")
+	area.get_parent().takeDamage(40, "The monster killed you")
 	leave()
-	#pause = true
-	
-	#await get_tree().create_timer(randf_range(1, 2)).timeout
-	
-	#pause = false
-
-func _on_player_searching_area_exited(area: Area2D) -> void:
-	if chasing and player != null and is_revealed and area != $damage:
-		leave()
 
 func leave():
 	if leaving or player == null: return
+	$Horror.playing = false
 	print("leaving")
 	movement = -global_position.direction_to(player.global_position)
 	switch.stop()

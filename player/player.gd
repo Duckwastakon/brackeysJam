@@ -121,6 +121,7 @@ func takeDamage(amount, deathText):
 		die(deathText)
 
 func looseHunger(amount):
+	amount = roundi(amount / 1.25)
 	if movingState == 1:
 		amount *= 2
 	hunger -= amount
@@ -145,6 +146,8 @@ func eat(foodItem):
 	cooldown = false
 
 func changeTemperature(amount):
+	if amount > 0:
+		amount *= 2
 	temperature += amount
 	if temperature <= 0:
 		actionTextController.makeText("Cold")
@@ -195,6 +198,7 @@ func mouseClicked():
 		AudioController.playSound("res://audios/swing.mp3")
 		attackingController.swingSignal.emit("fists")
 		actionTextController.makeText("Swing")
+		CameraController.shakeCamera(1)
 		await inventory.delay(1.2)
 		cooldown = false
 		return
@@ -203,6 +207,7 @@ func mouseClicked():
 		AudioController.playSound("res://audios/swing.mp3")
 		attackingController.swingSignal.emit("fists")
 		actionTextController.makeText("Swing")
+		CameraController.shakeCamera(1)
 		await inventory.delay(1.2)
 	elif equipedItemType == "food":
 		eat(equipedItem)
@@ -211,6 +216,7 @@ func mouseClicked():
 		AudioController.playSound("res://audios/swing.mp3")
 		attackingController.swingSignal.emit(equipedItem)
 		actionTextController.makeText("Swing")
+		CameraController.shakeCamera(1)
 		await inventory.delay(CraftableItems.items[equipedItem]["cooldown"])
 	elif equipedItemType == "placeable":
 		AudioController.playSound("res://audios/drop.mp3")
@@ -258,20 +264,5 @@ func _on_placeable_enter_area_exited(area: Area2D) -> void:
 	inventory.removePlaceable(area.type)
 
 func shootWeapon():
-	if(CameraController.shaking):
-		AudioController.playSound("res://audios/swing.mp3")
-		Transition.change_scene("res://end.tscn")
-	else:
-		if $Label.visible: return
-		$Label.visible = true
-		
-		var inLabel = create_tween()
-		inLabel.tween_property($Label, "modulate", Color.from_rgba8(255, 255, 255, 255), 0.2)
-		inLabel.play()
-		await inLabel.finished
-		await get_tree().create_timer(4)
-		var outlabel = create_tween()
-		outlabel.tween_property($Label, "modulate", Color.from_rgba8(255, 255, 255, 0), 0.5)
-		outlabel.play()
-		await outlabel.finished
-		$Label.visible = false
+	AudioController.playSound("res://audios/swing.mp3")
+	Transition.change_scene("res://menus/end.tscn")

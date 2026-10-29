@@ -13,14 +13,14 @@ var crateScene = preload("res://resources/crate.tscn")
 const chunkSE := 640
 const tileS := 64
 const TilesRow := 10
-const rchance := 0.1
+const rchance := 0.06
 
 var temple_instance: Node2D = null
 var templeSpawned = false
 
 var canSpawnMonster = false
 
-var monster_spawn_chance = 0.2
+var monster_spawn_chance = 0.025
 var monster_instance: CharacterBody2D = null
 
 var chunks := {}
@@ -72,6 +72,9 @@ func generate_chunk(coord: Vector2i) -> void:
 	for y in TilesRow:
 		for x in TilesRow:
 			tile_positions.append(origin + Vector2(x * tileS, y * tileS))
+	
+	clearOldMobsAndResources()
+	
 	generate_resources(tile_positions)
 
 func generate_resources(tile_positions: Array[Vector2]) -> void:
@@ -87,7 +90,7 @@ func generate_resources(tile_positions: Array[Vector2]) -> void:
 			new_rec.position = pos + Vector2(randi_range(1, tileS), randi_range(1, tileS))
 		
 		
-		if randf() < 1.0/200:
+		if randf() < 1.0/100:
 			generate_animal(pos + Vector2(randi_range(1, tileS), randi_range(1, tileS)))
 
 func generate_animal(spawn_position: Vector2) -> void:
@@ -132,19 +135,19 @@ func spawn_temple() -> void:
 func _on_day_timeout() -> void:
 	if Global.dayTime:
 		Global.dayTime = false
-		timer.start()
+		timer.start(30)
 		var newTween = create_tween()
 		newTween.tween_property($CanvasModulate, "color", Color.from_rgba8(114, 114, 114, 255), 1)
 		newTween.play()
 	else:
 		Global.dayTime = true
-		timer.start()
+		timer.start(60)
 		var newTween = create_tween()
 		newTween.tween_property($CanvasModulate, "color", Color.from_rgba8(255, 255, 255, 255), 1)
 		newTween.play()
 
 func _on_monster_timer_timeout() -> void:
-	if monster_instance == null and canSpawnMonster and randf() < 0.5:
+	if monster_instance == null and canSpawnMonster:
 		monster_instance = monster_scene.instantiate()
 		monster_instance.player = player
 		ySortingContainer.add_child(monster_instance)
@@ -155,4 +158,9 @@ func _on_monster_timer_timeout() -> void:
 		var posy = rand * (500 - abs(posx))
 		monster_instance.global_position = player.global_position + Vector2(posx, posy)
 	
-	$monsterTimer.start(randi_range(30, 60))
+	$monsterTimer.start(randi_range(60, 90))
+
+func clearOldMobsAndResources():
+	for c in ySortingContainer.get_children():
+		if c.global_position.distance_to(player.global_position) > 3000:
+			c.queue_free()
